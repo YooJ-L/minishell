@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   env_lst_new.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 18:26:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/10 16:30:27 by yoojlee          ###   ########.fr       */
+/*   Created: 2022/03/10 16:28:00 by yoojlee           #+#    #+#             */
+/*   Updated: 2022/03/10 16:41:16 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structure.h"
 
-char	*get_env_value(t_env *env, const char *key)
+t_env	*env_lst_new(char **arr)
 {
-	while (env)
-	{
-		if (ft_strncmp(env->key, key, ft_strlen(key)))
-	}
-}
+	t_env	*new;
 
-int	excute_cd(t_info *info, t_process *process)
-{
-	char	*to_dir;
-
-	if (process->option)
-		return (error_option());
-	if (process->arg)
-		to_dir = (char *)(process->arg->content);
-	else
-		to_dir = get_env_value(info->env, "HOME");
+	new = (t_env *)malloc(sizeof(t_env));
+	if (new == NULL)
+		return (NULL);
+	new->key = arr[0];
+	new->value = arr[1];
+	new->next = NULL;
+	return (new);
 }

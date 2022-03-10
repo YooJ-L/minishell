@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   env_lstadd_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 18:26:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/10 16:30:27 by yoojlee          ###   ########.fr       */
+/*   Created: 2022/03/10 16:31:14 by yoojlee           #+#    #+#             */
+/*   Updated: 2022/03/10 16:57:35 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structure.h"
 
-char	*get_env_value(t_env *env, const char *key)
+void	env_lstadd_back(t_env **env, t_env *new)
 {
-	while (env)
+	t_env	*tail;
+
+	if (!(env) || !(new))
+		return ;
+	if (*env == NULL)
 	{
-		if (ft_strncmp(env->key, key, ft_strlen(key)))
+		*env = new;
+		return ;
 	}
-}
-
-int	excute_cd(t_info *info, t_process *process)
-{
-	char	*to_dir;
-
-	if (process->option)
-		return (error_option());
-	if (process->arg)
-		to_dir = (char *)(process->arg->content);
-	else
-		to_dir = get_env_value(info->env, "HOME");
+	tail = *env;
+	while (tail->next != 0)
+	{
+		tail = tail->next;
+	}
+	tail->next = new;
 }

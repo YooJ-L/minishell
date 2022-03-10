@@ -6,11 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/09 17:51:11 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/10 16:40:35 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef
+#ifndef STRUCTURE_H
 # define STRUCTURE_H
 
 # include <stdio.h>
@@ -31,3 +31,17 @@ typedef struct s_process
 	// t_list	*redirect;
 	// char	*heredoc_str;
 }				t_process;
+
+typedef struct	s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}				t_env;
+
+
+void	make_error(void);
+
+void	env_lstadd_back(t_env **lst, t_env *new);
+t_env	*env_lst_new(char **arr);
+#endif

@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   parse_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 18:26:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/10 16:30:27 by yoojlee          ###   ########.fr       */
+/*   Created: 2022/03/10 16:01:26 by yoojlee           #+#    #+#             */
+/*   Updated: 2022/03/10 16:59:11 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structure.h"
 
-char	*get_env_value(t_env *env, const char *key)
+int		parse_env(t_env	**env, char **envp)
 {
-	while (env)
+	int	i;
+	char	**arr;
+	t_env	*new;
+
+	i = -1;
+	while (envp[++i])
 	{
-		if (ft_strncmp(env->key, key, ft_strlen(key)))
+		arr = ft_split(envp[i], '=');
+		new = env_lst_new(arr);
+		env_lstadd_back(env, new);
 	}
+	return (0);
 }
 
-int	excute_cd(t_info *info, t_process *process)
+int	main(int argc, char **argv, char **envp)
 {
-	char	*to_dir;
+	t_env	*env;
 
-	if (process->option)
-		return (error_option());
-	if (process->arg)
-		to_dir = (char *)(process->arg->content);
-	else
-		to_dir = get_env_value(info->env, "HOME");
+	env = NULL;
+	parse_env(&env, envp);
+	while (env)
+	{
+		printf("%s=%s\n", env->key, env->value);
+		env=env->next;
+	}
+	return (0);
 }
