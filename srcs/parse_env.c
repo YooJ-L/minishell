@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:01:26 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/10 16:59:11 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/10 17:01:20 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +41,8 @@ int	main(int argc, char **argv, char **envp)
 	}
 	return (0);
 }
+
+/*
+컴파일 시 명령어
+gcc parse_env.c env_lst_new.c env_lstadd_back.c -L ../includes/libft/ -lft
+*/
