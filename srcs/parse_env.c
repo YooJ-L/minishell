@@ -6,13 +6,13 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:01:26 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/10 17:01:20 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/10 17:54:08 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structure.h"
 
-int		parse_env(t_env	**env, char **envp)
+int		parse_env(t_info **info, const char **envp)
 {
 	int	i;
 	char	**arr;
@@ -22,25 +22,28 @@ int		parse_env(t_env	**env, char **envp)
 	while (envp[++i])
 	{
 		arr = ft_split(envp[i], '=');
+		if (!arr)
+			make_error();
 		new = env_lst_new(arr);
-		env_lstadd_back(env, new);
+		env_lstadd_back((*info)->env, new);
+		free(arr);
 	}
-	return (0);
+	return (1);
 }
 
-int	main(int argc, char **argv, char **envp)
-{
-	t_env	*env;
+// int	main(int argc, char **argv, char **envp)
+// {
+// 	t_env	*env;
 
-	env = NULL;
-	parse_env(&env, envp);
-	while (env)
-	{
-		printf("%s=%s\n", env->key, env->value);
-		env=env->next;
-	}
-	return (0);
-}
+// 	env = NULL;
+// 	parse_env(&env, envp);
+// 	while (env)
+// 	{
+// 		printf("%s=%s\n", env->key, env->value);
+// 		env=env->next;
+// 	}
+// 	return (0);
+// }
 
 /*
 컴파일 시 명령어

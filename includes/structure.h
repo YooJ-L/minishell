@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/10 16:40:35 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/10 17:53:03 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,16 @@ typedef struct	s_env
 	struct s_env	*next;
 }				t_env;
 
+typedef struct	s_info
+{
+	t_env		*env;
+	t_process	*process;
+}				t_info;
 
 void	make_error(void);
 
 void	env_lstadd_back(t_env **lst, t_env *new);
 t_env	*env_lst_new(char **arr);
+
+int		parse_env(t_info **info, const char **envp);
 #endif
