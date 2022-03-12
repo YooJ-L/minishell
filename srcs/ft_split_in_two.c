@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_split_in_two.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/25 20:03:58 by deulee            #+#    #+#             */
-/*   Updated: 2022/03/12 19:35:32 by yoojlee          ###   ########.fr       */
+/*   Created: 2022/03/12 21:07:33 by yoojlee           #+#    #+#             */
+/*   Updated: 2022/03/12 21:35:53 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/structure.h"
 
-// void	ft_putstr_fd(char *s, int fd)
-// {
-// 	size_t	i;
+char	**ft_split_in_two(char *str, char ch)
+{
+	int	i;
+	char	**arr;
+	char	*temp;
 
-// 	i = 0;
-// 	if (s[i] == '\0' || fd < 0)
-// 		return ;
-// 	while (s[i])
-// 	{
-// 		write(fd, &(s[i]), 1);
-// 		i++;
-// 	}
-// }
+	i = -1;
+	arr = (char **)malloc(sizeof(char *) * 2);
+	if (arr == NULL)
+		return (0);
+	while (str[++i])
+	{
+		if (str[i] == ch)
+		{
+			arr[0] = ft_strndup(str, i + 1);
+			arr[1] = ft_strdup(str + i + 1);
+		}
+	}
+	return (arr);
+}

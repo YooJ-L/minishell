@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/10 17:53:03 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/12 21:23:13 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <readline/readline.h> //readline
 # include <readline/history.h> //add_history
 # include <sys/stat.h> //stat
+# include <term.h> //tcgetattr
 # include "libft/libft.h"
 
 #define PATH_MAX 1024
@@ -49,6 +50,7 @@ void	make_error(void);
 
 void	env_lstadd_back(t_env **lst, t_env *new);
 t_env	*env_lst_new(char **arr);
+char	**ft_split_in_two(char *str, char ch);
 
-int		parse_env(t_info **info, const char **envp);
+int		parse_env(t_env **env, char **envp);
 #endif

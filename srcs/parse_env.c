@@ -6,13 +6,13 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:01:26 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/10 17:54:08 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/12 21:22:18 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structure.h"
 
-int		parse_env(t_info **info, const char **envp)
+int		parse_env(t_env **env, char **envp)
 {
 	int	i;
 	char	**arr;
@@ -20,12 +20,16 @@ int		parse_env(t_info **info, const char **envp)
 
 	i = -1;
 	while (envp[++i])
-	{
-		arr = ft_split(envp[i], '=');
+	{//=이 여러개일 때 고려해주기
+		arr = ft_split_in_two(envp[i], '='); // 첫번째 = 기준으로만 자르게 하기
 		if (!arr)
-			make_error();
+		{
+			printf("ft_split error\n");
+			// make_error();
+			return (0);
+		}
 		new = env_lst_new(arr);
-		env_lstadd_back((*info)->env, new);
+		env_lstadd_back(env, new);
 		free(arr);
 	}
 	return (1);
@@ -33,14 +37,14 @@ int		parse_env(t_info **info, const char **envp)
 
 // int	main(int argc, char **argv, char **envp)
 // {
-// 	t_env	*env;
+// 	t_info	info;
 
-// 	env = NULL;
-// 	parse_env(&env, envp);
-// 	while (env)
+// 	info.env = NULL;
+// 	init(&info, envp);
+// 	while (info.env)
 // 	{
-// 		printf("%s=%s\n", env->key, env->value);
-// 		env=env->next;
+// 		printf("%s=%s\n", info.env->key, info.env->value);
+// 		info.env=info.env->next;
 // 	}
 // 	return (0);
 // }

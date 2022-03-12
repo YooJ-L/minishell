@@ -6,7 +6,7 @@
 #    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/03/10 17:11:22 by yoojlee          ###   ########.fr        #
+#    Updated: 2022/03/12 21:24:47 by yoojlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS = $(addprefix ./srcs/, \
 		parse_env.c \
 		error.c \
 		is_executable.c \
+		ft_split_in_two.c \
 		main.c \
 		)
 
