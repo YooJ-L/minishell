@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 21:07:33 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/12 21:35:53 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/12 21:43:39 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**ft_split_in_two(char *str, char ch)
 	{
 		if (str[i] == ch)
 		{
-			arr[0] = ft_strndup(str, i + 1);
+			arr[0] = ft_strndup(str, i);
 			arr[1] = ft_strdup(str + i + 1);
 		}
 	}

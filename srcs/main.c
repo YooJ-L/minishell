@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/12 21:01:33 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/12 21:42:46 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@ int	main(int argc, char *argv[], char *envp[])
 		printf("%s=%s\n", info.env->key, info.env->value);
 		info.env = info.env->next;
 	}
-	// while (1)
-	// {
-	// 	input = readline("tinyshell$ ");
-	// 	if (!input)
-	// 	{
-	// 		make_error();
-	// 	}
-	// 	add_history(input);
-	// 	// save_process(&process, input);
-	// 	// execute(input, &info);
-	// 	free(input);
-	// }
+	while (1)
+	{
+		input = readline("tinyshell$ ");
+		if (!input)
+		{
+			make_error();
+		}
+		add_history(input);
+		// save_process(&process, input);
+		// execute(input, &info);
+		free(input);
+	}
 	return (0);
 }
