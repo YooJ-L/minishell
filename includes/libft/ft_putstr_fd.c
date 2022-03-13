@@ -6,22 +6,22 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 20:03:58 by deulee            #+#    #+#             */
-/*   Updated: 2022/03/12 19:35:32 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/12 21:54:52 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// void	ft_putstr_fd(char *s, int fd)
-// {
-// 	size_t	i;
+void	ft_putstr_fd(char *s, int fd)
+{
+	size_t	i;
 
-// 	i = 0;
-// 	if (s[i] == '\0' || fd < 0)
-// 		return ;
-// 	while (s[i])
-// 	{
-// 		write(fd, &(s[i]), 1);
-// 		i++;
-// 	}
-// }
+	i = 0;
+	if (s[i] == '\0' || fd < 0)
+		return ;
+	while (s[i])
+	{
+		write(fd, &(s[i]), 1);
+		i++;
+	}
+}

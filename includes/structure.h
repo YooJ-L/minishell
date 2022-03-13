@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/12 21:23:13 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/13 21:03:02 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct	s_info
 	t_env		*env;
 	t_process	*process;
 }				t_info;
+
+int		execute_env(t_info *info, t_process *process);
 
 void	make_error(void);
 
