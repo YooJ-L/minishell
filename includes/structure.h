@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/13 21:03:02 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/14 17:37:57 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTURE_H
 
 # include <stdio.h>
+# include <stdbool.h> //bool
 # include <dirent.h> //opendir
 # include <readline/readline.h> //readline
 # include <readline/history.h> //add_history
