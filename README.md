@@ -1,6 +1,6 @@
 # minishell
 
-너무 정신없어서 폴더 정리 했음.
+너무 정신없어서 폴더 정리 했음.  
 Makefile / includes / srcs  
   ㄴ srcs 아래  
       ㄴ built_in_functions : 빌트인 함수들  
