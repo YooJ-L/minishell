@@ -6,11 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:01:26 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/12 21:22:18 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/14 18:58:04 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/structure.h"
+#include "../../includes/structure.h"
 
 int		parse_env(t_env **env, char **envp)
 {

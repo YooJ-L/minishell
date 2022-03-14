@@ -6,11 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 14:13:30 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/11 15:18:51 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/14 18:57:59 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/structure.h"
+#include "../../includes/structure.h"
 
 void set_input_mode(void)
 {

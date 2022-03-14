@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_lstadd_back.c                                  :+:      :+:    :+:   */
+/*   ft_split_in_two.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 16:31:14 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/10 16:57:35 by yoojlee          ###   ########.fr       */
+/*   Created: 2022/03/12 21:07:33 by yoojlee           #+#    #+#             */
+/*   Updated: 2022/03/14 18:57:43 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/structure.h"
+#include "../../includes/structure.h"
 
-void	env_lstadd_back(t_env **env, t_env *new)
+char	**ft_split_in_two(char *str, char ch)
 {
-	t_env	*tail;
+	int	i;
+	char	**arr;
+	char	*temp;
 
-	if (!(env) || !(new))
-		return ;
-	if (*env == NULL)
+	i = -1;
+	arr = (char **)malloc(sizeof(char *) * 2);
+	if (arr == NULL)
+		return (0);
+	while (str[++i])
 	{
-		*env = new;
-		return ;
+		if (str[i] == ch)
+		{
+			arr[0] = ft_strndup(str, i);
+			arr[1] = ft_strdup(str + i + 1);
+		}
 	}
-	tail = *env;
-	while (tail->next != 0)
-	{
-		tail = tail->next;
-	}
-	tail->next = new;
+	return (arr);
 }

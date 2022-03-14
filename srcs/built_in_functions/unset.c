@@ -6,11 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 21:27:30 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/14 18:24:09 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/14 19:08:23 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/structure.h"
+#include "../../includes/structure.h"
 /*
 1. arg o, option x
 2. option 여러개도 가능 ex) unset a b c
@@ -42,6 +42,11 @@ void	delete_content(t_env *env, char *key)
 	}
 }
 
+bool	validate_unset_arg(char *content)
+{
+	return (true);
+}
+
 int		execute_unset(t_info *info, t_process *process)
 {
 	bool	success_flag;
@@ -60,9 +65,11 @@ int		execute_unset(t_info *info, t_process *process)
 		if (!validate_unset_arg(process->arg->content))
 		{
 			success_flag = 0;
+			process->arg = process->arg->next;
 			continue ;
 		}
 		delete_content(info->env, process->arg->content);
 		process->arg = process->arg->next;
 	}
+	return (1);
 }

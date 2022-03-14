@@ -6,11 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:26:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/10 17:09:14 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/14 18:58:13 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/structure.h"
+#include "../../includes/structure.h"
 
 // char	*get_env_value(t_env *env, const char *key)
 // {
