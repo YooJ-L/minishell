@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: dim <dim@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/03/14 19:07:15 by yoojlee          ###   ########.fr        #
+#    Updated: 2022/03/16 17:45:01 by dim              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,15 +57,21 @@ SRCS = $(addprefix ./srcs/, \
 OBJS = $(SRCS:.c=.o)
 
 $(NAME) : $(OBJS)
+	make libft
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
 
 all : $(NAME)
 
+libft :
+		make -C includes/libft
+
 clean :
 	rm -rf $(OBJS)
+	make -C includes/libft clean
 
 fclean : clean
 	rm -rf $(NAME)
+	make -C includes/libft fclean
 
 bonus : all
 
