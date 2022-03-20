@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:38:17 by dim               #+#    #+#             */
-/*   Updated: 2022/03/21 00:33:05 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/21 03:00:26 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,21 @@
 	
 // }
 
-void	print_echo(t_list *list)
+void	print_echo(t_list *list, int flag)
 {
 	t_list *temp;
 
+	if (list == NULL)
+		return ;
 	temp = list;
+	if ((flag == 2 || flag == 3)&& temp != NULL)
+		ft_putchar_fd(' ', STDOUT_FILENO);
 	while (temp)
 	{
-		ft_putstr_fd(temp->content, /*fd*/STDOUT_FILENO);
+		ft_putstr_fd(temp->content, STDOUT_FILENO);
 		temp = temp->next;
 		if (temp)
-			ft_putchar_fd(' ', /*fd*/STDOUT_FILENO);
+			ft_putchar_fd(' ', STDOUT_FILENO);
 	}
 }
 
@@ -52,46 +56,55 @@ bool	check_opt(char *str)
 	return (true);
 }
 
-bool	verify_and_print_opt(t_list *opt_list)
+int		verify_and_print_opt(t_list *opt_list)
 {
 	//하나의 '-'와 하나 이상의 'n'의 조합이면 플래그 인정, -n -n -n 인정
 	//---n | -nm 은 안됨
+	// [ret 값] (arg 출력 전 스페이스 삽입때문에 필요)
+	// 0: 옵션x 출력x, 1: 옵션o 출력x
+	// 2: 옵션x출력o   3: 옵션o 출력o
 	t_list	*temp;
-	bool	opt;
+	int		ret;
 
 	temp = opt_list;
-	opt = false;
+	ret = 0;
 	while (temp)
 	{
 		if (check_opt((char *)temp->content))
 		{
-			opt = true;
+			ret = 1;
 			temp = temp->next;
 			continue;
 		}
 		else
 		{
-			print_echo(temp);
-			return (opt);
+			if (ret == 1 || ret == 3)
+				ret = 3;
+			else
+				ret = 2;
+			print_echo(temp, 0);
+			return (ret);
 		}
 	}
-	return (opt);
+	return (ret);
 }
 
 void	execute_echo(t_info *info, t_process *process)
 {
 	// 고려해야할것: $?, $, '$환경변수'는 환경변수로x, ;, | 
-	bool	flag;
+	int		flag;
 	char	*env;
 
 	//option에 저장된게 -n 플래그 맞나 확인
-	flag = verify_and_print_opt(process->option);
+	flag = 0;
+	if (process->option != NULL)
+		flag = verify_and_print_opt(process->option);
 	// env를 파싱에서 가져오면 env확인부분 없애고 여기서 확인하는거면 살리기
 	// env = verify_env(process->arg);
 	// if (env != NULL)
 	// 	print_env(env);
 	// else
-		print_echo(process->arg);
-	if (!flag)
-		ft_putstr_fd("\n", /*fd값*/STDOUT_FILENO);
+		print_echo(process->arg, flag);
+	if (flag == 0 || flag == 2)
+		ft_putstr_fd("\n", STDOUT_FILENO);
 }
