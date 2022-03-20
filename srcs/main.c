@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/13 21:04:26 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/20 21:32:23 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,18 @@ int	init(t_info *info, char **envp)
 	if (!parse_env(&(info->env), envp))
 		return (0);
 	return (1);
+}
+
+void	test(t_info *info)
+{
+	t_process *process;
+
+	process = info->process;
+	process->instruction = "echo";
+	process->option = ft_lstnew("-nnnnn");
+	// process->option->next = ft_lstaddback();
+	process->option->next->next = NULL;
+	process->arg = ft_lstnew("dim");
 }
 
 int	main(int argc, char *argv[], char *envp[])
@@ -34,6 +46,7 @@ int	main(int argc, char *argv[], char *envp[])
 		printf("init fail\n");
 		return (-1);
 	}
+	test(&info);
 	while (1)
 	{
 		input = readline("tinyshell$ ");
@@ -42,6 +55,7 @@ int	main(int argc, char *argv[], char *envp[])
 			make_error();
 		}
 		add_history(input);
+		execute_echo(&info, process);
 		execute_env(&info, process);
 		// save_process(&process, input);
 		// execute(input, &info);

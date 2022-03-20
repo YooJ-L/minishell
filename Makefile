@@ -6,7 +6,7 @@
 #    By: dim <dim@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/03/16 17:45:01 by dim              ###   ########.fr        #
+#    Updated: 2022/03/20 21:29:06 by dim              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ BUILT_IN_FUNCS = $(addprefix built_in_functions/, \
 					export.c \
 					pwd.c \
 					unset.c \
+					echo.c \
 					)
 
 PARSE = $(addprefix parse/, \
