@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:38:17 by dim               #+#    #+#             */
-/*   Updated: 2022/03/20 21:30:50 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/21 00:33:05 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ bool	check_opt(char *str)
 {
 	int	i;
 
-	i = 0;
-	while (str[i++])
+	i = 1;
+	while (str[i] != 0)
 	{
 		if (str[i] != 'n')
 			return (false);
+		i++;
 	}
 	return (true);
 }
@@ -91,6 +92,6 @@ void	execute_echo(t_info *info, t_process *process)
 	// 	print_env(env);
 	// else
 		print_echo(process->arg);
-	if (flag)
+	if (!flag)
 		ft_putstr_fd("\n", /*fd값*/STDOUT_FILENO);
 }

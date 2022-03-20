@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/20 21:32:23 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/21 00:31:15 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,12 @@ int	init(t_info *info, char **envp)
 		return (0);
 	return (1);
 }
-
-void	test(t_info *info)
+void	test(t_process *process)
 {
-	t_process *process;
-
-	process = info->process;
-	process->instruction = "echo";
-	process->option = ft_lstnew("-nnnnn");
+	process->instruction = ft_strdup("echo");
+	process->option = ft_lstnew("-nnnn\0");
 	// process->option->next = ft_lstaddback();
-	process->option->next->next = NULL;
-	process->arg = ft_lstnew("dim");
+	process->arg = ft_lstnew("dim\0");
 }
 
 int	main(int argc, char *argv[], char *envp[])
@@ -39,14 +34,18 @@ int	main(int argc, char *argv[], char *envp[])
 
 	(void)argc;
 	(void)argv;
-	process = NULL;
+	// process = NULL;
+	process = (t_process *)malloc(sizeof(t_process));
 	info.env = NULL;
 	if (!init(&info, envp))
 	{
 		printf("init fail\n");
 		return (-1);
 	}
-	test(&info);
+	info.process = process;
+	test(process);
+	// printf("option: %s\n", process->option->content);
+	// printf("arg: %s\n", process->arg->content);
 	while (1)
 	{
 		input = readline("tinyshell$ ");
@@ -56,7 +55,7 @@ int	main(int argc, char *argv[], char *envp[])
 		}
 		add_history(input);
 		execute_echo(&info, process);
-		execute_env(&info, process);
+		// execute_env(&info, process);
 		// save_process(&process, input);
 		// execute(input, &info);
 		free(input);

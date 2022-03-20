@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dim <dim@student.42.fr>                    +#+  +:+       +#+         #
+#    By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/03/20 21:29:06 by dim              ###   ########.fr        #
+#    Updated: 2022/03/21 00:06:47 by dim              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ $(NAME) : $(OBJS)
 all : $(NAME)
 
 libft :
-		make -C includes/libft
+		make bonus -C includes/libft
 
 clean :
 	rm -rf $(OBJS)
