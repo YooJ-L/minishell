@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/20 21:29:34 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/22 19:13:51 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ typedef struct	s_info
 {
 	t_env		*env;
 	t_process	*process;
+	int			process_cnt;
 }				t_info;
 
 void	execute_echo(t_info *info, t_process *process);
 int		execute_env(t_info *info, t_process *process);
+void	execute_exit(t_info *info, t_process *process);
 
 void	make_error(void);
 
@@ -56,5 +58,8 @@ void	env_lstadd_back(t_env **lst, t_env *new);
 t_env	*env_lst_new(char **arr);
 char	**ft_split_in_two(char *str, char ch);
 
+int		exit_process(t_info *info, t_process *process, int exit_status);
+int		str_is_num(char *str);
+int		str_is_long(char *str);
 int		parse_env(t_env **env, char **envp);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/21 03:04:42 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/22 19:10:28 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	test(t_process *process)
 	process->instruction = NULL;
 	process->option = NULL;
 	process->arg = NULL;
-	process->instruction = ft_strdup("echo");
-	// process->option = ft_lstnew("-n");
+	process->instruction = ft_strdup("exit");
+	process->option = ft_lstnew("-n");
 	// ft_lstadd_back(&(process->option), ft_lstnew("-nnm"));
 	// ft_lstadd_back(&(process->option), ft_lstnew("-----n"));
 	process->arg = ft_lstnew("dim");
@@ -41,6 +41,7 @@ int	main(int argc, char *argv[], char *envp[])
 	(void)argv;
 	process = NULL;
 	info.env = NULL;
+	info.process_cnt = 1;
 	process = (t_process *)malloc(sizeof(t_process));
 	if (!init(&info, envp))
 	{
@@ -57,7 +58,8 @@ int	main(int argc, char *argv[], char *envp[])
 			make_error();
 		}
 		add_history(input);
-		execute_echo(&info, process);
+		execute_exit(&info, process);
+		// execute_echo(&info, process);
 		// execute_env(&info, process);
 		// save_process(&process, input);
 		// execute(input, &info);

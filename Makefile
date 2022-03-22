@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+         #
+#    By: dim <dim@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/03/21 00:06:47 by dim              ###   ########.fr        #
+#    Updated: 2022/03/22 19:12:38 by dim              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ BUILT_IN_FUNCS = $(addprefix built_in_functions/, \
 					pwd.c \
 					unset.c \
 					echo.c \
+					exit.c \
 					)
 
 PARSE = $(addprefix parse/, \
@@ -44,6 +45,8 @@ UTILS = $(addprefix utils/, \
 		env_lst_new.c \
 		env_lstadd_back.c \
 		ft_split_in_two.c \
+		check_num.c \
+		exit_process.c \
 		)
 
 SRCS = $(addprefix ./srcs/, \
