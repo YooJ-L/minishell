@@ -1,5 +1,8 @@
 # minishell
 
+execute_exit 함수 리턴타입 void->int로 바꿔줌!_유진
+
+
 너무 정신없어서 폴더 정리 했음.  
 Makefile / includes / srcs  
   ㄴ srcs 아래  
