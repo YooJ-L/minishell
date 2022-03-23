@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:00:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/14 19:09:43 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/16 18:21:24 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 void	print_env(t_env *env)
 {
 	t_env	*temp;
+	char	*address;
 
 	temp = env;
 	while (temp != NULL)
 	{
 		if (ft_strncmp(temp->key, "_", 2) == 0)
 		{
+			address = temp->value;
 			temp = temp->next;
 			continue ;
 		}
 		printf("%s=%s\n", temp->key, temp->value);
 		temp = temp->next;
 	}
-	printf("_=/usr/bin/env\n"); //여기 끝에 개행 넣어줘야 하나?
+	printf("_=%s\n", address);
 }
 
 int		execute_env(t_info *info, t_process *process)

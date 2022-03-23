@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:14:06 by dim               #+#    #+#             */
-/*   Updated: 2022/03/22 19:00:15 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/24 06:03:33 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		check_arg(char *arg)
 	if (!str_is_num(arg))
 		return (0);
 	if (!str_is_long(arg))
-		reutrn (0);
+		return (0);
 	return (1);
 }
 
@@ -29,13 +29,19 @@ char 	*get_arg(t_info *info, t_process *process)
 	if (process->option)
 		return (process->option->content);
 	else if (process->arg)
-		returen (process->arg->content);
+		return (process->arg->content);
 	else
 	{
 		if (info->process_cnt == 1)
 			ft_putstr_fd("exit\n", STDOUT_FILENO);
 		exit (0);
 	}
+}
+
+void	print_exit(t_info *info, int fd)
+{
+	if (info->process_cnt == 1)
+		ft_putstr_fd("exit\n", fd);
 }
 
 void	exit_print_error(t_info *info, int	errnum, char *arg)
@@ -55,13 +61,8 @@ void	exit_print_error(t_info *info, int	errnum, char *arg)
 	}
 }
 
-void	print_exit(t_info *info, int fd)
-{
-	if (info->process_cnt == 1)
-		ft_putstr_fd("exit\n", fd);
-}
-
-void	execute_exit(t_info *info, t_process *process)
+// 리턴 타입 void->int로 바꿔줌 _유진
+int	execute_exit(t_info *info, t_process *process)
 {
 	unsigned char	exit_status;
 	char			*arg;
@@ -70,21 +71,21 @@ void	execute_exit(t_info *info, t_process *process)
 	if (!check_arg(arg))
 	{
 		exit_print_error(info, 1, arg);
-		free_process(process);
-		free_envp(info);
+		// free_process(process);
+		// free_envp(info);
 		exit(1);
 	}
 	exit_status = atoi(arg);
 	if (process->arg->next)
 	{
 		exit_print_error(info, 2, arg);
-			return (exit_process(info, process, 1));
+		return (exit_process(info, process, 1));
 	}
 	else
 	{
 		print_exit(info, STDOUT_FILENO);
-		free_process(process);
-		free_envp(info);
+		// free_process(process);
+		// free_envp(info);
 		exit(exit_status);
 	}
 	return (1);

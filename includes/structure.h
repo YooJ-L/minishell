@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/22 19:13:51 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/24 06:00:55 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct	s_info
 
 void	execute_echo(t_info *info, t_process *process);
 int		execute_env(t_info *info, t_process *process);
-void	execute_exit(t_info *info, t_process *process);
+int		execute_exit(t_info *info, t_process *process);
 
 void	make_error(void);
 

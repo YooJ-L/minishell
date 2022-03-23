@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:58:04 by dim               #+#    #+#             */
-/*   Updated: 2022/03/22 18:59:39 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/24 06:04:06 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int		exit_process(t_info *info, t_process *process, int exit_status)
 		return (exit_status);
 	else
 	{
-		free_process(process);
-		free_envp(info);
+	// 	free_process(process);
+	// 	free_envp(info);
 		exit(exit_status);
 	}
 }
