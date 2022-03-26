@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:14:06 by dim               #+#    #+#             */
-/*   Updated: 2022/03/24 06:03:33 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/03/27 01:19:12 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_exit(t_info *info, int fd)
 		ft_putstr_fd("exit\n", fd);
 }
 
-void	exit_print_error(t_info *info, int	errnum, char *arg)
+void	exit_find_and_perror(t_info *info, int	errnum, char *arg)
 {
 	if (errnum == 1)
 	{
@@ -70,7 +70,7 @@ int	execute_exit(t_info *info, t_process *process)
 	arg = get_arg(info, process);
 	if (!check_arg(arg))
 	{
-		exit_print_error(info, 1, arg);
+		exit_find_and_perror(info, 1, arg);
 		// free_process(process);
 		// free_envp(info);
 		exit(1);
@@ -78,7 +78,7 @@ int	execute_exit(t_info *info, t_process *process)
 	exit_status = atoi(arg);
 	if (process->arg->next)
 	{
-		exit_print_error(info, 2, arg);
+		exit_find_and_perror(info, 2, arg);
 		return (exit_process(info, process, 1));
 	}
 	else

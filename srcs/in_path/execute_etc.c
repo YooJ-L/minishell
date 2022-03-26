@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execve_etc.c                                       :+:      :+:    :+:   */
+/*   execute_etc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:15:54 by dim               #+#    #+#             */
-/*   Updated: 2022/03/26 20:42:49 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/27 00:57:47 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,3 @@ void	execute_etc_instruction(t_info *info, t_process *process)
 	ft_putstr_fd(process->instruction, STDERR_FILENO);
 	perror_and_exit(": No such file or directory", 127);
 }
-
-// perror_and_exit()함수 만들기

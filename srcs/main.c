@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/22 19:10:28 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/27 01:19:48 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	test(t_process *process)
 	process->option = NULL;
 	process->arg = NULL;
 	process->instruction = ft_strdup("exit");
-	process->option = ft_lstnew("-n");
+	// process->option = ft_lstnew("-n");
 	// ft_lstadd_back(&(process->option), ft_lstnew("-nnm"));
 	// ft_lstadd_back(&(process->option), ft_lstnew("-----n"));
-	process->arg = ft_lstnew("dim");
-	ft_lstadd_back(&(process->arg), ft_lstnew("1234"));
+	// process->arg = ft_lstnew("dim");
+	// ft_lstadd_back(&(process->arg), ft_lstnew("1234"));
 }
 
 int	main(int argc, char *argv[], char *envp[])

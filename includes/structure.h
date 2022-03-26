@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/26 20:42:37 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/27 00:58:47 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <readline/history.h> //add_history
 # include <sys/stat.h> //stat
 # include <term.h> //tcgetattr
+# include <errno.h> //errno
 # include "libft/libft.h"
 
 #define PATH_MAX 1024

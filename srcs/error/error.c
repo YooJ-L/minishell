@@ -6,11 +6,10 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:17:39 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/26 20:42:28 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/27 00:58:59 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
 #include "../../includes/structure.h"
 
 void	make_error(void)
