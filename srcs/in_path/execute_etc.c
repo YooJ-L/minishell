@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:15:54 by dim               #+#    #+#             */
-/*   Updated: 2022/03/27 00:57:47 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/28 03:35:55 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	execute_etc_instruction(t_info *info, t_process *process)
 		ft_putstr_fd(process->instruction, STDERR_FILENO);
 		perror_and_exit(": command not found", 127);
 	}
-	else
+	else // env 못찾을 경우 일단 실행..?
 		excve(instruction, arg, env);
 	ft_putstr_fd("bash: ", STDERR_FILENO);
 	ft_putstr_fd(process->instruction, STDERR_FILENO);

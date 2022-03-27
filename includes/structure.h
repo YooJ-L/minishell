@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/27 00:58:47 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/28 03:34:03 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ int		exit_process(t_info *info, t_process *process, int exit_status);
 int		str_is_num(char *str);
 int		str_is_long(char *str);
 int		parse_env(t_env **env, char **envp);
+char	*get_env_value(t_env *env, char *key);
 #endif

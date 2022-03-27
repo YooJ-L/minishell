@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/27 01:19:48 by dim              ###   ########.fr       */
+/*   Updated: 2022/03/27 01:22:09 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ int	main(int argc, char *argv[], char *envp[])
 			make_error();
 		}
 		add_history(input);
-		execute_exit(&info, process);
-		// execute_echo(&info, process);
+		// execute_exit(&info, process);
 		// execute_env(&info, process);
+		execute_etc_instruction(&info, process);
+		// execute_echo(&info, process);
 		// save_process(&process, input);
 		// execute(input, &info);
 		free(input);
