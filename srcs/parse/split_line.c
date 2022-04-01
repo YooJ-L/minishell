@@ -6,18 +6,32 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 03:46:09 by dim               #+#    #+#             */
-/*   Updated: 2022/03/28 04:01:42 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/02 03:47:48 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/structure.h"
+#include "../../includes/parsing.h"
 
-void	perror_in_parsing(char *str)
+void	perror_in_parsing(char *line)
 {
-	ft_putstr_fd(str, STDERR_FILENO);
+	// 출력값 무엇이 기준?
+	ft_putstr_fd(line, STDERR_FILENO);
 }
 
-int		get_pipe_cnt(char *str)
+int		check_quote(const char *chr, int *status)
+{
+	if (*chr == '\'' && status == NO_Q)
+		return (status = SINGLE_Q);
+	else if (*chr == '\'' && status == SINGLE_Q)
+		return (status = NO_Q);
+	else if (*chr == '"' && status == NO_Q)
+		return (status = DOUBLE_Q);
+	else if (*chr == '"' && status == DOUBLE_Q)
+		return (status = NO_Q);
+	return (0);
+}
+
+int		get_pipe_cnt(const char *line)
 {
 	int	i;
 	int	status;
@@ -26,10 +40,10 @@ int		get_pipe_cnt(char *str)
 	i = 0;
 	status = 0;
 	cnt = 0;
-	while (str[i])
+	while (line[i])
 	{
-		status = check_quote(str[i], status);
-		if (status == 0 && str[i] == '|')
+		status = check_quote(line[i], status);
+		if (status == 0 && line[i] == '|')
 			cnt++;
 		i++;
 	}
@@ -41,14 +55,42 @@ int		get_pipe_cnt(char *str)
 	return (cnt);
 }
 
-t_process	*split_line(const char *str, t_info *info)
+int			strlen_each_process(const char *line)
 {
-	t_process *process;
+	int		cnt;
+	int		status;
 
-	info->process_cnt = get_pipe_cnt(str) + 1;
+	cnt = 0;
+	status = 0;
+	while (line[cnt])
+	{
+		check_quote(line[cnt], status);
+		if (line[cnt] != '|' && status == NO_Q)
+			return (cnt);
+		cnt++;
+	}
+	return (cnt);
+}
+
+t_process	*split_line(const char *line, t_info *info)
+{
+	t_process	*process;
+	int			ps_cnt;
+	int			len;
+
+	info->process_cnt = get_pipe_cnt(line) + 1;
 	if (!info->process_cnt)
 		return (NULL);
 	process = (t_process *)malloc(sizeof(t_process) * info->process_cnt);
 	if (process == NULL)
 		perror_and_exit("cannot allocate memory\n", ENOMEM);
+	ps_cnt = info->process_cnt;
+	while (ps_cnt--)
+	{
+		len = strlen_each_process(line);
+		if (!parse_line(process, info, line, len))
+			parse_error();//error 함수 만들기
+		line += len + 1;
+	}
+	return (process);
 }
