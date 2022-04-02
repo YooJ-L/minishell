@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 03:46:09 by dim               #+#    #+#             */
-/*   Updated: 2022/04/02 03:47:48 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/03 03:57:50 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,11 @@ int			strlen_each_process(const char *line)
 
 t_process	*split_line(const char *line, t_info *info)
 {
+	// 라인을 파이프마다 나누어서 프로세스 개수만큼 리스트로 할당한 후 각 프로세스 정보 채워서 반환
 	t_process	*process;
 	int			ps_cnt;
 	int			len;
+	int			ret;
 
 	info->process_cnt = get_pipe_cnt(line) + 1;
 	if (!info->process_cnt)
@@ -85,11 +87,14 @@ t_process	*split_line(const char *line, t_info *info)
 	if (process == NULL)
 		perror_and_exit("cannot allocate memory\n", ENOMEM);
 	ps_cnt = info->process_cnt;
+	//문제있을경우 cnt 확인해보기!
 	while (ps_cnt--)
 	{
+		// 파이프 단위로 나눈 후 파싱
 		len = strlen_each_process(line);
-		if (!parse_line(process, info, line, len))
-			parse_error();//error 함수 만들기
+		ret = parse_process(process, info, line, len);
+		if (ret)
+			return (parse_error());//error 함수 만들기
 		line += len + 1;
 	}
 	return (process);
