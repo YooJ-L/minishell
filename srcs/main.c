@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/27 01:22:09 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/02 16:33:23 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,21 @@ int	main(int argc, char *argv[], char *envp[])
 		{
 			make_error();
 		}
+		if (!validate_input(info, input))
+		{
+
+		}
 		add_history(input);
+		//프로세스 파싱
+		process = parse_process(info, input);
+		if (!validate_process(info, process))
+		{
+
+		}
+		if (!run_heredoc(info, process))
+		{
+			
+		}
 		// execute_exit(&info, process);
 		// execute_env(&info, process);
 		execute_etc_instruction(&info, process);

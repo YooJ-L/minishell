@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 15:17:39 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/02 16:06:23 by yoojlee          ###   ########.fr       */
+/*   Created: 2022/03/28 15:45:30 by yoojlee           #+#    #+#             */
+/*   Updated: 2022/03/31 21:31:25 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/structure.h"
+/*
+1. > 여러 개
+	cat > a > b > c
+	=> a b c 에 있던 모든 내용 지우고 c에만 결과 출력
 
-void	make_error(void)
-{
-	printf("make error\n");
-	exit(-1);
-}
 
-void	perror_and_exit(char *text, int	errnum)
-{
-	ft_putstr_fd(text, STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
-	exit(errnum);
-}
-
-void	print_error_and_exit(char *output, int error_num)
-{
-	ft_putstr_fd(output, STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
-	exit(error_num);
-}
+*/

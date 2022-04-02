@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/28 03:34:03 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/02 16:19:46 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,21 @@
 
 #define PATH_MAX 1024
 
-typedef struct s_process
+typedef struct	s_redirection
 {
-	pid_t	pid;
-	char	*instruction;
-	t_list	*option;
-	t_list	*arg;
-	// t_list	*redirect;
-	// char	*heredoc_str;
+	char					symbol;
+	char					*filename;
+	struct s_redirection	*next;
+}				t_redirection;
+
+typedef struct	s_process
+{
+	pid_t			pid;
+	char			*instruction;
+	t_list			*option;
+	t_list			*arg;
+	t_redirection	*redirect;
+	char			*heredoc_str;
 }				t_process;
 
 typedef struct	s_env
@@ -55,6 +62,7 @@ int		execute_exit(t_info *info, t_process *process);
 
 void	make_error(void);
 void	perror_and_exit(char *text, int errnum);
+void	print_error_and_exit(char *output, int error_num);
 
 void	env_lstadd_back(t_env **lst, t_env *new);
 t_env	*env_lst_new(char **arr);
@@ -65,4 +73,14 @@ int		str_is_num(char *str);
 int		str_is_long(char *str);
 int		parse_env(t_env **env, char **envp);
 char	*get_env_value(t_env *env, char *key);
+
+void	sig_exit_handler(int sig) //자식이 죽었을 때
+void	sigint_handler(void);
+void	init_mom_setting(t_info *info);
+
+void	add_character_to_str(char **str, char character)
+
+int	run_heredoc(t_info *info, t_process *process)
+
+
 #endif
