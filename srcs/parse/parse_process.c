@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 02:55:31 by dim               #+#    #+#             */
-/*   Updated: 2022/04/03 03:58:06 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/03 16:14:51 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,56 @@ int		skip_space(char *str)
 	
 }
 
+char	*redirection_token(const char *str)
+{
+	int		cnt;
+	char	*ret;
+
+	cnt = 0;
+	while (str[0] == str[cnt] && cnt < 2)
+	// >일때는..?
+	ret = (char *)malloc(sizeof(char) * (cnt + 1));
+	if (ret == NULL)
+		perror_and_exit("cannot allocate memory\n", ENOMEM);
+	ft_strlcpy(ret, str, cnt + 1);
+	return (ret);
+}
+
+char	*other_token(const char *str)
+{
+	int		i;
+	int		status;
+	char	*ret;
+
+	i = 0;
+	stauts = 0;
+	while ((str[i] != ' ' && str[i] != '\0' \
+			&& str[i] != '<' && str[i] != '>') \
+			|| (status != NO_Q && str[i] != '\0'))
+	{
+		check_quote(str[i], &status);
+		i++;
+	}
+	if (status != NO_Q)
+	{
+		i = 1;
+		while (str[i] != ' ' && str[i] != '\0')
+			i++;
+	}
+	ret = (char *)malloc(sizeof(char) * (i + 1));
+	if (ret == NULL)
+		perror_and_exit("cannot allocate memory\n", ENOMEM);
+	ft_strlcpy(ret, str, i + 1);
+	retur (ret);
+}
+
+char	*get_one_token(const char *str)
+{
+	if (str[0] == '<' || str[0] == '>')
+		return (redirection_token(str));
+	else
+		return (other_token(str));
+}
 
 int		parse_process(t_process *process, t_info *info, const char *line, int len)
 {
@@ -148,7 +198,7 @@ int		parse_process(t_process *process, t_info *info, const char *line, int len)
 	i = skip_space(new_line);
 	while (i >= 0 && new_str[i])
 	{
-		cur_token = get_one_token(&new_str[i]);
+		cur_token = get_one_token(&new_line[i]);
 		i += ft_strlen(cur_token);
 		//check_token();
 		//save_token();
