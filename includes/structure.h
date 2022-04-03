@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/02 16:19:46 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/03 14:13:48 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ typedef struct	s_redirection
 
 typedef struct	s_process
 {
+	bool			heredoc;
 	pid_t			pid;
 	char			*instruction;
 	t_list			*option;
 	t_list			*arg;
 	t_redirection	*redirect;
+	char			*input_file; //초기화는 null로 해주기
 	char			*heredoc_str;
 }				t_process;
 
@@ -59,6 +61,8 @@ typedef struct	s_info
 void	execute_echo(t_info *info, t_process *process);
 int		execute_env(t_info *info, t_process *process);
 int		execute_exit(t_info *info, t_process *process);
+int		execute_unset(t_info *info, t_process *process);
+int		execute_export(t_info *info, t_process *process);
 
 void	make_error(void);
 void	perror_and_exit(char *text, int errnum);
