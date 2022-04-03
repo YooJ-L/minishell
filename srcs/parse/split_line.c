@@ -6,30 +6,11 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 03:46:09 by dim               #+#    #+#             */
-/*   Updated: 2022/04/03 03:57:50 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/04 02:57:14 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
-
-void	perror_in_parsing(char *line)
-{
-	// 출력값 무엇이 기준?
-	ft_putstr_fd(line, STDERR_FILENO);
-}
-
-int		check_quote(const char *chr, int *status)
-{
-	if (*chr == '\'' && status == NO_Q)
-		return (status = SINGLE_Q);
-	else if (*chr == '\'' && status == SINGLE_Q)
-		return (status = NO_Q);
-	else if (*chr == '"' && status == NO_Q)
-		return (status = DOUBLE_Q);
-	else if (*chr == '"' && status == DOUBLE_Q)
-		return (status = NO_Q);
-	return (0);
-}
 
 int		get_pipe_cnt(const char *line)
 {
