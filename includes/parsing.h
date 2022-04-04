@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 03:46:19 by dim               #+#    #+#             */
-/*   Updated: 2022/04/03 20:10:04 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/04 19:19:18 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@
 # define ARG 3
 # define REDIRECTION 4
 # define FILENAME 5
+
+# define SINGLE_IN 1
+# define DOUBLE_IN 2
+# define SINGLE_OUT 3
+# define DOUBLE_OUT 4
 
 
 int		check_quote(const char *chr, int *status);

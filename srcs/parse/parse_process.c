@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 02:55:31 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 04:09:30 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/04 17:33:38 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char	*redirection_token(const char *str)
 	cnt = 0;
 	while (str[0] == str[cnt] && cnt < 2)
 		cnt++;
-	// >일때는..? cnt가 0이라 빈문자열만 저장..?
 	ret = (char *)malloc(sizeof(char) * (cnt + 1));
 	if (ret == NULL)
 		perror_and_exit("cannot allocate memory\n", ENOMEM);
@@ -67,7 +66,7 @@ char	*other_token(const char *str)
 	{
 		// cnt는 1로 초기화 후에 다시 1번 문자열부터 검사
 		// ?????
-		cnt = 1;
+		cnt = 0;
 		while (str[cnt] != ' ' && str[cnt] != '\0')
 			cnt++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 03:46:09 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 02:57:14 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/04 19:18:54 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		get_pipe_cnt(const char *line)
 	}
 	if (status != 0)
 	{
-		perror_in_parsing("@@@@@@");
+		perror_in_parsing("|");
 		return (-1);
 	}
 	return (cnt);

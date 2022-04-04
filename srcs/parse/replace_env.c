@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   replace_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:51:38 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 02:55:42 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/04 19:16:03 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ char	*find_key_in_str(const char *str)
 	return (ret);
 }
 
+// void	add_last_exit_status(char **token, int last_exit_status)
+// {
+	
+// }
+
 void	add_env_value(t_info *info, const char *key, \
 											char **str, int status)
 {
@@ -49,7 +54,7 @@ void	add_env_value(t_info *info, const char *key, \
 	}
 	if (*key == '?')
 	{
-		add_last_exit_status()//추가해야됨
+		// add_last_exit_status() //추가해야됨
 		return ;
 	}
 	value = get_env_value(info->env, key);

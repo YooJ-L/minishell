@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_envp.c                                         :+:      :+:    :+:   */
+/*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:21:51 by dim               #+#    #+#             */
-/*   Updated: 2022/03/26 20:43:16 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/04 17:54:09 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	merge_envp(t_env *env, char **dest_env)
 			perror_and_exit("cannot allocate memory\n", ENOMEM);
 		ft_strlcpy(&dest_env[i][0], env->value, valuelen + 1);
 		dest_env[i][keylen] = '=';
-		ft_strlcpy(&dest_env[i][keylen + 1], env->value, valuelen + 1);
+		if (env->value != NULL)
+			ft_strlcpy(&dest_env[i][keylen + 1], env->value, valuelen + 1);
 		i++;
 		env = env->next;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:28:00 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/03 19:24:19 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/04 18:38:44 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,15 @@ void	env_lstadd_back(t_env **env, t_env *new)
 		tail = tail->next;
 	}
 	tail->next = new;
+}
+
+t_redirection	*redir_lstlast(t_redirection *lst)
+{
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next != 0)
+		lst = lst->next;
+	return (lst);
 }
 
 void	redir_lstadd_back(t_redirection **lst, t_redirection *new)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:56:12 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 03:28:23 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/04 19:17:59 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 void	perror_in_parsing(char *line)
 {
 	// 출력값 무엇이 기준?
+	// ㄴ redirection 이상하게 나오는거, pipe 뒤에 아무것도 없는 경우만 파싱에서부터 걸러주는 용도
+	ft_putstr_fd("bash: syntax error near unexpected token `", STDERR_FILENO);
 	ft_putstr_fd(line, STDERR_FILENO);
+	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
-void	add_char_to_str(char **str, char ch)
+void	add_char_to_str(char **str, char c	h)
 {
 	int		strlen;
 	char	*new_str;
