@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:28:00 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/04 18:46:43 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/05 17:25:57 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,15 @@ void	env_lstadd_back(t_env **env, t_env *new)
 	tail->next = new;
 }
 
+t_redirection	*redir_lstlast(t_redirection *lst)
+{
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next != 0)
+		lst = lst->next;
+	return (lst);
+}
+
 void	redir_lstadd_back(t_redirection **lst, t_redirection *new)
 {
 	t_redirection	*tail;
@@ -74,32 +83,4 @@ void	redir_lstadd_back(t_redirection **lst, t_redirection *new)
 		tail = tail->next;
 	}
 	tail->next = new;
-}
-
-int	redir_lstsize(t_redirection *lst)
-{
-	int	i;
-
-	i = 0;
-	while (lst != NULL)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
-}
-
-t_redirection	*redir_lstfind_node(t_redirection *lst, int index)
-{
-	int	i;
-
-	if (redir_lstsize(lst) <= index)
-		return (0);
-	i = 0;
-	while (i < index)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (lst);
 }

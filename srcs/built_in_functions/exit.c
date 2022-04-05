@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:14:06 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 19:28:04 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/05 17:43:26 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	exit_find_and_perror(t_info *info, int	errnum, char *arg)
 	}
 }
 
-// 리턴 타입 void->int로 바꿔줌 _유진
 int	execute_exit(t_info *info, t_process *process)
 {
 	unsigned char	exit_status;

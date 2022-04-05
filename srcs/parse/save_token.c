@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_token.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 04:06:09 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 04:18:07 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/04 18:40:41 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,31 @@
 
 void	save_redirection(t_process *process, char *token)
 {
+	t_redirection	*new_rd_node;
 
+	new_rd_node = (t_redirection *)malloc(sizeof(t_recdirection));
+	if (new_rd_node == NULL)
+		perror_and_exit("cannot allocate memory\n", ENOMEM);
+	if (token[0] == '<' && token[1] == '\0')
+		new_rd_node->symbol = SINGLE_IN;
+	else if (token[0] == '<' && token[1] == '<' && token[2] == '\0')
+		new_rd_noed->symbol = DOUBLE_IN;
+	else if (token[0] == '>' && token[1] == '\0')
+		new_rd_node->symbol = SINGLE_OUT;
+	else if (token[0] == '>' && token[1] == '>' && token[2] == '\0')
+		new_rd_node->symbol = DOUBLE_OUT;
+	free(token);
+	new_rd_node->filename = NULL;
+	new_rd_node->next = NULL;
+	redir_lstadd_back(&(process->redirect), new_rd_node);
 }
 
-void	save_filename(t_process *process, char *str)
+void	save_filename(t_process *process, char *token)
 {
-	
+	t_redirection	*last_redir;
+
+	last_redir = redir_lstlast(process->redirect);
+	last_redir->filename = token;
 }
 
 void	save_option(t_process *process, char *token)

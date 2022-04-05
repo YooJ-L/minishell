@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/04 19:04:43 by yoojlee          ###   ########.fr       */
+/*   Created: 2022/04/05 17:30:45 by yoojlee           #+#    #+#             */
+/*   Updated: 2022/04/05 17:39:27 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
 
-int	execute_program(t_info *info, t_process *cur_process)
+int	execve_command(t_info *info, t_process *cur_process)
 {
 	if (!cur_process->instruction)
 		return (exit_process(info, cur_process, info->last_exit_status));
@@ -35,67 +35,25 @@ int	execute_program(t_info *info, t_process *cur_process)
 	return (0);
 }
 
-void	set_child_process(t_process *process, int pipe_fd[2], int input_fd, bool is_last)
+int	execute_single_builtin(t_info *info, t_process *process)
 {
-	signal(SIGQUIT, SIG_DFL);
-	set_input_fd(process, input_fd);
-	set_output_fd(process, pipe_fd, is_last);
-}
+	int	ret;
+	int	save_stdin;
+	int	save_stdout;
 
-void	fork_processes(t_info *info, t_process *process)
-{
-	int	i;
-	int	input_fd;
-	int	pipe_fd[2];
-
-	i = -1;
-	input_fd = 0;
-	while (++i < info->process_cnt)
-	{
-		if (i < info->process_cnt - 1)
-			pipe(pipe_fd);
-		(&process[i])->pid = fork();
-		if (process[i].pid < 0)
-		//	error();
-		if (process[i].pid == 0)
-		{
-			child_process(&process[i], pipe_fd, input_fd, i == info->process_cnt - 1);
-			execve_command(info, &process[i]);
-		}
-		else if (process[i] > 0)
-		{
-			if (input_fd != 0)
-				close(input_fd);
-			if (i < info->process_cnt - 1)
-			{
-				close(pipe_fd[1]);
-				input_fd = pipe_fd[0];
-			}
-		}
-	}
-}
-
-void	execute(t_info *info, t_process *process)
-{
-	int	last_exit_status;
-	int	first_exit_status;
-
-	if (info->process_cnt == 1 && is_builtin_ft(&process[0]))
-		info->last_exit_status = execute_single_builtin(info, &process[0]);
-	else
-	{
-		//reset_output_mode
-		fork_processes(info, process);
-		signal(SIGINT, SIG_IGN);
-		//첫번째 명령어와 마지막 명령어를 실행하는 자식들은 무조건 끝날 때까지 기다림.
-		waitpid(process[info->process_cnt - 1].pid, &last_exit_status, 0);
-		waitpid(process[0].pid, &first_exit_status, 0);
-		if (info->process_count == 1)
-			sig_exit_handler(last_exit_status);
-		else
-			sig_exit_handler(first_exit_status);
-		while (wait(NULL) > 0)
-			;
-		info->last_exit_status = last_exit_status / 256;
-	}
+	ret = 0;
+	(void)info;
+	if (check_file_is_exist(process->redirect) == -1)
+		return (ENOENT);
+	save_stdin = dup(STDIN_FILENO);
+	save_stdout = dup(STDOUT_FILENO);
+	if (process->input_file != NULL || process->heredoc)
+		set_input_fd(process);
+	set_output_fd(process);
+	ret = execute_program(info, process);
+	dup2(save_stdin, STDIN_FILENO);
+	close(save_stdin);
+	dup2(save_stdout, STDOUT_FILENO);
+	close(save_stdout);
+	return (ret);
 }

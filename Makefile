@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dim <dim@student.42.fr>                    +#+  +:+       +#+         #
+#    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/03/22 19:12:38 by dim              ###   ########.fr        #
+#    Updated: 2022/04/05 20:56:12 by yoojlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,29 +24,50 @@ BUILT_IN_FUNCS = $(addprefix built_in_functions/, \
 					unset.c \
 					echo.c \
 					exit.c \
+					ft_builtin.c \
 					)
 
 PARSE = $(addprefix parse/, \
+			check_token.c \
 			parse_env.c \
+			parse_process.c \
+			parse_util.c \
+			replace_env.c \
+			save_token.c \
+			split_line.c \
 			)
 
 ERROR = $(addprefix error/, \
 			error.c \
 			)
 
-TEMP = $(addprefix temp/, \
-		execute.c \
-		is_executable.c \
-		save_process.c \
-		terminal.c \
-		)
+EXECUTE = $(addprefix execute/, \
+			execute.c \
+			fork.c \
+			)
+
+IN_PATH = $(addprefix in_path/, \
+			execute_etc.c \
+			get_arg.c \
+			get_env.c \
+			)
+
+REDIRECTION = $(addprefix redirection/, \
+				heredoc.c \
+				input.c \
+				output.c \
+				)
 
 UTILS = $(addprefix utils/, \
-		env_lst_new.c \
-		env_lstadd_back.c \
-		ft_split_in_two.c \
-		check_num.c \
-		exit_process.c \
+			add_char.c \
+			check_num.c \
+			exit_process.c \
+			ft_split_in_two.c \
+			get_env_value.c \
+			is_executable.c \
+			lst_functions.c \
+			signal.c \
+			terminal.c \
 		)
 
 SRCS = $(addprefix ./srcs/, \
@@ -54,7 +75,9 @@ SRCS = $(addprefix ./srcs/, \
 		$(BUILT_IN_FUNCS) \
 		$(PARSE) \
 		$(ERROR) \
-		$(TEMP) \
+		$(EXECUTE) \
+		$(IN_PATH) \
+		$(REDIRECTION) \
 		$(UTILS) \
 		)
 

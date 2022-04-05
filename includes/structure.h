@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/04 23:52:27 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/05 20:56:52 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int		execute_env(t_info *info, t_process *process);
 int		execute_exit(t_info *info, t_process *process);
 int		execute_unset(t_info *info, t_process *process);
 int		execute_export(t_info *info, t_process *process);
+int		execute_pwd(t_info *info, t_process *process);
+int		excute_cd(t_info *info, t_process *process);
 
 void	make_error(void);
 void	perror_and_exit(char *text, int errnum);
@@ -82,14 +84,7 @@ int		str_is_num(char *str);
 int		str_is_long(char *str);
 int		parse_env(t_env **env, char **envp);
 char	*get_env_value(t_env *env, char *key);
-
-void	sig_exit_handler(int sig) //자식이 죽었을 때
-void	sigint_handler(void);
-void	init_mom_setting(t_info *info);
-
-void	add_character_to_str(char **str, char character)
-
-int	run_heredoc(t_info *info, t_process *process)
+void	add_character_to_str(char **str, char character);
 
 //input.c
 void	set_input_fd(t_process *process, int input_fd);
@@ -98,52 +93,26 @@ void	set_input_fd(t_process *process, int input_fd);
 void	set_output_fd(t_process *process, int pipe_fd[2], bool is_last);
 
 //heredoc.c
-int	run_heredoc(t_info *info, t_process *process);
+int		run_heredoc(t_info *info, t_process *process);
 
-//execute.c
+//fork.c
 void	execute(t_info *info, t_process *process);
 
 //ft_builtin.c
-bool	is_builtin_function(t_process *cur_process);
-int		execute_single_builtin(t_info *info, t_process *process);
+bool	is_builtin_ft(t_process *cur_process);
 
-// built_in_functions
-//cd.c
-
-//echo.c
-//env.c
-//exit.c
-int	execute_exit(t_info *info, t_process *process);
-//export.c
-int	execute_export(t_info *info, t_process *process);
-//ft_builtin.c
-int		execute_single_builtin(t_info *info, t_process *process);
-bool	is_builtin_function(t_process *cur_process);
-//pwd.c
-int	execute_pwd(t_info *info, t_process *process);
-//unset.c
-int	execute_unset(t_info *info, t_process *process);
-
-// error
-//error.c
-
-// in_path
-//execute_etc.c
-//get_arg.c
-//get_env.c
-
-// redirection
-//heredoc.c
-//input.c
-//output.c
-
-// temp
 //execute.c
-//is_executable.c
-//sav
+int		execute_single_builtin(t_info *info, t_process *process);
+int		execve_command(t_info *info, t_process *cur_process);
 
+//signal.c
+void	sig_exit_handler(int sig); //자식이 죽었을 때
+void	sigint_handler(void);
+void	init_mom_setting(t_info *info);
 
-
-
+//terminal.c
+void	change_input_mode(void);
+void 	reset_input_mode(void);
+void 	set_input_mode(void);
 
 #endif

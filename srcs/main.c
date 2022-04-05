@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/02 17:25:04 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/05 20:57:29 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ int	main(int argc, char *argv[], char *envp[])
 
 		}
 		//heredoc먼저 처리(입력값 받아옴)
-		if (!run_heredoc(info, process))
+		if (!run_heredoc(&info, process))
 		{
 			
 		}
-		execute(info, process);
+		execute(&info, process);
 		free_all(info, process, input);
 	}
 	return (0);
