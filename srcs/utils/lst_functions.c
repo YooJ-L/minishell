@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:28:00 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/03 19:24:19 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/04 18:46:43 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,32 @@ void	redir_lstadd_back(t_redirection **lst, t_redirection *new)
 		tail = tail->next;
 	}
 	tail->next = new;
+}
+
+int	redir_lstsize(t_redirection *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}
+
+t_redirection	*redir_lstfind_node(t_redirection *lst, int index)
+{
+	int	i;
+
+	if (redir_lstsize(lst) <= index)
+		return (0);
+	i = 0;
+	while (i < index)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (lst);
 }

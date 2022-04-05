@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/03 14:13:48 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/04 23:52:27 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@
 # include <errno.h> //errno
 # include "libft/libft.h"
 
-#define PATH_MAX 1024
+# define PATH_MAX 1024
+
+# define SINGLE_IN 1
+# define DOUBLE_IN 2
+# define SINGLE_OUT 3
+# define DOUBLE_OUT 4
 
 typedef struct	s_redirection
 {
@@ -85,6 +90,60 @@ void	init_mom_setting(t_info *info);
 void	add_character_to_str(char **str, char character)
 
 int	run_heredoc(t_info *info, t_process *process)
+
+//input.c
+void	set_input_fd(t_process *process, int input_fd);
+
+//output.c
+void	set_output_fd(t_process *process, int pipe_fd[2], bool is_last);
+
+//heredoc.c
+int	run_heredoc(t_info *info, t_process *process);
+
+//execute.c
+void	execute(t_info *info, t_process *process);
+
+//ft_builtin.c
+bool	is_builtin_function(t_process *cur_process);
+int		execute_single_builtin(t_info *info, t_process *process);
+
+// built_in_functions
+//cd.c
+
+//echo.c
+//env.c
+//exit.c
+int	execute_exit(t_info *info, t_process *process);
+//export.c
+int	execute_export(t_info *info, t_process *process);
+//ft_builtin.c
+int		execute_single_builtin(t_info *info, t_process *process);
+bool	is_builtin_function(t_process *cur_process);
+//pwd.c
+int	execute_pwd(t_info *info, t_process *process);
+//unset.c
+int	execute_unset(t_info *info, t_process *process);
+
+// error
+//error.c
+
+// in_path
+//execute_etc.c
+//get_arg.c
+//get_env.c
+
+// redirection
+//heredoc.c
+//input.c
+//output.c
+
+// temp
+//execute.c
+//is_executable.c
+//sav
+
+
+
 
 
 #endif
