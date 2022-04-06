@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:56:12 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 19:17:59 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 17:54:13 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	perror_in_parsing(char *line)
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
-void	add_char_to_str(char **str, char c	h)
+void	add_char_to_str(char **str, char ch)
 {
 	int		strlen;
 	char	*new_str;

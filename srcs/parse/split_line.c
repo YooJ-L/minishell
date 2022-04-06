@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 03:46:09 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 19:18:54 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 18:10:45 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,13 @@ int			strlen_each_process(const char *line)
 	return (cnt);
 }
 
+t_process	parse_split_error(int ret, t_info *info)
+{
+	if (ret != 258 && info->process_cnt != 1)
+		perror_in_parsing("|");
+	return (NULL);
+}
+
 t_process	*split_line(const char *line, t_info *info)
 {
 	// 라인을 파이프마다 나누어서 프로세스 개수만큼 리스트로 할당한 후 각 프로세스 정보 채워서 반환
@@ -75,7 +82,7 @@ t_process	*split_line(const char *line, t_info *info)
 		len = strlen_each_process(line);
 		ret = parse_process(process, info, line, len);
 		if (ret)
-			return (parse_error());//error 함수 만들기
+			return (parse_split_error(ret, info));
 		line += len + 1;
 	}
 	return (process);

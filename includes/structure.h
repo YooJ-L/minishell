@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2022/04/06 17:50:24 by dim              ###   ########.fr       */
+=======
 /*   Updated: 2022/04/06 18:03:20 by yoojlee          ###   ########.fr       */
+>>>>>>> 4ff635e3f6fbaf7d3e153e5d121775a4f5ae5a75
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +77,7 @@ int		excute_cd(t_info *info, t_process *process);
 
 void	make_error(void);
 void	perror_and_exit(char *text, int errnum);
-void	print_error_and_exit(char *output, int error_num);
+void	perror_and_exit(char *text, int errornum);
 
 void	env_lstadd_back(t_env **lst, t_env *new);
 t_env	*env_lst_new(char **arr);

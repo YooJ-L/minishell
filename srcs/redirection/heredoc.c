@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/02 16:19:41 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 17:47:38 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	exec_heredoc(const char *exit_str, int output_fd)
 
 	save = (char *)malloc(sizeof(char) * 1);
 	if (!save)
-		print_error_and_exit("cannot allocate memory\n", ENOMEM);
+		perror_and_exit("cannot allocate memory\n", ENOMEM);
 	save[0] = '\0';
 	while (1)
 	{
