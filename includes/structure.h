@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 20:48:32 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 20:52:25 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,73 +63,73 @@ typedef struct	s_info
 	int				process_cnt;
 }				t_info;
 
-void	execute_echo(t_info *info, t_process *process);
-int		execute_env(t_info *info, t_process *process);
-int		execute_exit(t_info *info, t_process *process);
-int		execute_unset(t_info *info, t_process *process);
-int		execute_export(t_info *info, t_process *process);
-int		execute_pwd(t_info *info, t_process *process);
-int		excute_cd(t_info *info, t_process *process);
+void			execute_echo(t_info *info, t_process *process);
+int				execute_env(t_info *info, t_process *process);
+int				execute_exit(t_info *info, t_process *process);
+int				execute_unset(t_info *info, t_process *process);
+int				execute_export(t_info *info, t_process *process);
+int				execute_pwd(t_info *info, t_process *process);
+int				excute_cd(t_info *info, t_process *process);
 
-void	make_error(void);
-void	perror_and_exit(char *text, int errnum);
-void	perror_and_exit(char *text, int errornum);
-void	quit_program(t_info *info);
+void			perror_and_exit(char *text, int errnum);
+void			perror_and_exit(char *text, int errornum);
+int				error_option(char	*inst, t_info *info, t_process *process);
+void			quit_program(t_info *info);
 
-void	env_lstadd_back(t_env **lst, t_env *new);
-t_env	*env_lst_new(char **arr);
-t_env	*env_node_exists(t_env *env, char *new_key);
-void	modify_env_node(t_env *env, char *new_key, char *new_value);
-void	ft_env_lstclear(t_env **lst, void (*del)(void *));
-void	ft_redir_lstclear(t_redirection **lst, void (*del)(void *));
-t_redirection *redir_lst_new(char **arr);
+void			env_lstadd_back(t_env **lst, t_env *new);
+t_env			*env_lst_new(char **arr);
+t_env			*env_node_exists(t_env *env, char *new_key);
+void			modify_env_node(t_env *env, char *new_key, char *new_value);
+void			ft_env_lstclear(t_env **lst, void (*del)(void *));
+void			ft_redir_lstclear(t_redirection **lst, void (*del)(void *));
+t_redirection 	*redir_lst_new(char **arr);
 t_redirection	*redir_lstlast(t_redirection *lst);
-void	redir_lstadd_back(t_redirection **lst, t_redirection *new);
+void			redir_lstadd_back(t_redirection **lst, t_redirection *new);
 
-char	**ft_split_in_two(char *str, char ch);
+char			**ft_split_in_two(char *str, char ch);
 
-int		exit_process(t_info *info, t_process *process, int exit_status);
-int		str_is_num(char *str);
-int		str_is_long(char *str);
-int		parse_env(t_env **env, char **envp);
-char	*get_env_value(t_env *env, char *key);
-void	add_char_to_str(char **str, char character);
+int				exit_process(t_info *info, t_process *process, int exit_status);
+int				str_is_num(char *str);
+int				str_is_long(char *str);
+int				parse_env(t_env **env, char **envp);
+char			*get_env_value(t_env *env, char *key);
+void			add_char_to_str(char **str, char character);
 
 //input.c
-void	set_input_fd(t_process *process, int input_fd);
+void			set_input_fd(t_process *process, int input_fd);
 
 //output.c
-void	set_output_fd(t_process *process, int pipe_fd[2], bool is_last);
+void			set_output_fd(t_process *process, int pipe_fd[2], bool is_last);
 
 //heredoc.c
-int		run_heredoc(t_info *info, t_process *process);
+int				run_heredoc(t_info *info, t_process *process);
 
 //fork.c
-void	execute(t_info *info, t_process *process);
+void			execute(t_info *info, t_process *process);
 
 //ft_builtin.c
-bool	is_builtin_ft(t_process *cur_process);
+bool			is_builtin_ft(t_process *cur_process);
 
 //execute.c
-int		execute_single_builtin(t_info *info, t_process *process);
-int		execve_command(t_info *info, t_process *cur_process);
+int				execute_single_builtin(t_info *info, t_process *process);
+int				execve_command(t_info *info, t_process *cur_process);
 
 //signal.c
-void	sig_exit_handler(int sig); //자식이 죽었을 때
-void	sigint_handler(void);
-void	set_parent_process(t_info *info);
+void			sig_exit_handler(int sig); //자식이 죽었을 때
+void			sigint_handler(void);
+void			set_parent_process(t_info *info);
 
 //terminal.c
-void	change_input_mode(void);
-void 	reset_input_mode(void);
-void 	set_input_mode(void);
+void			change_input_mode(void);
+void 			reset_input_mode(void);
+void 			set_input_mode(void);
 
 //validate.c
-int	validate_input(t_info *info, char *input);
+int				validate_input(t_info *info, char *input);
 
 //free.c
-void	free_all(t_info *info, t_process *process, char *input);
-void	free_redirection(t_redirection **redirect);
-void	free_process(t_process *process);
+void			free_all(t_info *info, t_process *process, char *input);
+void			free_redirection(t_redirection **redirect);
+void			free_process(t_process *process);
 
 #endif
