@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   replace_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:51:38 by dim               #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/04/06 17:58:52 by dim              ###   ########.fr       */
+=======
+/*   Updated: 2022/04/05 21:04:37 by yoojlee          ###   ########.fr       */
+>>>>>>> 4ff635e3f6fbaf7d3e153e5d121775a4f5ae5a75
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
+#include "../../includes/structure.h" //add_char_to_str함수 쓰려고
 
 char	*find_key_in_str(const char *str)
 {

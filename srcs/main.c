@@ -6,11 +6,12 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/05 20:57:29 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 18:06:18 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structure.h"
+#include "../includes/parsing.h"
 
 int	init(t_info *info, char **envp)
 {
@@ -18,17 +19,44 @@ int	init(t_info *info, char **envp)
 		return (0);
 	return (1);
 }
-void	test(t_process *process)
+
+int	validate_input(t_info *info, char *input)
 {
-	process->instruction = NULL;
-	process->option = NULL;
-	process->arg = NULL;
-	process->instruction = ft_strdup("exit");
-	// process->option = ft_lstnew("-n");
-	// ft_lstadd_back(&(process->option), ft_lstnew("-nnm"));
-	// ft_lstadd_back(&(process->option), ft_lstnew("-----n"));
-	// process->arg = ft_lstnew("dim");
-	// ft_lstadd_back(&(process->arg), ft_lstnew("1234"));
+	if (!input)
+		quit_program(info);
+	if (input[0] == '\0')
+		return (0);
+	return (1);
+}
+
+void	loop_minishell(t_info *info, t_process *process)
+{
+	char	*input;
+
+	while (1)
+	{
+		set_parent_process(&info);
+		input = readline("tinyshell$ ");
+		if (!validate_input(info, input))
+			continue ;
+		add_history(input);
+		if (!parse_process(process, &info, input, strlen(input)); //?
+		{
+
+		}
+		if (!validate_process(info, process))
+		{
+
+		}
+		//heredoc먼저 처리(입력값 받아옴)
+		if (!run_heredoc(&info, process))
+		{
+			//free_all(&info, process, output);
+			return (-1);
+		}
+		execute(&info, process);
+		// free_all(info, process, input);
+	}
 }
 
 int	main(int argc, char *argv[], char *envp[])
@@ -40,42 +68,13 @@ int	main(int argc, char *argv[], char *envp[])
 	(void)argc;
 	(void)argv;
 	process = NULL;
-	info.env = NULL;
-	info.process_cnt = 1;
 	process = (t_process *)malloc(sizeof(t_process));
 	if (!init(&info, envp))
 	{
 		printf("init fail\n");
 		return (-1);
 	}
-	info.process = process;
-	test(process);
-	while (1)
-	{
-		input = readline("tinyshell$ ");
-		if (!input)
-		{
-			make_error();
-		}
-		if (!validate_input(info, input))
-		{
-
-		}
-		add_history(input);
-		//프로세스 파싱
-		process = parse_process(info, input);
-		if (!validate_process(info, process))
-		{
-
-		}
-		//heredoc먼저 처리(입력값 받아옴)
-		if (!run_heredoc(&info, process))
-		{
-			
-		}
-		execute(&info, process);
-		free_all(info, process, input);
-	}
+	loop_minishell(&info, process);
 	return (0);
 }
 

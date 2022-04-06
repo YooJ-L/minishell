@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 14:13:30 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/14 18:57:59 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 17:42:25 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void set_input_mode(void)
 {
 	struct termios	term;
 
+//tcgetattr: 터미널의 속성을 받아와서 term에 저장
 	tcgetattr(STDIN_FILENO, &term); // STDIN으로부터 터미널 속성을 받아온다
 	term.c_lflag &= ~(ICANON | ECHO);  // ICANON, ECHO 속성을 off
 	tcsetattr(STDIN_FILENO, TCSANOW, &term); // 변경된 속성의 터미널을 STDIN에 바로 적용
