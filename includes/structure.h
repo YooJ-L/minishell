@@ -78,9 +78,13 @@ int		excute_cd(t_info *info, t_process *process);
 void	make_error(void);
 void	perror_and_exit(char *text, int errnum);
 void	perror_and_exit(char *text, int errornum);
+void	quit_program(t_info *info);
 
 void	env_lstadd_back(t_env **lst, t_env *new);
 t_env	*env_lst_new(char **arr);
+t_env	*env_node_exists(t_env *env, char *new_key);
+void	modify_env_node(t_env *env, char *new_key, char *new_value);
+void	ft_env_lstclear(t_env **lst, void (*del)(void *));
 char	**ft_split_in_two(char *str, char ch);
 
 int		exit_process(t_info *info, t_process *process, int exit_status);
@@ -118,5 +122,11 @@ void	set_parent_process(t_info *info);
 void	change_input_mode(void);
 void 	reset_input_mode(void);
 void 	set_input_mode(void);
+
+//validate.c
+int	validate_input(t_info *info, char *input);
+
+//free.c
+void	free_all(t_info *info, t_process *process, char *input);
 
 #endif
