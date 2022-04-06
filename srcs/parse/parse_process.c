@@ -6,12 +6,11 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 02:55:31 by dim               #+#    #+#             */
-/*   Updated: 2022/04/06 19:04:01 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 21:16:42 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
-#include ".../../includes/structure.h"
 
 int		skip_front_space(char *str)
 {
@@ -51,7 +50,7 @@ char	*other_token(const char *str)
 	char	*ret;
 
 	cnt = 0;
-	stauts = 0;
+	status = 0;
 	// space나 빈문자열, 리다이렉션이 아닌 문자이거나 quote 안에 있는 빈문자열이 아닌 문자들을 체크하고 카운트함
 	while ((str[cnt] != ' ' && str[cnt] != '\0' \
 			&& str[cnt] != '<' && str[cnt] != '>') \
@@ -99,17 +98,17 @@ int		parse_process(t_process *process, t_info *info, \
 	tag = 0;
 	new_line = replace_env_to_value(info, line, len);
 	i = skip_front_space(new_line);
-	while (i >= 0 && new_str[i])
+	while (i >= 0 && new_line[i])
 	{
 		cur_token = get_one_token(&new_line[i]);
 		i += ft_strlen(cur_token);
 		if (check_token(process, &new_line, &cur_token, &tag));
 			return (258);
 		save_token(process, cur_token, tag);
-		while (new_str[i] == ' ')
+		while (new_line[i] == ' ')
 			i++;
 	}
-	free(new_str);
+	free(new_line);
 	if (i == -1)
 		return (1);
 	return (0);

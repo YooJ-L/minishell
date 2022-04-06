@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 15:39:49 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/04 19:26:39 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 21:08:21 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	execute_pwd(t_info *info, t_process *process)
 	{
 		ft_putstr_fd(buf, STDOUT_FILENO);
 		ft_putstr_fd("\n", STDOUT_FILENO);
-		return ();
+		return (exit_process(info, process, 0));
 	}
 	else
-		return (error_option)
+		return (error_option("pwd", info, process));
 }

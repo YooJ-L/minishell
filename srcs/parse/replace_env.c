@@ -6,12 +6,11 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:51:38 by dim               #+#    #+#             */
-/*   Updated: 2022/04/06 18:57:34 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 21:20:12 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h"
-#include "../../includes/structure.h" //add_char_to_str함수 쓰려고
+#include "../../includes/parsing.h" //add_char_to_str함수 쓰려고
 
 char	*find_key_in_str(const char *str)
 {
@@ -55,7 +54,7 @@ void	add_last_exit_status(char **str, int last_exit_status)
 	free(num);
 }
 
-void	add_env_value(t_info *info, const char *key, \
+void	add_env_value(t_info *info, char *key, \
 											char **str, int status)
 {
 	char	*value;
@@ -67,7 +66,7 @@ void	add_env_value(t_info *info, const char *key, \
 	}
 	if (*key == '?')
 	{
-		add_last_exit_status(str, info->lsat_exit_status);
+		add_last_exit_status(str, info->last_exit_status);
 		return ;
 	}
 	value = get_env_value(info->env, key);

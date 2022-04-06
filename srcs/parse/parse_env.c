@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:01:26 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/14 18:58:04 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 21:14:59 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/structure.h"
+#include "../../includes/parsing.h"
 
 int		parse_env(t_env **env, char **envp)
 {

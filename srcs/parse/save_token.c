@@ -6,24 +6,23 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 04:06:09 by dim               #+#    #+#             */
-/*   Updated: 2022/04/06 19:04:41 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 21:23:07 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
-#include "../../includes/structure.h"
 
 void	save_redirection(t_process *process, char *token)
 {
 	t_redirection	*new_rd_node;
 
-	new_rd_node = (t_redirection *)malloc(sizeof(t_recdirection));
+	new_rd_node = (t_redirection *)malloc(sizeof(t_redirection));
 	if (new_rd_node == NULL)
 		perror_and_exit("cannot allocate memory\n", ENOMEM);
 	if (token[0] == '<' && token[1] == '\0')
 		new_rd_node->symbol = SINGLE_IN;
 	else if (token[0] == '<' && token[1] == '<' && token[2] == '\0')
-		new_rd_noed->symbol = DOUBLE_IN;
+		new_rd_node->symbol = DOUBLE_IN;
 	else if (token[0] == '>' && token[1] == '\0')
 		new_rd_node->symbol = SINGLE_OUT;
 	else if (token[0] == '>' && token[1] == '>' && token[2] == '\0')
@@ -66,7 +65,7 @@ void	save_argument(t_process *process, char *token)
 	ft_lstadd_back(&(process->arg), new_node);
 }
 
-void	save_token(t_process *process, const char *token, int tag)
+void	save_token(t_process *process, char *token, int tag)
 {
 	if (token == NULL)
 		return ;
@@ -79,5 +78,5 @@ void	save_token(t_process *process, const char *token, int tag)
 	else if (tag == ARG)
 		save_argument(process, token);
 	else if (tag == REDIRECTION)
-		save_rediredtion(process, token);
+		save_redirection(process, token);
 }

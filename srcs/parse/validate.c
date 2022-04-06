@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:20:59 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 19:25:39 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 21:15:20 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/structure.h"
+#include "../../includes/parsing.h"
 
 int	validate_input(t_info *info, char *input)
 {

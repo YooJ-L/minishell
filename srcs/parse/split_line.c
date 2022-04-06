@@ -6,12 +6,11 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 03:46:09 by dim               #+#    #+#             */
-/*   Updated: 2022/04/06 19:25:43 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 21:29:30 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
-#include "../../includes/structure.h"
 
 int		get_pipe_cnt(const char *line)
 {
@@ -24,14 +23,14 @@ int		get_pipe_cnt(const char *line)
 	cnt = 0;
 	while (line[i])
 	{
-		status = check_quote(line[i], status);
-		if (status == 0 && line[i] == '|')
+		check_quote(line[i], &status);
+		if (status == NO_Q && line[i] == '|')
 			cnt++;
 		i++;
 	}
 	if (status != 0)
 	{
-		perror_in_parsing("|");
+		perror_in_parsing("newline");
 		return (-1);
 	}
 	return (cnt);
@@ -46,7 +45,7 @@ int			strlen_each_process(const char *line)
 	status = 0;
 	while (line[cnt])
 	{
-		check_quote(line[cnt], status);
+		check_quote(line[cnt], &status);
 		if (line[cnt] != '|' && status == NO_Q)
 			return (cnt);
 		cnt++;
@@ -54,21 +53,21 @@ int			strlen_each_process(const char *line)
 	return (cnt);
 }
 
-t_process	parse_split_error(int ret, t_info *info)
+t_process	*parse_split_error(int ret, t_info *info)
 {
 	if (ret != 258 && info->process_cnt != 1)
 		perror_in_parsing("|");
 	return (NULL);
 }
 
-void		init_process(t_proecss *process)
+void		init_process(t_process *process)
 {
 	process->heredoc = false;
-	process->pid = NULL;
+	// process->pid = //???
 	process->instruction = NULL;
 	process->option = NULL;
 	process->arg = NULL;
-	process->redirection = NULL;
+	process->redirect = NULL;
 	process->input_file = NULL;
 	process->heredoc_str = NULL;
 }
