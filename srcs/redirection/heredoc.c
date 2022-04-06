@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
 /*   Updated: 2022/04/07 01:50:42 by dim              ###   ########.fr       */
+=======
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
+/*   Updated: 2022/04/07 01:55:57 by yoojlee          ###   ########.fr       */
+>>>>>>> 685692b9cfe43b47553d5a5766755aa28cb39d4a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +32,17 @@ cat << doc1 | cat << doc2 | cat << doc3
 //근데 여기서 fork안해줘도 될 것 같은데?
 
 #include "../../includes/structure.h"
+
+void	save_str(char **save, char *input)
+{
+	char	*temp;
+
+	if (ft_strlen(*save) > 0)
+		add_char_to_str(save, '\n');
+	temp = *save;
+	*save = ft_strjoin(*save, input);
+	free(temp);
+}
 
 static void	exec_heredoc(const char *exit_str, int output_fd)
 {

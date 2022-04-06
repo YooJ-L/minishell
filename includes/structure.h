@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 01:48:29 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 02:10:00 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ char			**get_env(t_env *env);
 void			set_input_fd(t_process *process, int input_fd);
 
 //output.c
+void			set_input_fd(t_process *process, int input_fd);
 void			set_output_fd(t_process *process, int pipe_fd[2], bool is_last);
 void			redirect_output_fd(t_process *process);
 
