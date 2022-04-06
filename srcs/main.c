@@ -6,21 +6,12 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 20:49:07 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 20:51:42 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structure.h"
 #include "../includes/parsing.h"
-
-int	validate_input(t_info *info, char *input)
-{
-	if (!input)
-		quit_program(info);
-	if (input[0] == '\0')
-		return (0);
-	return (1);
-}
 
 int		check_redirect(t_info *info, t_process *process)
 {
@@ -75,6 +66,25 @@ void	loop_minishell(t_info *info, t_process *process)
 	}
 }
 
+void	set_shlvl(t_info *info)
+{
+	int		shlvl_int;
+	char	*value;
+	char	*shlvl_ch;
+
+	value = getenv("SHLVL");
+	if (value == NULL)
+	{
+		shlvl_ch = ft_strdup("1");
+	}
+	else
+	{
+		shlvl_int = ft_atoi(value);
+		shlvl_ch = ft_itoa(n + 1);
+	}
+	modify_env_node(info->env, "SHLVL", shlvl_ch);
+}
+
 int	init(t_info *info, t_process *process, char **envp)
 {
 	if (!parse_env(&(info->env), envp))
@@ -99,9 +109,3 @@ int	main(int argc, char *argv[], char *envp[])
 	loop_minishell(&info, process);
 	return (0);
 }
-
-	// while (info.env)
-	// {
-	// 	printf("%s=%s\n", info.env->key, info.env->value);
-	// 	info.env = info.env->next;
-	// }

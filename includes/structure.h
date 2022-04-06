@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 18:23:39 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 20:48:32 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,18 @@ int		excute_cd(t_info *info, t_process *process);
 void	make_error(void);
 void	perror_and_exit(char *text, int errnum);
 void	perror_and_exit(char *text, int errornum);
+void	quit_program(t_info *info);
 
 void	env_lstadd_back(t_env **lst, t_env *new);
 t_env	*env_lst_new(char **arr);
+t_env	*env_node_exists(t_env *env, char *new_key);
+void	modify_env_node(t_env *env, char *new_key, char *new_value);
+void	ft_env_lstclear(t_env **lst, void (*del)(void *));
+void	ft_redir_lstclear(t_redirection **lst, void (*del)(void *));
+t_redirection *redir_lst_new(char **arr);
+t_redirection	*redir_lstlast(t_redirection *lst);
+void	redir_lstadd_back(t_redirection **lst, t_redirection *new);
+
 char	**ft_split_in_two(char *str, char ch);
 
 int		exit_process(t_info *info, t_process *process, int exit_status);
@@ -114,5 +123,13 @@ void	set_parent_process(t_info *info);
 void	change_input_mode(void);
 void 	reset_input_mode(void);
 void 	set_input_mode(void);
+
+//validate.c
+int	validate_input(t_info *info, char *input);
+
+//free.c
+void	free_all(t_info *info, t_process *process, char *input);
+void	free_redirection(t_redirection **redirect);
+void	free_process(t_process *process);
 
 #endif
