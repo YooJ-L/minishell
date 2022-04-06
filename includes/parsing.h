@@ -6,14 +6,12 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 03:46:19 by dim               #+#    #+#             */
-/*   Updated: 2022/04/06 18:32:19 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 19:03:04 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
-
-# include "structure.h"
 
 # define NO_Q 0
 # define SINGLE_Q 1
@@ -34,7 +32,6 @@
 int			check_quote(const char *chr, int *status);
 
 void		perror_in_parsing(char *line);
-void		add_char_to_str(char **str, char ch);
 int			check_quote(const char *chr, int *status);
 
 int			parse_process(t_process *process, t_info *info, const char *line, int len);

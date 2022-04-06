@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:56:12 by dim               #+#    #+#             */
-/*   Updated: 2022/04/06 17:54:13 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 18:58:21 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,6 @@ void	perror_in_parsing(char *line)
 	ft_putstr_fd("bash: syntax error near unexpected token `", STDERR_FILENO);
 	ft_putstr_fd(line, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
-}
-
-void	add_char_to_str(char **str, char ch)
-{
-	int		strlen;
-	char	*new_str;
-
-	strlen = ft_strlen(*str);
-	new_str = (char *)malloc(sizeof(char) * (strlen + 2));
-	if (new_str == NULL)
-		perror_and_exit("cannot allocate memory\n", ENOMEM);
-	if (*str)
-	{
-		ft_strlcpy(new_str, *str, strlen + 1);
-		free(*str);
-	}
-	new_str[strlen] = ch;
-	new_str[strlen + 1] = '\0';
-	*str = new_str;
 }
 
 int		check_quote(const char *chr, int *status)
