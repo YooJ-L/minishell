@@ -3,16 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 22:43:57 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 01:18:04 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structure.h"
 #include "../includes/parsing.h"
-
+void	set_inputfile_and_heredoc(t_process *process, t_redirection *redirect)
+{
+	process->input_file = redirect->filename;
+	if (redirect->symbol == DOUBLE_IN)
+	{
+		process->input_file = NULL;
+		process->heredoc = true;
+	}
+}
 int		check_redirect(t_info *info, t_process *process)
 {
 	int				i;
@@ -27,15 +35,13 @@ int		check_redirect(t_info *info, t_process *process)
 		cur = process[i].redirect;
 		while (cur != NULL)
 		{
-			if (cur->symbol == DOUBLE_IN)
-				process->heredoc = true;
 			if (cur->filename == NULL)
 			{
 				perror_in_parsing("newline");
 				return (1);
 			}
-			else if (cur->symbol == SINGLE_IN)
-				process->input_file = cur->filename;
+			else if (cur->symbol == SINGLE_IN || cur->symbol == DOUBLE_IN)
+				set_inputfile_and_heredoc(process, cur);
 			cur = cur->next;
 		}
 		i++;

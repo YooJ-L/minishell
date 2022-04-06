@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/05 20:59:38 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 01:42:45 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	fork_processes(t_info *info, t_process *process)
 			set_child_process(&process[i], pipe_fd, input_fd, i == info->process_cnt - 1);
 			execve_command(info, &process[i]);
 		}
-		else if (process[i] > 0)
+		else if (process[i].pid > 0) // processp[i]였음
 		{
 			if (input_fd != 0)
 				close(input_fd);
@@ -67,7 +67,7 @@ void	execute(t_info *info, t_process *process)
 		//첫번째 명령어와 마지막 명령어를 실행하는 자식들은 무조건 끝날 때까지 기다림.
 		waitpid(process[info->process_cnt - 1].pid, &last_exit_status, 0);
 		waitpid(process[0].pid, &first_exit_status, 0);
-		if (info->process_count == 1)
+		if (info->process_cnt == 1)
 			sig_exit_handler(last_exit_status);
 		else
 			sig_exit_handler(first_exit_status);

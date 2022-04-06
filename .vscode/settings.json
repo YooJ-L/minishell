@@ -12,7 +12,8 @@
 		"utility": "c",
 		"vector": "c",
 		"structure.h": "c",
-		"parsing.h": "c"
+		"parsing.h": "c",
+		"unistd.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

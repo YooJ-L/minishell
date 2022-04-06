@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:30:45 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 00:37:50 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 01:05:05 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ static int	check_file_exists(t_redirection *redirect)
 	{
 		if (redirect->symbol == SINGLE_IN)
 		{
-			fd = open(redirect->file_name, 0);
+			fd = open(redirect->filename, 0);
 			if (fd < 0)
 			{
 				ft_putstr_fd("bash: ", STDERR_FILENO);
-				ft_putstr_fd(pair->file_name, STDERR_FILENO);
+				ft_putstr_fd(redirect->filename, STDERR_FILENO);
 				ft_putstr_fd(": ", STDERR_FILENO);
 				ft_putstr_fd(strerror(ENOENT), STDERR_FILENO);
 				ft_putchar_fd('\n', STDERR_FILENO);
@@ -73,9 +73,9 @@ int	execute_single_builtin(t_info *info, t_process *process)
 	save_stdin = dup(STDIN_FILENO);
 	save_stdout = dup(STDOUT_FILENO);
 	if (process->input_file != NULL || process->heredoc)
-		set_input_fd(process);
-	set_output_fd(process);
-	ret = execute_program(info, process);
+		set_input_fd(process, 0);
+	redirect_output_fd(process);
+	ret = execve_command(info, process);
 	dup2(save_stdin, STDIN_FILENO);
 	close(save_stdin);
 	dup2(save_stdout, STDOUT_FILENO);

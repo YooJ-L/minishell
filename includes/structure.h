@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 00:30:04 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 01:48:29 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdbool.h> //bool
 # include <dirent.h> //opendir
+# include <fcntl.h> //open
 # include <readline/readline.h> //readline
 # include <readline/history.h> //add_history
 # include <sys/stat.h> //stat
@@ -32,7 +33,7 @@
 
 typedef struct	s_redirection
 {
-	char					symbol;
+	int						symbol;
 	char					*filename;
 	struct s_redirection	*next;
 }				t_redirection;
@@ -94,12 +95,16 @@ int				parse_env(t_env **env, char **envp);
 char			*get_env_value(t_env *env, char *key);
 void			add_char_to_str(char **str, char character);
 
+//inpath
+char			**get_arg(t_process *process);
+char			**get_env(t_env *env);
+
 //input.c
 void			set_input_fd(t_process *process, int input_fd);
-void			check_file_exists(char *file_name);
 
 //output.c
 void			set_output_fd(t_process *process, int pipe_fd[2], bool is_last);
+void			redirect_output_fd(t_process *process);
 
 //heredoc.c
 int				run_heredoc(t_info *info, t_process *process);

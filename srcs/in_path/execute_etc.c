@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:15:54 by dim               #+#    #+#             */
-/*   Updated: 2022/03/28 03:35:55 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 01:48:01 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	execute_etc_instruction(t_info *info, t_process *process)
 
 	instruction = process->instruction;
 	arg = get_arg(process);
-	env = get_env(info);
+	env = get_env(info->env);
 	// 실행파일일 경우
-	if (process->instruction[0] == '.' || process->instruction == '/')
+	if (process->instruction[0] == '.' || process->instruction[0] == '/')
 		execve(instruction, arg, env);
 	// "PATH" env가 있을 경우
 	else if (get_env_value(info->env, "PATH"))
@@ -79,7 +79,7 @@ void	execute_etc_instruction(t_info *info, t_process *process)
 		perror_and_exit(": command not found", 127);
 	}
 	else // env 못찾을 경우 일단 실행..?
-		excve(instruction, arg, env);
+		execve(instruction, arg, env);
 	ft_putstr_fd("bash: ", STDERR_FILENO);
 	ft_putstr_fd(process->instruction, STDERR_FILENO);
 	perror_and_exit(": No such file or directory", 127);
