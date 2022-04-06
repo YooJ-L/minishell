@@ -6,19 +6,12 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 18:06:18 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 18:15:53 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structure.h"
 #include "../includes/parsing.h"
-
-int	init(t_info *info, char **envp)
-{
-	if (!parse_env(&(info->env), envp))
-		return (0);
-	return (1);
-}
 
 int	validate_input(t_info *info, char *input)
 {
@@ -40,14 +33,7 @@ void	loop_minishell(t_info *info, t_process *process)
 		if (!validate_input(info, input))
 			continue ;
 		add_history(input);
-		if (!parse_process(process, &info, input, strlen(input)); //?
-		{
-
-		}
-		if (!validate_process(info, process))
-		{
-
-		}
+		process = split_line(input, info);
 		//heredoc먼저 처리(입력값 받아옴)
 		if (!run_heredoc(&info, process))
 		{
@@ -59,17 +45,23 @@ void	loop_minishell(t_info *info, t_process *process)
 	}
 }
 
+int	init(t_info *info, t_process *process, char **envp)
+{
+	if (!parse_env(&(info->env), envp))
+		return (0);
+	set_shlvl(info);
+	return (1);
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_info		info;
 	t_process	*process;
-	char		*input;
 
 	(void)argc;
 	(void)argv;
 	process = NULL;
-	process = (t_process *)malloc(sizeof(t_process));
-	if (!init(&info, envp))
+	if (!init(&info, process, envp))
 	{
 		printf("init fail\n");
 		return (-1);
