@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:26:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 20:58:39 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 21:34:57 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	print_error(char *to_dir)
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
+//pwd가 env에 없으면 아무 동작 안함. 새로 만들지도 x
 void		update_pwd(t_env *env)
 {
 	char	buf[PATH_MAX];
@@ -39,11 +40,15 @@ void		update_pwd(t_env *env)
 		old_pwd = temp->value;
 		temp->value = new_pwd;
 	}
-	temp = env_node_exists("OLD_PWD", env);
+	temp = env_node_exists("OLDPWD", env);
 	if (temp)
 	{
 		free(temp->value);
 		temp->value = old_pwd;
+	}
+	else
+	{
+		
 	}
 }
 

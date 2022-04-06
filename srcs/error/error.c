@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:17:39 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 20:52:13 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 21:17:24 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ int		error_option(char	*inst, t_info *info, t_process *process)
 
 void	quit_program(t_info *info)
 {
-	write
+	write(1, "\033[1A", 5);
+	write(1, "\033[9C", 5);
+	write(1, "exit\n", 5);
 	reset_input_mode();
+	free_envp(info);
+	exit(0);
 }

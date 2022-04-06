@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 20:52:25 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 21:20:04 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,6 @@ int				validate_input(t_info *info, char *input);
 void			free_all(t_info *info, t_process *process, char *input);
 void			free_redirection(t_redirection **redirect);
 void			free_process(t_process *process);
+void			free_envp(t_info *info);
 
 #endif
