@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:30:45 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/05 17:39:27 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 00:37:50 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,31 @@ int	execve_command(t_info *info, t_process *cur_process)
 	return (0);
 }
 
+static int	check_file_exists(t_redirection *redirect)
+{
+	int				fd;
+
+	while (redirect)
+	{
+		if (redirect->symbol == SINGLE_IN)
+		{
+			fd = open(redirect->file_name, 0);
+			if (fd < 0)
+			{
+				ft_putstr_fd("bash: ", STDERR_FILENO);
+				ft_putstr_fd(pair->file_name, STDERR_FILENO);
+				ft_putstr_fd(": ", STDERR_FILENO);
+				ft_putstr_fd(strerror(ENOENT), STDERR_FILENO);
+				ft_putchar_fd('\n', STDERR_FILENO);
+				return (-1);
+			}
+			close(fd);
+		}
+		redirect = redirect->next;
+	}
+	return (0);
+}
+
 int	execute_single_builtin(t_info *info, t_process *process)
 {
 	int	ret;
@@ -43,7 +68,7 @@ int	execute_single_builtin(t_info *info, t_process *process)
 
 	ret = 0;
 	(void)info;
-	if (check_file_is_exist(process->redirect) == -1)
+	if (check_file_exists(process->redirect) == -1)
 		return (ENOENT);
 	save_stdin = dup(STDIN_FILENO);
 	save_stdout = dup(STDOUT_FILENO);

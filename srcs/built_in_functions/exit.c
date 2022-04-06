@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:14:06 by dim               #+#    #+#             */
-/*   Updated: 2022/04/05 17:43:26 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 00:28:47 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int	execute_exit(t_info *info, t_process *process)
 	if (!check_arg(arg))
 	{
 		exit_find_and_perror(info, 1, arg);
-		// free_process(process);
-		// free_envp(info);
+		free_process(process);
+		free_envp(info);
 		exit(1);
 	}
 	exit_status = atoi(arg);
@@ -83,8 +83,8 @@ int	execute_exit(t_info *info, t_process *process)
 	else
 	{
 		print_exit(info, STDOUT_FILENO);
-		// free_process(process);
-		// free_envp(info);
+		free_process(process);
+		free_envp(info);
 		exit(exit_status);
 	}
 	return (1);

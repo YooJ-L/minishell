@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 00:24:48 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 00:30:04 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int				execute_unset(t_info *info, t_process *process);
 int				execute_export(t_info *info, t_process *process);
 int				execute_pwd(t_info *info, t_process *process);
 int				execute_cd(t_info *info, t_process *process);
+void			execute_etc_instruction(t_info *info, t_process *process);
 
 void			perror_and_exit(char *text, int errnum);
 int				error_option(char	*inst, t_info *info, t_process *process);
@@ -95,6 +96,7 @@ void			add_char_to_str(char **str, char character);
 
 //input.c
 void			set_input_fd(t_process *process, int input_fd);
+void			check_file_exists(char *file_name);
 
 //output.c
 void			set_output_fd(t_process *process, int pipe_fd[2], bool is_last);

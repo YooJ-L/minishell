@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:00:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 22:48:54 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 00:28:37 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ int		execute_env(t_info *info, t_process *process)
 	}
 	else
 		print_env(info->env);
-	return (1);
-	// return (exit_process(info, process, 0));
+	return (exit_process(info, process, 0));
 }
