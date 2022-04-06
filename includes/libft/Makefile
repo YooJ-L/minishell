@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: deulee <deulee@student.42.kr>              +#+  +:+       +#+         #
+#    By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/26 12:35:50 by deulee            #+#    #+#              #
-#    Updated: 2021/09/25 15:46:22 by deulee           ###   ########.fr        #
+#    Updated: 2022/04/07 02:33:01 by dim              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS = ft_atoi.c \
 	   ft_strlen.c \
 	   ft_strmapi.c \
 	   ft_strncmp.c \
+	   ft_strndup.c \
 	   ft_strnstr.c \
 	   ft_strrchr.c \
 	   ft_strtrim.c \
@@ -88,6 +89,7 @@ OBJS = ft_atoi.o \
 	   ft_strlen.o \
 	   ft_strmapi.o \
 	   ft_strncmp.o \
+	   ft_strndup.o \
 	   ft_strnstr.o \
 	   ft_strrchr.o \
 	   ft_strtrim.o \

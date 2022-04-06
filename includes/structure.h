@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 02:30:47 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 02:51:56 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <term.h> //tcgetattr
 # include <errno.h> //errno
 # include "libft/libft.h"
+# include "libft/get_next_line.h"
 
 # define PATH_MAX 1024
 
@@ -81,9 +82,9 @@ void			env_lstadd_back(t_env **lst, t_env *new);
 t_env			*env_lst_new(char **arr);
 t_env			*env_node_exists(t_env *env, char *new_key);
 void			modify_env_node(t_env *env, char *new_key, char *new_value);
-void			ft_env_lstclear(t_env **lst, void (*del)(void *));
-void			ft_redir_lstclear(t_redirection **lst, void (*del)(void *));
-t_redirection 	*redir_lst_new(char **arr);
+void			ft_env_lstclear(t_env **lst);
+void			ft_redir_lstclear(t_redirection **lst);
+// t_redirection 	*redir_lst_new(char **arr);
 t_redirection	*redir_lstlast(t_redirection *lst);
 void			redir_lstadd_back(t_redirection **lst, t_redirection *new);
 

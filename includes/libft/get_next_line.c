@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: deulee <deulee@student.42.kr>              +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 12:08:56 by deulee            #+#    #+#             */
-/*   Updated: 2021/08/11 17:11:28 by deulee           ###   ########.fr       */
+/*   Updated: 2022/04/07 02:29:53 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,24 @@ int	get_next_line(int fd, char **line)
 		free(*line);
 	}
 	return (flag);
+}
+
+static char	*ft_strndup(char *src, unsigned int size)
+{
+	char			*str;
+	unsigned int	i;
+
+	str = (char *)malloc(sizeof(char) * (size + 1));
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
+		str[i] = src[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 
 int	find_next_line(char **line, t_buff *list)
@@ -115,20 +133,3 @@ int	make_backup(char *backupline, t_buff *list, unsigned int nsize)
 	return (1);
 }
 
-char	*ft_strndup(char *src, unsigned int size)
-{
-	char			*str;
-	unsigned int	i;
-
-	str = (char *)malloc(sizeof(char) * (size + 1));
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	while (i < size)
-	{
-		str[i] = src[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}

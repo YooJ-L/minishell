@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:26:09 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 21:19:37 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 02:28:15 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ void	free_redirection(t_redirection **redirect)
 
 	while (temp)
 	{
-		free (temp->file_name);
-		temp->file_name = NULL;
+		free (temp->filename);
+		temp->filename = NULL;
 		temp = temp->next;
 	}
-	ft_redir_lstclear(redirect, free);
+	ft_redir_lstclear(redirect);
 }
 
 void	free_process(t_process *process)
@@ -67,7 +67,7 @@ void	free_all(t_info *info, t_process *process, char *input)
 	{
 		while (i < info->process_cnt)
 		{
-			free_process(&process[i])
+			free_process(&process[i]);
 			i++;
 		}
 		free(process);

@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   lst_func.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:28:00 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 22:34:27 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 02:27:23 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
 
-t_redirection *redir_lst_new(char **arr)
-{
-	t_redirection	*new;
+// t_redirection *redir_lst_new(char **arr)
+// {
+// 	t_redirection	*new;
 
-	new = (t_redirection *)malloc(sizeof(t_redirection));
-	if (new == NULL)
-		perror_and_exit("cannot allocate memory\n", ENOMEM);
-	new->symbol = arr[0];
-	new->filename = arr[1];
-	new->next = NULL;
-	return (new);
-}
+// 	new = (t_redirection *)malloc(sizeof(t_redirection));
+// 	if (new == NULL)
+// 		perror_and_exit("cannot allocate memory\n", ENOMEM);
+// 	new->symbol = arr[0];
+// 	new->filename = arr[1];
+// 	new->next = NULL;
+// 	return (new);
+// }
 
 t_redirection	*redir_lstlast(t_redirection *lst)
 {
@@ -53,7 +53,7 @@ void	redir_lstadd_back(t_redirection **lst, t_redirection *new)
 	tail->next = new;
 }
 
-void	ft_redir_lstclear(t_redirection **lst, void (*del)(void *))
+void	ft_redir_lstclear(t_redirection **lst)
 {
 	t_redirection	*cur;
 	t_redirection	*next;

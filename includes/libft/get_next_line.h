@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: deulee <deulee@student.42.kr>              +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 12:10:03 by deulee            #+#    #+#             */
-/*   Updated: 2021/08/11 17:02:58 by deulee           ###   ########.fr       */
+/*   Updated: 2022/04/07 02:16:23 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int					find_next_line(char **line, t_buff *list);
 int					make_line(char **line, t_buff *list);
 int					make_backup(char *backupline, t_buff *list,
 						unsigned int nsize);
-char				*ft_strndup(char *src, unsigned int size);
 int					backup_update(t_buff *list, unsigned int len);
 void				clear_fd(t_buff **header);
 void				del_fd(int fd, t_buff **header);

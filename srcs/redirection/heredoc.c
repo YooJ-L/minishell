@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 01:50:42 by dim              ###   ########.fr       */
-=======
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 01:55:57 by yoojlee          ###   ########.fr       */
->>>>>>> 685692b9cfe43b47553d5a5766755aa28cb39d4a
+/*   Updated: 2022/04/07 02:37:21 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +81,7 @@ static void	read_heredoc_str(t_process *process, int input_fd)
 			if (temp)
 				free(temp);
 		}
-		add_character_to_str(&(process->heredoc_str), '\n');
+		add_char_to_str(&(process->heredoc_str), '\n');
 		free(save);
 	}
 	free(save);
@@ -110,15 +103,15 @@ int	fork_heredoc_process(t_info *info, t_process *process, char *eof)
 	if (pid == 0)
 	{
 		signal(SIGINT, SIG_DFL);
-		close(pipe_fd[0])
-		exec_heredoc(exit_str, pipe_fd[1]);
+		close(pipe_fd[0]);
+		exec_heredoc(eof, pipe_fd[1]);
 	}
 	signal(SIGINT, SIG_IGN);
 	close(pipe_fd[1]);
 	waitpid(pid, &exit_status, 0);
 	read_heredoc_str(process, pipe_fd[0]);
 	close(pipe_fd[0]);
-	init_mom_setting(info);
+	set_parent_process(info);
 	return (exit_status);
 }
 

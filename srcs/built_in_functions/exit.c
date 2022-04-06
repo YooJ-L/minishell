@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:14:06 by dim               #+#    #+#             */
-/*   Updated: 2022/04/07 00:28:47 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 02:13:46 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		check_arg(char *arg)
 	return (1);
 }
 
-char 	*get_arg(t_info *info, t_process *process)
+char 	*get_arg_in_exit(t_info *info, t_process *process)
 {
 	//option이 있으면 optin->content, 없으면 arg->content 리턴
 	//인자로 들어온게 아무것도 없으면 종료
@@ -66,7 +66,7 @@ int	execute_exit(t_info *info, t_process *process)
 	unsigned char	exit_status;
 	char			*arg;
 
-	arg = get_arg(info, process);
+	arg = get_arg_in_exit(info, process);
 	if (!check_arg(arg))
 	{
 		exit_find_and_perror(info, 1, arg);
