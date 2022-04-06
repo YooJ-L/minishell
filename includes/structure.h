@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/05 20:56:52 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 18:03:20 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ typedef struct	s_env
 
 typedef struct	s_info
 {
-	t_env		*env;
-	t_process	*process;
-	int			process_cnt;
+	unsigned char	last_exit_status;
+	t_env			*env;
+	int				process_cnt;
 }				t_info;
 
 void	execute_echo(t_info *info, t_process *process);
@@ -84,7 +84,7 @@ int		str_is_num(char *str);
 int		str_is_long(char *str);
 int		parse_env(t_env **env, char **envp);
 char	*get_env_value(t_env *env, char *key);
-void	add_character_to_str(char **str, char character);
+void	add_char_to_str(char **str, char character);
 
 //input.c
 void	set_input_fd(t_process *process, int input_fd);
@@ -108,7 +108,7 @@ int		execve_command(t_info *info, t_process *cur_process);
 //signal.c
 void	sig_exit_handler(int sig); //자식이 죽었을 때
 void	sigint_handler(void);
-void	init_mom_setting(t_info *info);
+void	set_parent_process(t_info *info);
 
 //terminal.c
 void	change_input_mode(void);

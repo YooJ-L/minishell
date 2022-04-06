@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/05 17:38:03 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/05 20:59:38 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	execute(t_info *info, t_process *process)
 		info->last_exit_status = execute_single_builtin(info, &process[0]);
 	else
 	{
-		//reset_output_mode
+		reset_input_mode();
 		fork_processes(info, process);
 		signal(SIGINT, SIG_IGN);
 		//첫번째 명령어와 마지막 명령어를 실행하는 자식들은 무조건 끝날 때까지 기다림.
