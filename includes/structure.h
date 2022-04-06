@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/04/06 22:28:51 by yoojlee          ###   ########.fr       */
-=======
-/*   Updated: 2022/04/06 21:58:03 by dim              ###   ########.fr       */
->>>>>>> 41ad51c788ad6756fb42c15c6132237bd7bb9d96
+/*   Updated: 2022/04/06 22:50:01 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +69,7 @@ int				execute_exit(t_info *info, t_process *process);
 int				execute_unset(t_info *info, t_process *process);
 int				execute_export(t_info *info, t_process *process);
 int				execute_pwd(t_info *info, t_process *process);
-int				excute_cd(t_info *info, t_process *process);
+int				execute_cd(t_info *info, t_process *process);
 
 void			perror_and_exit(char *text, int errnum);
 int				error_option(char	*inst, t_info *info, t_process *process);

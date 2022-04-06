@@ -6,7 +6,7 @@
 #    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/05 20:56:12 by yoojlee          ###   ########.fr        #
+#    Updated: 2022/04/06 22:47:09 by yoojlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ PARSE = $(addprefix parse/, \
 			replace_env.c \
 			save_token.c \
 			split_line.c \
+			validate.c \
 			)
 
 ERROR = $(addprefix error/, \
@@ -65,7 +66,9 @@ UTILS = $(addprefix utils/, \
 			ft_split_in_two.c \
 			get_env_value.c \
 			is_executable.c \
-			lst_functions.c \
+			lst_func.c \
+			lst_env_func.c \
+			free.c \
 			signal.c \
 			terminal.c \
 		)
