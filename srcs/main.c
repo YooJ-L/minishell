@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 22:40:50 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 22:43:57 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	loop_minishell(t_info *info, t_process *process)
 		//heredoc먼저 처리(입력값 받아옴)
 		if (!run_heredoc(info, process) || check_redirect(info, process))
 		{
-			free_all(&info, process, output);
+			free_all(info, process, input);
 			return ;
 		}
 		execute(info, process);
@@ -103,7 +103,10 @@ int	main(int argc, char *argv[], char *envp[])
 	(void)argv;
 	process = NULL;
 	if (!init(&info, process, envp))
+	{
+		free_envp(&info);
 		return (-1);
+	}
 	loop_minishell(&info, process);
 	return (0);
 }

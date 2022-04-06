@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_func.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:28:00 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 20:45:39 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 22:34:27 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_redirection *redir_lst_new(char **arr)
 
 	new = (t_redirection *)malloc(sizeof(t_redirection));
 	if (new == NULL)
-		return (NULL);
+		perror_and_exit("cannot allocate memory\n", ENOMEM);
 	new->symbol = arr[0];
 	new->filename = arr[1];
 	new->next = NULL;
