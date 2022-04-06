@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 21:27:30 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/14 20:08:12 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 02:50:01 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,9 @@ int	execute_unset(t_info *info, t_process *process)
 	bool	wrong_arg;
 
 	wrong_arg = 0;
-	if (!process->arg)
-	{
-		//unset: not enough arguments
-	}
 	if (process->option)
 	{
-
+		return (error_option("unset", info, process));
 	}
 	while (process->arg->next) //인자 여러개여도 가능하니까 arg리스트 반복문 돌림.
 	{
@@ -104,7 +100,7 @@ int	execute_unset(t_info *info, t_process *process)
 	}
 	if (wrong_arg)
 	{
-		//exit_status == 1
+		exit_process(info, process, 1);
 	}
 	return (1);
 }

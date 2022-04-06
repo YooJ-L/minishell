@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 02:10:00 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 02:30:47 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int				execute_export(t_info *info, t_process *process);
 int				execute_pwd(t_info *info, t_process *process);
 int				execute_cd(t_info *info, t_process *process);
 void			execute_etc_instruction(t_info *info, t_process *process);
+void			print_export(t_env *env);
 
 void			perror_and_exit(char *text, int errnum);
 int				error_option(char	*inst, t_info *info, t_process *process);
