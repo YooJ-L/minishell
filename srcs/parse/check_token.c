@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   check_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 04:08:32 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 04:09:23 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 18:58:12 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
+#include "../../inlcudes/structure.h"
 
 void	remove_outside_quotes_in_str(char **str)
 {

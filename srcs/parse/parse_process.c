@@ -6,11 +6,12 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 02:55:31 by dim               #+#    #+#             */
-/*   Updated: 2022/04/06 17:51:54 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 19:04:01 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
+#include ".../../includes/structure.h"
 
 int		skip_front_space(char *str)
 {

@@ -6,11 +6,12 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 04:06:09 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 18:40:41 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 19:04:41 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
+#include "../../includes/structure.h"
 
 void	save_redirection(t_process *process, char *token)
 {
