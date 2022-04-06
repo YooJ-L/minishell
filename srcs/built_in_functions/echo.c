@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:38:17 by dim               #+#    #+#             */
-/*   Updated: 2022/04/06 22:52:03 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 00:24:50 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int		verify_and_print_opt(t_list *opt_list)
 	return (ret);
 }
 
-void	execute_echo(t_info *info, t_process *process)
+int		execute_echo(t_info *info, t_process *process)
 {
 	// 고려해야할것: $?, $, '$환경변수'는 환경변수로x, ;, | 
 	int		flag;
@@ -100,10 +100,10 @@ void	execute_echo(t_info *info, t_process *process)
 	if (process->option != NULL)
 		flag = verify_and_print_opt(process->option);
 	// env를 파싱에서 가져오면 env확인부분 없애고 여기서 확인하는거면 살리기
-	env = verify_env(process->arg);
-	if (env != NULL)
-		print_env(env);
-	else
+	// env = verify_env(process->arg);
+	// if (env != NULL)
+	// 	print_env(env);
+	// else
 		print_echo(process->arg, flag);
 	if (flag == 0 || flag == 2)
 		ft_putstr_fd("\n", STDOUT_FILENO);

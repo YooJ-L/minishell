@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 22:50:01 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 00:24:48 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct	s_info
 	int				process_cnt;
 }				t_info;
 
-void			execute_echo(t_info *info, t_process *process);
+int				execute_echo(t_info *info, t_process *process);
 int				execute_env(t_info *info, t_process *process);
 int				execute_exit(t_info *info, t_process *process);
 int				execute_unset(t_info *info, t_process *process);
