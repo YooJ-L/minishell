@@ -6,11 +6,24 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:26:09 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 19:38:11 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 20:47:59 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
+
+void	free_redirection(t_redirection **redirect)
+{
+	t_redirection *temp;
+
+	while (temp)
+	{
+		free (temp->file_name);
+		temp->file_name = NULL;
+		temp = temp->next;
+	}
+	ft_redir_lstclear(redirect, free);
+}
 
 void	free_process(t_process *process)
 {
