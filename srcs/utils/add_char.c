@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_char.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 16:07:35 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/05 17:28:25 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 17:47:49 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	add_character_to_str(char **str, char character)
 	str_size = ft_strlen(*str);
 	new_str = (char *)malloc(sizeof(char) * (str_size + 2));
 	if (!new_str)
-		print_error_and_exit("cannot allocate memory\n", ENOMEM);
+		perror_and_exit("cannot allocate memory\n", ENOMEM);
 	if (*str)
 	{
 		ft_strlcpy(new_str, *str, str_size + 1);

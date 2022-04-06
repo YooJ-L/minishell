@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 03:46:19 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 19:19:18 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 17:55:23 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,15 @@
 
 int		check_quote(const char *chr, int *status);
 
+void	perror_in_parsing(char *line);
+void	add_char_to_str(char **str, char ch);
+int		check_quote(const char *chr, int *status);
+
+
+void	save_token(t_process *process, const char *token, int tag);
+int		check_token(t_porcess *process, char **new_str, char **token, int *tag);
+char 	*replace_env_to_value(t_info *info, const char *line, int len);
+int		parse_process(t_process *process, t_info *info,
+						const char *line, int len);
 
 #endif

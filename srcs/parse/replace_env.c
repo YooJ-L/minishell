@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:51:38 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 19:16:03 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 17:58:52 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,22 @@ char	*find_key_in_str(const char *str)
 	return (ret);
 }
 
-// void	add_last_exit_status(char **token, int last_exit_status)
-// {
-	
-// }
+void	add_last_exit_status(char **str, int last_exit_status)
+{
+	int		i;
+	char	*num;
+
+	num = ft_itoa(last_exit_status);
+	if (!num)
+		perror_and_exit("cannot allocate memory\n", ENOMEM);
+	i = 0;
+	while (num[i])
+	{
+		add_char_to_str(str, num[i]);
+		i++;
+	}
+	free(num);
+}
 
 void	add_env_value(t_info *info, const char *key, \
 											char **str, int status)
@@ -54,7 +66,7 @@ void	add_env_value(t_info *info, const char *key, \
 	}
 	if (*key == '?')
 	{
-		// add_last_exit_status() //추가해야됨
+		add_last_exit_status(str, info->lsat_exit_status);
 		return ;
 	}
 	value = get_env_value(info->env, key);
