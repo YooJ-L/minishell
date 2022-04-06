@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:14 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/04 18:57:18 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 22:28:34 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	set_file(t_redirection *redirect)
 	while (redirect)
 	{
 		if (redirect->symbol == DOUBLE_OUT)
-		{//append가 아니라 excl?
+		{
 			fd = open(redirect->filename, O_CREAT | O_EXCL, 0644); //없으면 만들고, 있으면 열지 않고
 			close(fd);
 		}

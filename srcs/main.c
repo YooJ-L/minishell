@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 22:26:22 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 22:40:50 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	set_shlvl(t_info *info)
 
 int	init(t_info *info, t_process *process, char **envp)
 {
+	info->last_exit_status = 0;
 	if (!parse_env(&(info->env), envp))
 		return (0);
 	set_shlvl(info);

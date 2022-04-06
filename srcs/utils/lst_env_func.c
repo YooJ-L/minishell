@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:13:41 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 19:36:51 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 22:29:31 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	modify_env_node(t_env *env, char *new_key, char *new_value)
 	{
 		arr = (char **)malloc(sizeof(char *) * 2);
 		if (!arr)
-			print_error_and_exit("cannot allocate memory\n", ENOMEM);
+			perror_and_exit("cannot allocate memory\n", ENOMEM);
 		arr[0] = new_key;
 		arr[1] = new_value;
 		new = env_lst_new(arr);
