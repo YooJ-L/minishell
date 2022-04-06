@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:01:26 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 21:14:59 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 22:23:40 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int		parse_env(t_env **env, char **envp)
 		arr = ft_split_in_two(envp[i], '='); // 첫번째 = 기준으로만 자르게 하기
 		if (!arr)
 		{
-			printf("ft_split error\n");
-			// make_error();
 			return (0);
 		}
 		new = env_lst_new(arr);

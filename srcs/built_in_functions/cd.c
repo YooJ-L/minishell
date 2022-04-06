@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:26:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 21:34:57 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 21:39:09 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		update_pwd(t_env *env)
 	}
 	else
 	{
-		
+		modify_env_node(env, "OLDPWD", old_pwd);
 	}
 }
 

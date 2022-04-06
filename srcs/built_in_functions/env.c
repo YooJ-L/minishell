@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:00:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 21:07:37 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 21:56:09 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	print_env(t_env *env)
 			temp = temp->next;
 			continue ;
 		}
+		if (temp->value == NULL)
+			continue ;
 		printf("%s=%s\n", temp->key, temp->value);
 		temp = temp->next;
 	}
@@ -34,7 +36,6 @@ void	print_env(t_env *env)
 
 int		execute_env(t_info *info, t_process *process)
 {
-	//arg x, option x 일 때만 실행.
 	if (process->arg)
 	{
 		ft_putstr_fd("bash: env: too many arguments\n", STDERR_FILENO);

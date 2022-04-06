@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 20:51:42 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/06 22:26:22 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,18 @@ void	loop_minishell(t_info *info, t_process *process)
 	{
 		set_parent_process(info);
 		input = readline("tinyshell$ ");
-		// if (!validate_input(info, input))
-		// 	continue ;
+		if (!validate_input(info, input))
+			continue ;
 		add_history(input);
 		process = split_line(input, info);
 		//heredoc먼저 처리(입력값 받아옴)
 		if (!run_heredoc(info, process) || check_redirect(info, process))
 		{
-			//free_all(&info, process, output);
+			free_all(&info, process, output);
 			return ;
 		}
 		execute(info, process);
-		// free_all(info, process, input);
+		free_all(info, process, input);
 	}
 }
 
@@ -80,7 +80,7 @@ void	set_shlvl(t_info *info)
 	else
 	{
 		shlvl_int = ft_atoi(value);
-		shlvl_ch = ft_itoa(n + 1);
+		shlvl_ch = ft_itoa(shlvl_int + 1);
 	}
 	modify_env_node(info->env, "SHLVL", shlvl_ch);
 }
@@ -102,10 +102,7 @@ int	main(int argc, char *argv[], char *envp[])
 	(void)argv;
 	process = NULL;
 	if (!init(&info, process, envp))
-	{
-		printf("init fail\n");
 		return (-1);
-	}
 	loop_minishell(&info, process);
 	return (0);
 }

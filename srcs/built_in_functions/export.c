@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:01:27 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/16 18:21:35 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 22:01:33 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ int	execute_export(t_info *info, t_process *process)
 {
 	if (process->option)
 	{
-		//옵션 있으면 에러
+		return (err_option("export", info, process));
 	}
-	if (!process->arg)
+	else if (!process->arg)
 	{
 		print_export(info->env);
-		//끝내기
 	}
-	return (1);
+	else
+	{
+		add_new_env(info->env, process->arg);
+	}
+	return (exit_process(info, process, 0));
 }
