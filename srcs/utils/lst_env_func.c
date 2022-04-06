@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_env_func.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:13:41 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 22:44:09 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 02:27:14 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	env_lstadd_back(t_env **env, t_env *new)
 	tail->next->next = NULL; //마지막에 널 추가
 }
 
-void	ft_env_lstclear(t_env **lst, void (*del)(void *))
+void	ft_env_lstclear(t_env **lst)
 {
 	t_env	*cur;
 	t_env	*next;

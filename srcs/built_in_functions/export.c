@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:01:27 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 00:45:12 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 02:12:46 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	execute_export(t_info *info, t_process *process)
 	}
 	else if (!process->arg)
 	{
-		print_export(info->env);
+		// print_export(info->env);
 	}
 	else
 	{

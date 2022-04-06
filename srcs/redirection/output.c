@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:14 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 22:28:34 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 02:21:29 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	set_file(t_redirection *redirect)
 	}
 }
 
-void	connect_last_file(t_list *redirect, int last)
+void	connect_last_file(t_redirection *redirect, int last)
 {
 	int				fd;
 	int	i;
@@ -60,7 +60,7 @@ void	connect_last_file(t_list *redirect, int last)
 		redirect = redirect->next;
 		i++;
 	}
-	fd = open(redirect->file_name, O_RDWR | O_APPEND);
+	fd = open(redirect->filename, O_RDWR | O_APPEND);
 	close(STDOUT_FILENO);
 	dup2(fd, STDOUT_FILENO);
 	close(fd);
