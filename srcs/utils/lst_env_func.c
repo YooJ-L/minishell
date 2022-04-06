@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:13:41 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 02:27:14 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 02:52:38 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	modify_env_node(t_env *env, char *new_key, char *new_value)
 		arr[0] = new_key;
 		arr[1] = new_value;
 		new = env_lst_new(arr);
-		env_lstadd_back(env, new);
+		env_lstadd_back(&env, new);
 		free(arr);
 	}
 	else if (new_value)

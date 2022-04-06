@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 02:55:31 by dim               #+#    #+#             */
-/*   Updated: 2022/04/06 21:16:42 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 02:49:08 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int		parse_process(t_process *process, t_info *info, \
 	{
 		cur_token = get_one_token(&new_line[i]);
 		i += ft_strlen(cur_token);
-		if (check_token(process, &new_line, &cur_token, &tag));
+		if (check_token(process, &new_line, &cur_token, &tag))
 			return (258);
 		save_token(process, cur_token, tag);
 		while (new_line[i] == ' ')

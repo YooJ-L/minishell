@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 01:42:45 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 02:50:19 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	fork_processes(t_info *info, t_process *process)
 		if (i < info->process_cnt - 1)
 			pipe(pipe_fd);
 		(&process[i])->pid = fork();
-		if (process[i].pid < 0)
+		// if (process[i].pid < 0)
 		//	error();
 		if (process[i].pid == 0)
 		{
