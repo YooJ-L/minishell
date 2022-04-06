@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_in_two.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 21:07:33 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/03/14 18:57:43 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 22:24:32 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_split_in_two(char *str, char ch)
 	i = -1;
 	arr = (char **)malloc(sizeof(char *) * 2);
 	if (arr == NULL)
-		return (0);
+		perror_and_exit("cannot allocate memory\n", ENOMEM);
 	while (str[++i])
 	{
 		if (str[i] == ch)

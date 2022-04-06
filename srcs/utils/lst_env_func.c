@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_env_func.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:13:41 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 19:36:51 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/06 22:33:28 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_env	*env_lst_new(char **arr)
 
 	new = (t_env *)malloc(sizeof(t_env));
 	if (new == NULL)
-		return (NULL);
+		perror_and_exit("cannot allocate memory\n", ENOMEM);
 	new->key = arr[0];
 	new->value = arr[1];
 	new->next = NULL;
