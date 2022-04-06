@@ -6,9 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:09 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/04 18:58:40 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 00:57:33 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../../includes/structure.h"
 
 void	check_file_exists(char *file_name) //ft_isexecutable함수로도 되는지 해보기
 {

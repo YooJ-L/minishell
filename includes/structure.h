@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 00:30:04 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 00:57:14 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void			set_input_fd(t_process *process, int input_fd);
 void			check_file_exists(char *file_name);
 
 //output.c
+void			set_input_fd(t_process *process, int input_fd);
 void			set_output_fd(t_process *process, int pipe_fd[2], bool is_last);
 
 //heredoc.c

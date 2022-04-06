@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:01:27 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 22:49:11 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 00:45:12 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 1. export a122 => a122=
 2. export 1a => export: not an identifier: 1a
  */
-
-void	print_export(t_env *env)
-{
-	
-}
 
 int	execute_export(t_info *info, t_process *process)
 {
