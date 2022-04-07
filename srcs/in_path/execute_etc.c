@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:15:54 by dim               #+#    #+#             */
-/*   Updated: 2022/04/07 01:48:01 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 15:17:59 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	execute_etc_instruction(t_info *info, t_process *process)
 	char **env;
 
 	instruction = process->instruction;
+	// printf("before_get_env: env->key: %s\n", info->env->key);
 	arg = get_arg(process);
 	env = get_env(info->env);
 	// 실행파일일 경우

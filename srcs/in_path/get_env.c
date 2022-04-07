@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:21:51 by dim               #+#    #+#             */
-/*   Updated: 2022/04/04 17:54:09 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 15:18:32 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	merge_envp(t_env *env, char **dest_env)
 		dest_env[i] = (char *)malloc(sizeof(char) * (keylen + valuelen + 2));
 		if (dest_env[i] == NULL)
 			perror_and_exit("cannot allocate memory\n", ENOMEM);
-		ft_strlcpy(&dest_env[i][0], env->value, valuelen + 1);
+		ft_strlcpy(&dest_env[i][0], env->key, keylen + 1);
 		dest_env[i][keylen] = '=';
 		if (env->value != NULL)
 			ft_strlcpy(&dest_env[i][keylen + 1], env->value, valuelen + 1);
@@ -59,7 +59,7 @@ char	**get_env(t_env *env)
 	dest_env = (char **)malloc(sizeof(char *) * (size + 1));
 	if (dest_env == NULL)
 		perror_and_exit("cannot allocate memory\n", ENOMEM);
-	ft_bzero(env, sizeof(char *) * (size + 1));
+	ft_bzero(dest_env, sizeof(char *) * (size + 1));
 	merge_envp(env, dest_env);
 	return (dest_env);
 }
