@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:00:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 00:28:37 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 21:58:55 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	print_env(t_env *env)
 			continue ;
 		}
 		if (temp->value == NULL)
+		{
+			temp = temp->next;
 			continue ;
+		}
 		printf("%s=%s\n", temp->key, temp->value);
 		temp = temp->next;
 	}

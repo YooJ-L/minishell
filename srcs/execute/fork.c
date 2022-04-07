@@ -6,11 +6,35 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 15:35:03 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 21:23:47 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
+
+int	execve_command(t_info *info, t_process *cur_process)
+{
+	printf("EXECVE_COMMAND\n");
+	if (!cur_process->instruction)
+		return (exit_process(info, cur_process, info->last_exit_status));
+	if (!ft_strncmp("cd", cur_process->instruction, 3))
+		return (execute_cd(info, cur_process));
+	else if (!ft_strncmp("exit", cur_process->instruction, 5))
+		return (execute_exit(info, cur_process));
+	else if (!ft_strncmp("env", cur_process->instruction, 4))
+		return (execute_env(info, cur_process));
+	else if (!ft_strncmp("export", cur_process->instruction, 7))
+		return (execute_export(info, cur_process));
+	else if (!ft_strncmp("unset", cur_process->instruction, 6))
+		return (execute_unset(info, cur_process));
+	else if (!ft_strncmp("pwd", cur_process->instruction, 4))
+		return (execute_pwd(info, cur_process));
+	else if (!ft_strncmp("echo", cur_process->instruction, 5))
+		return (execute_echo(info, cur_process));
+	else
+		execute_etc_instruction(info, cur_process);
+	return (0);
+}
 
 void	set_child_process(t_process *process, int pipe_fd[2], int input_fd, bool is_last)
 {
@@ -40,7 +64,7 @@ void	fork_processes(t_info *info, t_process *process)
 			set_child_process(&process[i], pipe_fd, input_fd, i == info->process_cnt - 1);
 			execve_command(info, &process[i]);
 		}
-		else if (process[i].pid > 0) // processp[i]였음
+		else if (process[i].pid > 0)
 		{
 			if (input_fd != 0)
 				close(input_fd);
@@ -50,30 +74,5 @@ void	fork_processes(t_info *info, t_process *process)
 				input_fd = pipe_fd[0];
 			}
 		}
-	}
-}
-
-void	execute(t_info *info, t_process *process)
-{
-	int	last_exit_status;
-	int	first_exit_status;
-
-	if (info->process_cnt == 1 && is_builtin_ft(&process[0]))
-		info->last_exit_status = execute_single_builtin(info, &process[0]);
-	else
-	{
-		reset_input_mode(&(info->org_term));
-		fork_processes(info, process);
-		signal(SIGINT, SIG_IGN);
-		//첫번째 명령어와 마지막 명령어를 실행하는 자식들은 무조건 끝날 때까지 기다림.
-		waitpid(process[info->process_cnt - 1].pid, &last_exit_status, 0);
-		waitpid(process[0].pid, &first_exit_status, 0);
-		if (info->process_cnt == 1)
-			sig_exit_handler(last_exit_status);
-		else
-			sig_exit_handler(first_exit_status);
-		while (wait(NULL) > 0)
-			;
-		info->last_exit_status = last_exit_status / 256;
 	}
 }

@@ -6,35 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:30:45 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 14:59:37 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 21:23:52 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
-
-int	execve_command(t_info *info, t_process *cur_process)
-{
-	printf("EXECVE_COMMAND\n");
-	if (!cur_process->instruction)
-		return (exit_process(info, cur_process, info->last_exit_status));
-	if (!ft_strncmp("cd", cur_process->instruction, 3))
-		return (execute_cd(info, cur_process));
-	else if (!ft_strncmp("exit", cur_process->instruction, 5))
-		return (execute_exit(info, cur_process));
-	else if (!ft_strncmp("env", cur_process->instruction, 4))
-		return (execute_env(info, cur_process));
-	else if (!ft_strncmp("export", cur_process->instruction, 7))
-		return (execute_export(info, cur_process));
-	else if (!ft_strncmp("unset", cur_process->instruction, 6))
-		return (execute_unset(info, cur_process));
-	else if (!ft_strncmp("pwd", cur_process->instruction, 4))
-		return (execute_pwd(info, cur_process));
-	else if (!ft_strncmp("echo", cur_process->instruction, 5))
-		return (execute_echo(info, cur_process));
-	else
-		execute_etc_instruction(info, cur_process);
-	return (0);
-}
 
 static int	check_file_exists(t_redirection *redirect)
 {
@@ -82,4 +58,29 @@ int	execute_single_builtin(t_info *info, t_process *process)
 	dup2(save_stdout, STDOUT_FILENO);
 	close(save_stdout);
 	return (ret);
+}
+
+void	execute(t_info *info, t_process *process)
+{
+	int	last_exit_status;
+	int	first_exit_status;
+
+	if (info->process_cnt == 1 && is_builtin_ft(&process[0]))
+		info->last_exit_status = execute_single_builtin(info, &process[0]);
+	else
+	{
+		reset_input_mode(&(info->org_term));
+		fork_processes(info, process);
+		signal(SIGINT, SIG_IGN);
+		//첫번째 명령어와 마지막 명령어를 실행하는 자식들은 무조건 끝날 때까지 기다림.
+		waitpid(process[info->process_cnt - 1].pid, &last_exit_status, 0);
+		waitpid(process[0].pid, &first_exit_status, 0);
+		if (info->process_cnt == 1)
+			sig_exit_handler(last_exit_status);
+		else
+			sig_exit_handler(first_exit_status);
+		while (wait(NULL) > 0)
+			;
+		info->last_exit_status = last_exit_status / 256;
+	}
 }

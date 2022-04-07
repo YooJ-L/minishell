@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 15:36:10 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 21:53:40 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int				execute_cd(t_info *info, t_process *process);
 void			execute_etc_instruction(t_info *info, t_process *process);
 void			print_export(t_env *env);
 
+int				env_is_valid(char *target);
 
 void			perror_and_exit(char *text, int errnum);
 int				error_option(char	*inst, t_info *info, t_process *process);
@@ -116,7 +117,7 @@ void			redirect_output_fd(t_process *process);
 int				run_heredoc(t_info *info, t_process *process);
 
 //fork.c
-void			execute(t_info *info, t_process *process);
+void			fork_processes(t_info *info, t_process *process);
 
 //ft_builtin.c
 bool			is_builtin_ft(t_process *cur_process);
@@ -124,6 +125,7 @@ bool			is_builtin_ft(t_process *cur_process);
 //execute.c
 int				execute_single_builtin(t_info *info, t_process *process);
 int				execve_command(t_info *info, t_process *cur_process);
+void			execute(t_info *info, t_process *process);
 
 //signal.c
 void			sig_exit_handler(int sig); //자식이 죽었을 때
