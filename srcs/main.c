@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/04/07 14:41:05 by yoojlee          ###   ########.fr       */
+=======
+/*   Updated: 2022/04/07 15:20:18 by dim              ###   ########.fr       */
+>>>>>>> 51d9612850669ab53808beca830134b8b12f8446
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +32,6 @@ int		check_redirect(t_info *info, t_process *process)
 	t_redirection	*cur;
 	char			*last_filename;
 
-	printf("====in check_redirect====\n");
 	if (process == NULL)
 		return (1);
 	i = 0;
@@ -64,6 +67,7 @@ void	loop_minishell(t_info *info, t_process *process)
 		add_history(input);
 		process = split_line(input, info);
 		//heredoc먼저 처리(입력값 받아옴)
+		// printf("process->inst : %s\n", process->instruction);
 		if (!run_heredoc(info, process) || check_redirect(info, process))
 		{
 			printf("====in run_heredoc || check_redirect\n");

@@ -6,7 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/04/07 14:59:04 by yoojlee          ###   ########.fr       */
+=======
+/*   Updated: 2022/04/07 15:19:02 by dim              ###   ########.fr       */
+>>>>>>> 51d9612850669ab53808beca830134b8b12f8446
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +62,6 @@ void	execute(t_info *info, t_process *process)
 	int	last_exit_status;
 	int	first_exit_status;
 
-	printf("=====@@@@@in execute.c\n");
 	if (info->process_cnt == 1 && is_builtin_ft(&process[0]))
 		info->last_exit_status = execute_single_builtin(info, &process[0]);
 	else

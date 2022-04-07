@@ -6,7 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:15:54 by dim               #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/04/07 14:59:57 by yoojlee          ###   ########.fr       */
+=======
+/*   Updated: 2022/04/07 15:31:03 by dim              ###   ########.fr       */
+>>>>>>> 51d9612850669ab53808beca830134b8b12f8446
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +28,7 @@ char 	*find_inst_in_path(char *path, char *instruction, \
 	if (route == NULL)
 		perror_and_exit("cannot allocate memory\n", ENOMEM);
 	// 원래꺼보다 size 하나 작게 복사
-	ft_strlcpy(route, &path[begin], size);
+	ft_strlcpy(route, &path[begin], size + 1);
 	route[size] = '/';
 	route[size + 1] = '\0';
 	ret = ft_strjoin(route, instruction);
