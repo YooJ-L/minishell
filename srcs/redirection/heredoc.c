@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 12:31:18 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 14:56:41 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,12 @@ int	get_heredoc_input(t_info *info, t_process *process)
 	int				exit_status;
 	t_redirection	*redirect;
 
-	printf("====in get_heredoc_input===\n");
 	if (!info || !process)
 		return (0);
 	redirect = process->redirect;
 	while (redirect)
 	{
-		printf("===get_heredoc_input--while====\n");
+		printf("===while문 GET_HEREDOC_INPUT====\n");
 		if (redirect->symbol == DOUBLE_IN)
 		{
 			eof_str = redirect->filename;
@@ -135,12 +134,12 @@ int	get_heredoc_input(t_info *info, t_process *process)
 			if (exit_status != 0)
 			{
 				sig_exit_handler(exit_status);
-				return (1);
+				return (0);
 			}
 		}
 		redirect = redirect->next;
 	}
-	return (0);
+	return (1);
 }
 
 //eof str 들어올 때까지 입력 계속 받고 그 입력 내용 저장해서 파이프로 보내는 함수
@@ -151,9 +150,9 @@ int	run_heredoc(t_info *info, t_process *process)
 	i = 0;
 	while (i < info->process_cnt)
 	{
-		if (get_heredoc_input(info, &process[i])) //eof만나기 전까지의 내용 저장하기
-			return (1);
+		if (!get_heredoc_input(info, &process[i])) //eof만나기 전까지의 내용 저장하기
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }

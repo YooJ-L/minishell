@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 14:22:33 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 15:26:38 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,9 +131,10 @@ void			set_parent_process(t_info *info);
 
 //terminal.c
 void			change_input_mode(void);
-void 			reset_input_mode(void);
+// void 			reset_input_mode(void);
 // void 			set_input_mode(void);
 void	set_input_mode(struct termios *new_term);
+void	reset_input_mode(struct termios *org_term);
 
 //validate.c
 int				validate_input(t_info *info, char *input);

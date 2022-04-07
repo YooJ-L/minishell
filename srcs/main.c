@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 14:23:22 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 14:41:05 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	loop_minishell(t_info *info, t_process *process)
 			free_all(info, process, input);
 			return ;
 		}
+		reset_input_mode(&(info->org_term));
 		execute(info, process);
 		free_all(info, process, input);
 	}

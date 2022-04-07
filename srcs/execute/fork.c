@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 11:50:15 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 14:59:04 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	set_child_process(t_process *process, int pipe_fd[2], int input_fd, bool is_last)
 {
+	printf("SET_CHILD_PROCESS\n");
 	signal(SIGQUIT, SIG_DFL);
 	set_input_fd(process, input_fd);
 	set_output_fd(process, pipe_fd, is_last);
@@ -62,7 +63,7 @@ void	execute(t_info *info, t_process *process)
 		info->last_exit_status = execute_single_builtin(info, &process[0]);
 	else
 	{
-		reset_input_mode();
+		reset_input_mode(&(info->org_term));
 		fork_processes(info, process);
 		signal(SIGINT, SIG_IGN);
 		//첫번째 명령어와 마지막 명령어를 실행하는 자식들은 무조건 끝날 때까지 기다림.

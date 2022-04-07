@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:30:45 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 01:05:05 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 14:59:37 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	execve_command(t_info *info, t_process *cur_process)
 {
+	printf("EXECVE_COMMAND\n");
 	if (!cur_process->instruction)
 		return (exit_process(info, cur_process, info->last_exit_status));
 	if (!ft_strncmp("cd", cur_process->instruction, 3))

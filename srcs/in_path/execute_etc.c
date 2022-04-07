@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_etc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:15:54 by dim               #+#    #+#             */
-/*   Updated: 2022/04/07 01:48:01 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 14:59:57 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	execute_etc_instruction(t_info *info, t_process *process)
 	char **arg;
 	char **env;
 
+	printf("EXECUTE_ETC_INSTRUCTION\n");
 	instruction = process->instruction;
 	arg = get_arg(process);
 	env = get_env(info->env);

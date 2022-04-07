@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 03:46:09 by dim               #+#    #+#             */
-/*   Updated: 2022/04/07 11:59:55 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 14:55:02 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			strlen_each_process(const char *line)
 	while (line[cnt])
 	{
 		check_quote(line[cnt], &status);
-		if (line[cnt] != '|' && status == NO_Q)
+		if (line[cnt] == '|' && status == NO_Q)
 			return (cnt);
 		cnt++;
 	}
