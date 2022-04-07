@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:01:26 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 22:23:40 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 03:18:04 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ int		parse_env(t_env **env, char **envp)
 	{//=이 여러개일 때 고려해주기
 		arr = ft_split_in_two(envp[i], '='); // 첫번째 = 기준으로만 자르게 하기
 		if (!arr)
-		{
 			return (0);
-		}
 		new = env_lst_new(arr);
 		env_lstadd_back(env, new);
 		free(arr);

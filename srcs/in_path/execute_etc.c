@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_etc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:15:54 by dim               #+#    #+#             */
-/*   Updated: 2022/04/07 22:24:21 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 02:39:10 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char 	*find_inst_in_path(char *path, char *instruction, \
 void	execute_with_path(char *path, t_process *process, \
 							char **arg, char **env)
 {
-	char	*instruction;
+	char		*instruction;
 	size_t		begin;
 	size_t		end;
 
