@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 11:52:46 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 12:24:46 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void	set_shlvl(t_info *info)
 int	init(t_info *info, t_process *process, char **envp)
 {
 	info->last_exit_status = 0;
+	info->env = NULL;
+	info->process_cnt = 0;
 	if (!parse_env(&(info->env), envp))
 		return (0);
 	set_shlvl(info);

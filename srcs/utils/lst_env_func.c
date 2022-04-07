@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:13:41 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 12:07:30 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 12:18:27 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,19 @@ t_env	*env_lst_new(char **arr)
 	return (new);
 }
 
+t_env	*env_lstlast(t_env *env)
+{
+	if (env == NULL)
+	{
+		return (NULL);
+	}
+	while (env != NULL && env->next != NULL)
+	{
+		env = env->next;
+	}
+	return (env);
+}
+
 void	env_lstadd_back(t_env **env, t_env *new)
 {
 	t_env	*tail;
@@ -37,13 +50,9 @@ void	env_lstadd_back(t_env **env, t_env *new)
 		(*env)->next = NULL; //추가
 		return ;
 	}
-	tail = *env;
-	while (tail->next != NULL)
-	{
-		tail = tail->next;
-	}
+	tail = env_lstlast(*env);
+	new->next = tail->next;
 	tail->next = new;
-	tail->next->next = NULL; //마지막에 널 추가
 }
 
 void	ft_env_lstclear(t_env **lst)
