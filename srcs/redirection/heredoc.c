@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 02:37:21 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 12:01:18 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,14 +117,15 @@ int	fork_heredoc_process(t_info *info, t_process *process, char *eof)
 
 int	get_heredoc_input(t_info *info, t_process *process)
 {
-	char	*eof_str;
-	int		exit_status;
+	char			*eof_str;
+	int				exit_status;
+	t_redirection	*redirect;
 
-	t_redirection *redirect;
-
+	printf("====in get_heredoc_input===\n");
 	redirect = process->redirect;
 	while (redirect)
 	{
+		printf("===get_heredoc_input--while====\n");
 		if (redirect->symbol == DOUBLE_IN)
 		{
 			eof_str = redirect->filename;
@@ -145,6 +146,7 @@ int	run_heredoc(t_info *info, t_process *process)
 {
 	int	i;
 
+	i = 0;
 	while (i < info->process_cnt)
 	{
 		if (get_heredoc_input(info, &process[i])) //eof만나기 전까지의 내용 저장하기

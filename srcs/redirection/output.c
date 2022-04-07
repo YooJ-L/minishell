@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:14 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 02:21:29 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 02:52:00 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	connect_last_file(t_redirection *redirect, int last)
 
 void	redirect_output_fd(t_process *process)
 {
-	int		last;
-	t_list	*redirect;
+	int				last;
+	t_redirection	*redirect;
 
 	redirect = process->redirect;
 	last = find_last_output_index(redirect);

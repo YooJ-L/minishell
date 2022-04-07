@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_argv.c                                         :+:      :+:    :+:   */
+/*   get_arg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:21:52 by dim               #+#    #+#             */
-/*   Updated: 2022/03/27 00:58:23 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 03:01:54 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	merge_arg(char **dest_arg, t_process *process)
 	arg = process->arg;
 	while (option)
 	{
-		(*dest_arg)[i] = option->content;
+		dest_arg[i] = option->content;
 		i++;
 		option = option->next;
 	}
 	while(arg)
 	{
-		(*dest_arg)[i] = arg->content;
+		dest_arg[i] = arg->content;
 		i++;
 		arg = arg->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:13:41 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 12:04:42 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 12:07:30 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,6 @@ t_env	*env_lst_new(char **arr)
 	new->next = NULL;
 	return (new);
 }
-
-// void	ft_lstadd_back(t_list **lst, t_list *new)
-// {
-// 	t_list	*fin;
-
-// 	if (!(lst) || !(new))
-// 		return ;
-// 	if (*lst == NULL)
-// 	{
-// 		*lst = new;
-// 		return ;
-// 	}
-// 	fin = ft_lstlast(*lst);
-// 	new->next = fin->next;
-// 	fin->next = new;
-// }
-// t_list	*ft_lstlast(t_list *lst)
-// {
-// 	if (lst == NULL)
-// 		return (NULL);
-// 	while (lst->next != 0)
-// 		lst = lst->next;
-// 	return (lst);
-// }
 
 void	env_lstadd_back(t_env **env, t_env *new)
 {

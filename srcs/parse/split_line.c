@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 03:46:09 by dim               #+#    #+#             */
-/*   Updated: 2022/04/06 21:29:30 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 11:59:55 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,23 @@ t_process	*parse_split_error(int ret, t_info *info)
 	return (NULL);
 }
 
-void		init_process(t_process *process)
+void		init_process(t_process *process, int process_cnt)
 {
-	process->heredoc = false;
-	// process->pid = //???
-	process->instruction = NULL;
-	process->option = NULL;
-	process->arg = NULL;
-	process->redirect = NULL;
-	process->input_file = NULL;
-	process->heredoc_str = NULL;
+	int	i;
+
+	i = 0;
+	while (i < process_cnt)
+	{
+		process[i].heredoc = false;
+		// process.->pid = //???
+		process[i].instruction = NULL;
+		process[i].option = NULL;
+		process[i].arg = NULL;
+		process[i].redirect = NULL;
+		process[i].input_file = NULL;
+		process[i].heredoc_str = NULL;
+		i++;
+	}
 }
 
 t_process	*split_line(const char *line, t_info *info)
@@ -86,7 +93,7 @@ t_process	*split_line(const char *line, t_info *info)
 	process = (t_process *)malloc(sizeof(t_process) * info->process_cnt);
 	if (process == NULL)
 		perror_and_exit("cannot allocate memory\n", ENOMEM);
-	init_process(process);
+	init_process(process, info->process_cnt);
 	ps_cnt = info->process_cnt;
 	//문제있을경우 cnt 확인해보기!
 	while (ps_cnt--)

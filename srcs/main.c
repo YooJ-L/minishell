@@ -6,12 +6,13 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:16:40 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 02:37:25 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 11:52:46 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structure.h"
 #include "../includes/parsing.h"
+
 void	set_inputfile_and_heredoc(t_process *process, t_redirection *redirect)
 {
 	process->input_file = redirect->filename;
@@ -27,6 +28,7 @@ int		check_redirect(t_info *info, t_process *process)
 	t_redirection	*cur;
 	char			*last_filename;
 
+	printf("====in check_redirect====\n");
 	if (process == NULL)
 		return (1);
 	i = 0;
@@ -64,6 +66,7 @@ void	loop_minishell(t_info *info, t_process *process)
 		//heredoc먼저 처리(입력값 받아옴)
 		if (!run_heredoc(info, process) || check_redirect(info, process))
 		{
+			printf("====in run_heredoc || check_redirect\n");
 			free_all(info, process, input);
 			return ;
 		}

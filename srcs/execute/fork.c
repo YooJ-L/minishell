@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 01:42:45 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 11:50:15 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	fork_processes(t_info *info, t_process *process)
 		if (i < info->process_cnt - 1)
 			pipe(pipe_fd);
 		(&process[i])->pid = fork();
-		if (process[i].pid < 0)
+		// if (process[i].pid < 0)
 		//	error();
 		if (process[i].pid == 0)
 		{
@@ -57,6 +57,7 @@ void	execute(t_info *info, t_process *process)
 	int	last_exit_status;
 	int	first_exit_status;
 
+	printf("=====@@@@@in execute.c\n");
 	if (info->process_cnt == 1 && is_builtin_ft(&process[0]))
 		info->last_exit_status = execute_single_builtin(info, &process[0]);
 	else
