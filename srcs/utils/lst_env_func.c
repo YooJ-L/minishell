@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:13:41 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 12:18:27 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 20:53:55 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,18 @@ t_env	*env_lst_new(char **arr)
 
 t_env	*env_lstlast(t_env *env)
 {
+	t_env	*temp;
+
 	if (env == NULL)
 	{
 		return (NULL);
 	}
-	while (env != NULL && env->next != NULL)
+	temp = env;
+	while (temp->next != NULL)
 	{
-		env = env->next;
+		temp = temp->next;
 	}
-	return (env);
+	return (temp);
 }
 
 void	env_lstadd_back(t_env **env, t_env *new)
@@ -77,9 +80,11 @@ t_env	*env_node_exists(t_env *env, char *new_key)
 	t_env	*node;
 
 	node = env;
+	if (!new_key || !env)
+		return (NULL);
 	while (node != NULL)
 	{
-		if (strncmp(new_key, node->key, ft_strlen(new_key)))
+		if (ft_strncmp(new_key, node->key, ft_strlen(new_key) + 1) == 0)
 			break ;
 		node = node->next;
 	}
@@ -95,14 +100,23 @@ void	modify_env_node(t_env *env, char *new_key, char *new_value)
 	node = env_node_exists(env, new_key);
 	if (node == NULL)
 	{
-		arr = (char **)malloc(sizeof(char *) * 2);
-		if (!arr)
+		node = env;
+		while (node->next != NULL)
+			node = node->next;
+		node->next = (t_env *)malloc(sizeof(t_env));
+		if (!node->next)
 			perror_and_exit("cannot allocate memory\n", ENOMEM);
-		arr[0] = new_key;
-		arr[1] = new_value;
-		new = env_lst_new(arr);
-		env_lstadd_back(&env, new);
-		free(arr);
+		node->next->key = new_key;
+		node->next->value = new_value;
+		node->next->next = NULL;
+		// arr = (char **)malloc(sizeof(char *) * 2);
+		// if (!arr)
+		// 	perror_and_exit("cannot allocate memory\n", ENOMEM);
+		// arr[0] = new_key;
+		// arr[1] = new_value;
+		// new = env_lst_new(arr);
+		// env_lstadd_back(&env, new);
+		// free(arr);
 	}
 	else if (new_value)
 	{

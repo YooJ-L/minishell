@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 00:45:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 15:49:29 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 20:16:08 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	print_export(t_env *env)
 	while (sorted != NULL)
 	{
 		temp = sorted;
-		printf("declare -x");
+		printf("declare -x ");
 		if (sorted != NULL && sorted->value != NULL)
 		{
 			printf("%s=", sorted->key);

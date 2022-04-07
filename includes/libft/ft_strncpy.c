@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/22 02:05:22 by deulee            #+#    #+#             */
-/*   Updated: 2022/04/07 16:09:46 by yoojlee          ###   ########.fr       */
+/*   Created: 2022/04/07 16:05:34 by yoojlee           #+#    #+#             */
+/*   Updated: 2022/04/07 16:06:02 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
+char	*strncpy(char *dest, const char *src, size_t n)
 {
-	size_t	i;
-	size_t	src_len;
+  char	*ret = dest;
 
-	i = 0;
-	src_len = 0;
-	while (src[src_len])
-		src_len++;
-	if (dstsize == 0)
-		return (src_len);
-	while (src[i] && i < (dstsize - 1))
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (src_len);
+  for(int i=0; i<n; i++)
+  {
+    if((*dest++ = *src++) == 0){
+      while(++i < n){
+        *dest++ = 0;
+      }
+      return ret;
+    }
+  }
+  return ret;
 }
