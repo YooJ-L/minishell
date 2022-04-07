@@ -1,20 +1,25 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile.txt                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/07 14:06:16 by yoojlee          ###   ########.fr        #
+#    Updated: 2022/04/07 14:04:56 by yoojlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-CFLAGS = -lreadline -L ./includes/libft -lft #-Wall -Wextra -Werror
-CFLAGS += -g -fsanitize=address
+# CFLAGS = -lreadline -L ./includes/libft -lft #-Wall -Wextra -Werror
+# CFLAGS += -g -fsanitize=address
+
+HEADER		= ./includes/
+RL_NAME 	= readline
+RL_LIB_DIR	= ${HOME}/.brew/opt/readline/lib/
+RL_INC_DIR	= ${HOME}/.brew/opt/readline/include/
 
 BUILT_IN_FUNCS = $(addprefix built_in_functions/, \
 					cd.c \
@@ -86,9 +91,11 @@ SRCS = $(addprefix ./srcs/, \
 
 OBJS = $(SRCS:.c=.o)
 
+%.o	:	$(CC) $(CFLAGS) -I $(HEADER) -o $@ -c $< -I $(RL_INC_DIR)
+
 $(NAME) : $(OBJS)
 	make libft
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME) -I $(RL_INC_DIR) -l $(RL_NAME) -L $(RL_LIB_DIR)
 
 all : $(NAME)
 

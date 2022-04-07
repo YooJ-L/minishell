@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 12:01:18 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 12:31:18 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ int	get_heredoc_input(t_info *info, t_process *process)
 	t_redirection	*redirect;
 
 	printf("====in get_heredoc_input===\n");
+	if (!info || !process)
+		return (0);
 	redirect = process->redirect;
 	while (redirect)
 	{
