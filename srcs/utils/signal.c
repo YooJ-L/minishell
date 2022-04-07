@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:35:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 14:09:08 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 14:23:04 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	set_parent_process(t_info *info)
 	(void)info;
 	signal(SIGINT, (void *)sigint_handler); //원래 sigint는 실행 중지인데, 이걸 sigint_handler라는 함수를 줘서 하는 행동을 바꿈.
 	signal(SIGQUIT, SIG_IGN); //SIG_IGN : 신호 무시
-	set_input_mode();
+	set_input_mode(&(info->new_term));
 }

@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 02:51:56 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 14:22:33 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ typedef struct	s_info
 	unsigned char	last_exit_status;
 	t_env			*env;
 	int				process_cnt;
+	struct termios	org_term; //ecoctl 끄고 킬 때 사용하는 것
+	struct termios	new_term;
+
 }				t_info;
 
 int				execute_echo(t_info *info, t_process *process);
@@ -105,7 +108,6 @@ char			**get_env(t_env *env);
 void			set_input_fd(t_process *process, int input_fd);
 
 //output.c
-void			set_input_fd(t_process *process, int input_fd);
 void			set_output_fd(t_process *process, int pipe_fd[2], bool is_last);
 void			redirect_output_fd(t_process *process);
 
@@ -130,7 +132,8 @@ void			set_parent_process(t_info *info);
 //terminal.c
 void			change_input_mode(void);
 void 			reset_input_mode(void);
-void 			set_input_mode(void);
+// void 			set_input_mode(void);
+void	set_input_mode(struct termios *new_term);
 
 //validate.c
 int				validate_input(t_info *info, char *input);
