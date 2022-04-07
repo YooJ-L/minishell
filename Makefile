@@ -6,7 +6,7 @@
 #    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/07 14:06:16 by yoojlee          ###   ########.fr        #
+#    Updated: 2022/04/07 15:36:42 by yoojlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ BUILT_IN_FUNCS = $(addprefix built_in_functions/, \
 					cd.c \
 					env.c \
 					export.c \
+					print_export.c \
 					pwd.c \
 					unset.c \
 					echo.c \

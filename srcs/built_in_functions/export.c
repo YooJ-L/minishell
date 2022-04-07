@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:01:27 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 15:28:39 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 15:50:35 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	add_new_env(t_env *env, t_list *arg)
 	while (temp != NULL)
 	{
 		line = (char *)temp->content;
-		split_key_value(line, *new_key, *new_value);
+		split_key_value(line, new_key, new_value);
 		if (env_is_valid(new_key))
 			modify_env_node(new_key, new_value, env);
 		else
