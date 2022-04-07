@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_env_func.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:13:41 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 02:27:14 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 12:04:42 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,30 @@ t_env	*env_lst_new(char **arr)
 	return (new);
 }
 
+// void	ft_lstadd_back(t_list **lst, t_list *new)
+// {
+// 	t_list	*fin;
+
+// 	if (!(lst) || !(new))
+// 		return ;
+// 	if (*lst == NULL)
+// 	{
+// 		*lst = new;
+// 		return ;
+// 	}
+// 	fin = ft_lstlast(*lst);
+// 	new->next = fin->next;
+// 	fin->next = new;
+// }
+// t_list	*ft_lstlast(t_list *lst)
+// {
+// 	if (lst == NULL)
+// 		return (NULL);
+// 	while (lst->next != 0)
+// 		lst = lst->next;
+// 	return (lst);
+// }
+
 void	env_lstadd_back(t_env **env, t_env *new)
 {
 	t_env	*tail;
@@ -38,7 +62,7 @@ void	env_lstadd_back(t_env **env, t_env *new)
 		return ;
 	}
 	tail = *env;
-	while (tail->next != 0)
+	while (tail->next != NULL)
 	{
 		tail = tail->next;
 	}
@@ -92,7 +116,7 @@ void	modify_env_node(t_env *env, char *new_key, char *new_value)
 		arr[0] = new_key;
 		arr[1] = new_value;
 		new = env_lst_new(arr);
-		env_lstadd_back(env, new);
+		env_lstadd_back(&env, new);
 		free(arr);
 	}
 	else if (new_value)
