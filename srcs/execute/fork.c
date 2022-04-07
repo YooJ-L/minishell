@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 21:23:47 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 22:24:18 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	execve_command(t_info *info, t_process *cur_process)
 {
-	printf("EXECVE_COMMAND\n");
 	if (!cur_process->instruction)
 		return (exit_process(info, cur_process, info->last_exit_status));
 	if (!ft_strncmp("cd", cur_process->instruction, 3))
@@ -38,7 +37,6 @@ int	execve_command(t_info *info, t_process *cur_process)
 
 void	set_child_process(t_process *process, int pipe_fd[2], int input_fd, bool is_last)
 {
-	printf("SET_CHILD_PROCESS\n");
 	signal(SIGQUIT, SIG_DFL);
 	set_input_fd(process, input_fd);
 	set_output_fd(process, pipe_fd, is_last);

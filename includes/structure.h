@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 21:53:40 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 22:03:01 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,6 @@ int				run_heredoc(t_info *info, t_process *process);
 
 //fork.c
 void			fork_processes(t_info *info, t_process *process);
-
-//ft_builtin.c
-bool			is_builtin_ft(t_process *cur_process);
 
 //execute.c
 int				execute_single_builtin(t_info *info, t_process *process);

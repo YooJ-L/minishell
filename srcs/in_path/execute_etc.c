@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:15:54 by dim               #+#    #+#             */
-/*   Updated: 2022/04/07 15:35:01 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 22:24:21 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	execute_etc_instruction(t_info *info, t_process *process)
 	char **arg;
 	char **env;
 
-	printf("EXECUTE_ETC_INSTRUCTION\n");
 	instruction = process->instruction;
 	arg = get_arg(process);
 	env = get_env(info->env);

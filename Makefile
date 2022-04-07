@@ -6,7 +6,7 @@
 #    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/07 16:15:17 by yoojlee          ###   ########.fr        #
+#    Updated: 2022/04/07 22:03:32 by yoojlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ BUILT_IN_FUNCS = $(addprefix built_in_functions/, \
 					unset.c \
 					echo.c \
 					exit.c \
-					ft_builtin.c \
 					)
 
 PARSE = $(addprefix parse/, \

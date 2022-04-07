@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 15:33:36 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/07 22:15:51 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	save_str(char **save, char *input)
 	free(temp);
 }
 
-static void	exec_heredoc(const char *exit_str, int output_fd)
+static void	exec_heredoc(const char *eof_str, int output_fd)
 {
 	char	*save;
 	char	*input;
@@ -52,7 +52,7 @@ static void	exec_heredoc(const char *exit_str, int output_fd)
 		input = readline("> ");
 		if (input && input[0] == '\0')
 			continue ;
-		if (!ft_strncmp(input, exit_str, ft_strlen(input)))
+		if (!ft_strncmp(input, eof_str, ft_strlen(eof_str) + 1))
 		{
 			free(input);
 			break ;
@@ -74,7 +74,9 @@ static void	read_heredoc_str(t_process *process, int input_fd)
 	while (get_next_line(input_fd, &save) > 0)
 	{
 		if (!(process->heredoc_str))
+		{
 			process->heredoc_str = ft_strdup(save);
+		}
 		else
 		{
 			temp = process->heredoc_str;
@@ -127,7 +129,6 @@ int	get_heredoc_input(t_info *info, t_process *process)
 	redirect = process->redirect;
 	while (redirect)
 	{
-		printf("===while문 GET_HEREDOC_INPUT====\n");
 		if (redirect->symbol == DOUBLE_IN)
 		{
 			eof_str = redirect->filename;

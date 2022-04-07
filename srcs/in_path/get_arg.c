@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_arg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:21:52 by dim               #+#    #+#             */
-/*   Updated: 2022/04/07 03:01:54 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/07 22:23:03 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ char	**get_arg(t_process *process)
 		perror_and_exit("cannot allocate memory\n", ENOMEM);
 	ft_bzero(arg, sizeof(char *) * (size + 1));
 	merge_arg(arg, process);
+	arg[0] = process->instruction;
 	return (arg);
 }
