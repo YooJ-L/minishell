@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:17:39 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 22:49:34 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/09 00:44:42 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	perror_and_exit(char *text, int	errnum)
 {
 	ft_putstr_fd(text, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
+	system("leaks minishell");
 	exit(errnum);
 }
 

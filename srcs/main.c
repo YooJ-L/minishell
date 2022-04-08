@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:21 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/09 00:34:04 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/09 00:43:47 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,13 @@ void	loop_minishell(t_info *info, t_process *process)
 		{
 			printf("====in run_heredoc || check_redirect\n");
 			free_all(info, process, input);
+			system("leaks minishell");
 			continue ;
 		}
 		reset_input_mode(&(info->org_term));
 		execute(info, process);
 		free_all(info, process, input);
-		// system("leaks minishell");
+		system("leaks minishell");
 	}
 }
 
