@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:14:06 by dim               #+#    #+#             */
-/*   Updated: 2022/04/08 04:27:19 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/08 17:02:56 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,14 @@
 int		check_arg(char *arg)
 {
 	//숫자인지, 롱 범위 내인지 확인
-	if (!str_is_num(arg))
+	int	i;
+
+	i = 0;
+	while (arg[i] && arg[i] == ' ')
+		i++;
+	if (!str_is_num(arg + i))
 		return (0);
-	if (!str_is_long(arg))
+	if (!str_is_long(arg + i))
 		return (0);
 	return (1);
 }
