@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/07 22:03:32 by yoojlee          ###   ########.fr        #
+#    Updated: 2022/04/09 01:12:20 by dim              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 CC = gcc
 CFLAGS = -lreadline -L ./includes/libft -lft #-Wall -Wextra -Werror
-CFLAGS += -g -fsanitize=address
+# CFLAGS += -g -fsanitize=address
 
 BUILT_IN_FUNCS = $(addprefix built_in_functions/, \
 					cd.c \

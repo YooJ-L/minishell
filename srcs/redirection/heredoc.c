@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/09 00:48:56 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/09 01:08:38 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ int	run_heredoc(t_info *info, t_process *process)
 		return (0);
 	while (i < info->process_cnt)
 	{
-		if (!get_heredoc_input(info, &process[i]) || !&process[i]) //eof만나기 전까지의 내용 저장하기
+		if (!&process[i] || !get_heredoc_input(info, &process[i])) //eof만나기 전까지의 내용 저장하기
 			return (0);
 		i++;
 	}

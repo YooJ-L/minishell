@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:28:00 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 02:27:23 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/09 02:30:01 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_redir_lstclear(t_redirection **lst)
 	{
 		next = cur->next;
 		free(cur->filename);
+		free(cur);
 		cur = next;
 	}
 	*lst = NULL;
