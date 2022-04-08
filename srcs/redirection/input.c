@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:09 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 12:47:54 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 15:31:03 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	connect_heredoc(char *heredoc_str)
 
 	pipe(pipe_fd);
 	pid = fork();
+	if (heredoc_str == NULL)
+		return ;
 	if (pid == 0)
 	{
 		close(pipe_fd[0]);
