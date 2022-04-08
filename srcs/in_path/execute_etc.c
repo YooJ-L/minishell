@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:15:54 by dim               #+#    #+#             */
-/*   Updated: 2022/04/08 13:26:41 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/08 13:31:03 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	execute_etc_instruction(t_info *info, t_process *process)
 	char **arg;
 	char **env;
 
+printf("execute_etc_inst : %s\n", process->instruction);
 	instruction = process->instruction;
 	arg = get_arg(process);
 	env = get_env(info->env);

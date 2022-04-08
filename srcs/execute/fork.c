@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 13:26:29 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/08 13:31:11 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	execve_command(t_info *info, t_process *cur_process)
 {
+	printf("execve_command\n");
 	if (!cur_process->instruction)
 		return (exit_process(info, cur_process, info->last_exit_status));
 	if (!ft_strncmp("cd", cur_process->instruction, 3))
@@ -37,7 +38,7 @@ int	execve_command(t_info *info, t_process *cur_process)
 
 void	set_child_process(t_process *process, int pipe_fd[2], int input_fd, bool is_last)
 {
-	signal(SIGQUIT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL); //sig_dfl: 기본 행동 하게 한다.(원래 상태로)
 	set_input_fd(process, input_fd);
 	set_output_fd(process, pipe_fd, is_last);
 }

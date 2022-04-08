@@ -6,11 +6,28 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 14:13:30 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 15:05:44 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 01:28:27 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
+
+/*
+터미널 함수가 뭐냐면 Ctrl+c눌렀을 때 ^c 이거 안뜨게 하는건데,
+부모에서는 안떠야 하고
+자식 프로세스에서는 떠야 하니까 
+껐다 켰다 하는 것.
+
+Set_input_mode는 set_parent_process할 때만 불러지는데,
+set_parent_process는
+1. fork_heredoc_process 에서 마지막에
+2. run하자마자 바로. 무한반복문 계속 돌면서 제일 먼저 해줌.
+
+reset_input_mode는 
+1. loop_minishell에서 execute하기 전에 
+2. fork_processes 하기 전에
+3. quit_handler에서 (validate_output에 null들어온 경우)
+*/
 
 // void set_input_mode()
 // {
