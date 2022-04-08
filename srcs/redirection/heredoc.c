@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 15:41:48 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 17:57:55 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ cat << doc1 | cat << doc2 | cat << doc3
 //근데 여기서 fork안해줘도 될 것 같은데?
 
 #include "../../includes/structure.h"
+#include "../../includes/parsing.h"
 
 void	save_str(char **save, char *input)
 {
@@ -131,6 +132,11 @@ int	get_heredoc_input(t_info *info, t_process *process)
 	{
 		if (redirect->symbol == DOUBLE_IN)
 		{
+			if (redirect->filename == NULL)
+			{
+				perror_in_parsing("newline");
+				return (0);
+			}
 			eof_str = redirect->filename;
 			exit_status = fork_heredoc_process(info, process, eof_str);
 			if (exit_status != 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:21 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 15:49:13 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 17:43:22 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	loop_minishell(t_info *info, t_process *process)
 		{
 			printf("====in run_heredoc || check_redirect\n");
 			free_all(info, process, input);
-			return ;
+			continue ;
 		}
 		reset_input_mode(&(info->org_term));
 		execute(info, process);
