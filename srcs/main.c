@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:21 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 13:57:11 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/08 15:49:13 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		check_redirect(t_info *info, t_process *process)
 				return (1);
 			}
 			else if (cur->symbol == SINGLE_IN || cur->symbol == DOUBLE_IN)
-				set_inputfile_and_heredoc(process, cur);
+				set_inputfile_and_heredoc(&process[i], cur);
 			cur = cur->next;
 		}
 		i++;
@@ -73,6 +73,7 @@ void	loop_minishell(t_info *info, t_process *process)
 		reset_input_mode(&(info->org_term));
 		execute(info, process);
 		free_all(info, process, input);
+		// system("leaks minishell");
 	}
 }
 
