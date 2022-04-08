@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 22:15:51 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 01:14:02 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,12 @@ int	fork_heredoc_process(t_info *info, t_process *process, char *eof)
 		close(pipe_fd[0]);
 		exec_heredoc(eof, pipe_fd[1]);
 	}
-	signal(SIGINT, SIG_IGN);
+	signal(SIGINT, SIG_IGN); //자식프로세스에서 바꿔준건데 왜 굳이 써야함?
 	close(pipe_fd[1]);
 	waitpid(pid, &exit_status, 0);
 	read_heredoc_str(process, pipe_fd[0]);
 	close(pipe_fd[0]);
-	set_parent_process(info);
+	set_parent_process(info); //왜 여기 들어가야함?
 	return (exit_status);
 }
 
