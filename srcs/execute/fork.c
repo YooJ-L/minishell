@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 13:31:11 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/08 14:32:20 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	execve_command(t_info *info, t_process *cur_process)
 {
-	printf("execve_command\n");
 	if (!cur_process->instruction)
 		return (exit_process(info, cur_process, info->last_exit_status));
 	if (!ft_strncmp("cd", cur_process->instruction, 3))

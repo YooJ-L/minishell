@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:26:09 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 12:46:28 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 14:22:21 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	free_process(t_process *process)
 		free(process->instruction);
 	if (process->heredoc_str)
 		free(process->heredoc_str);
-	if (process->input_file)
-		// free(process->input_file); //redirect->filename그대로 주소 복사?
 	if (process->option)
 		ft_lstclear(&process->option, free);
 	if (process->arg)

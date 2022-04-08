@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:00:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 21:58:55 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 15:03:38 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@ void	print_env(t_env *env)
 		if (ft_strncmp(temp->key, "_", 2) == 0)
 		{
 			address = temp->value;
+			printf("address:%s\n", address);
 			temp = temp->next;
 			continue ;
 		}
-		if (temp->value == NULL)
-		{
-			temp = temp->next;
-			continue ;
-		}
-		printf("%s=%s\n", temp->key, temp->value);
+		if (temp->value != NULL)
+			printf("%s=%s\n", temp->key, temp->value);
 		temp = temp->next;
 	}
 	printf("_=%s\n", address);
