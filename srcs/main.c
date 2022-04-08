@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:21 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 13:11:05 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/08 13:57:11 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	loop_minishell(t_info *info, t_process *process)
 	while (1)
 	{
 		set_parent_process(info);
-		input = readline("tinyshell$ ");
+		input = readline("\033[0;36mtinyshell$ \033[0m");
 		if (!validate_input(info, input))
 			continue ;
 		add_history(input);
