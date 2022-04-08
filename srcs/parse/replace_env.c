@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   replace_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:51:38 by dim               #+#    #+#             */
-/*   Updated: 2022/04/07 14:54:18 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/08 16:46:52 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	*find_key_in_str(const char *str)
 		ret = (char *)malloc(sizeof(char) * 2);
 		if (ret == NULL)
 			perror_and_exit("cannot allocate memory\n", ENOMEM);
-		ret = "?\0";
+		ret[0] = '?';
+		ret[1] = '\0';
 		return (ret);
 	}
 	while (ft_isalnum(str[i]) || str[i] == '_')
@@ -103,7 +104,6 @@ char 	*replace_env_to_value(t_info *info, const char *line, int len)
 		// $인데 뒤에 '나 "가 옴($빼고 quote 안에 있는 문자 출력)
 		else if (line[i + 1] == '\'' || line[i + 1] == '\"')
 			i++;
-		// $인 문자인데 바로 뒤에 '나 "가 없음
 		else
 		{
 			key = find_key_in_str(&line[i + 1]);
