@@ -1,108 +1,102 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/09 01:12:20 by dim              ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME      = minishell
 
-NAME = minishell
+CC         = gcc
+CFLAGS      = $(INCFLAGS) #$(GFLAGS) #$(WFLAGS) 
+WFLAGS      = -Wall -Wextra -Werror
+GFLAGS      = -g -fsanitize=address
+INCFLAGS   = -I$(INCDIR)
 
-CC = gcc
-CFLAGS = -lreadline -L ./includes/libft -lft #-Wall -Wextra -Werror
-# CFLAGS += -g -fsanitize=address
+INCDIR      = includes
+LIBDIR      = includes/libft
+SRCDIR      = srcs
+OBJDIR      = build
+SUBDIR      = built_in_functions \
+            error \
+            execute \
+            in_path \
+            parse \
+            redirection \
+            utils \
 
-BUILT_IN_FUNCS = $(addprefix built_in_functions/, \
-					cd.c \
-					env.c \
-					export.c \
-					print_export.c \
-					pwd.c \
-					unset.c \
-					echo.c \
-					exit.c \
-					)
+RL_LIB_DIR   = /opt/homebrew/opt/readline/lib
+RL_INC_DIR   = /opt/homebrew/opt/readline/include
 
-PARSE = $(addprefix parse/, \
-			check_token.c \
-			parse_env.c \
-			parse_process.c \
-			parse_util.c \
-			replace_env.c \
-			save_token.c \
-			split_line.c \
-			validate.c \
-			)
+vpath %.c   = $(SRCDIR)\
+           $(addprefix $(SRCDIR)/, $(SUBDIR))
 
-ERROR = $(addprefix error/, \
-			error.c \
-			)
+SRCS      = main.c\
+           \
+           cd.c \
+           env.c \
+           export.c \
+           print_export.c \
+           pwd.c \
+           unset.c \
+           echo.c \
+           exit.c \
+           \
+           check_token.c \
+           parse_env.c \
+           parse_process.c \
+           parse_util.c \
+           replace_env.c \
+           save_token.c \
+           split_line.c \
+           validate.c \
+           \
+           error.c \
+           \
+           fork.c\
+           execute.c\
+           \
+           execute_etc.c \
+           get_arg.c \
+           get_env.c \
+           \
+           heredoc.c \
+           input.c \
+           output.c \
+           \
+           add_char.c \
+           check_num.c \
+           exit_process.c \
+           ft_split_in_two.c \
+           get_env_value.c \
+           is_executable.c \
+           lst_func.c \
+           lst_env_func.c \
+           free.c \
+           signal.c \
+           terminal.c \
+           
 
-EXECUTE = $(addprefix execute/, \
-			execute.c \
-			fork.c \
-			)
+OBJS      = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
-IN_PATH = $(addprefix in_path/, \
-			execute_etc.c \
-			get_arg.c \
-			get_env.c \
-			)
+LIBNAME      = ft
+LIB         = $(LIBDIR)/libft.a
 
-REDIRECTION = $(addprefix redirection/, \
-				heredoc.c \
-				input.c \
-				output.c \
-				)
+all         : $(NAME)
 
-UTILS = $(addprefix utils/, \
-			add_char.c \
-			check_num.c \
-			exit_process.c \
-			ft_split_in_two.c \
-			get_env_value.c \
-			is_executable.c \
-			lst_func.c \
-			lst_env_func.c \
-			free.c \
-			signal.c \
-			terminal.c \
-		)
+$(NAME)      : $(LIB) $(OBJS)
+		$(CC) -o $@ $(OBJS) $(CFLAGS) -L$(LIBDIR) -L$(RL_LIB_DIR) -l$(LIBNAME) -lreadline
 
-SRCS = $(addprefix ./srcs/, \
-		main.c \
-		$(BUILT_IN_FUNCS) \
-		$(PARSE) \
-		$(ERROR) \
-		$(EXECUTE) \
-		$(IN_PATH) \
-		$(REDIRECTION) \
-		$(UTILS) \
-		)
+$(LIB)      :
+	make -C $(LIBDIR) bonus
 
-OBJS = $(SRCS:.c=.o)
+$(OBJDIR)/%.o   : %.c | $(OBJDIR)
+	$(CC) $(CFLAGS) -o $@ -c $^ -I$(RL_INC_DIR)
 
-$(NAME) : $(OBJS)
-	make libft
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
+$(OBJDIR)   :
+	mkdir build
 
-all : $(NAME)
+clean      :
+	$(RM) -r $(OBJDIR)
+	make -C $(LIBDIR) clean
 
-libft :
-		make bonus -C includes/libft
+fclean      : clean
+	$(RM) $(NAME)
+	make -C $(LIBDIR) fclean
 
-clean :
-	rm -rf $(OBJS)
-	make -C includes/libft clean
+re         : fclean all
 
-fclean : clean
-	rm -rf $(NAME)
-	make -C includes/libft fclean
-
-bonus : all
-
-re : fclean all
+.PHONY      : all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:20:59 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/09 00:48:42 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/09 03:24:36 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int	validate_input(t_info *info, char *input)
 		exit(0);
 	}
 	if (input[0] == '\0')
+	{
+		free(input);
 		return (0);
+	}
 	return (1);
 }

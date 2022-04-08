@@ -14,7 +14,8 @@
 		"structure.h": "c",
 		"parsing.h": "c",
 		"unistd.h": "c",
-		"readline.h": "c"
+		"readline.h": "c",
+		"memory": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }
