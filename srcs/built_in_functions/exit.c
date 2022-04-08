@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:14:06 by dim               #+#    #+#             */
-/*   Updated: 2022/04/08 17:02:56 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/08 17:20:02 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	execute_exit(t_info *info, t_process *process)
 	arg = get_arg_in_exit(info, process);
 	if (!check_arg(arg))
 	{
+		printf("$#$#$\n");
 		exit_find_and_perror(info, 1, arg);
 		free_process(process);
 		free_envp(info);
