@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:53 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 15:34:59 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 13:24:30 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		init_process(t_process *process, int process_cnt)
 	while (i < process_cnt)
 	{
 		process[i].heredoc = false;
-		// process.->pid = //???
+		// process[i].pid = //???
 		process[i].instruction = NULL;
 		process[i].option = NULL;
 		process[i].arg = NULL;
@@ -83,10 +83,11 @@ t_process	*split_line(const char *line, t_info *info)
 {
 	// 라인을 파이프마다 나누어서 프로세스 개수만큼 리스트로 할당한 후 각 프로세스 정보 채워서 반환
 	t_process	*process;
-	int			ps_cnt;
+	int			i;
 	int			len;
 	int			ret;
 
+	i = 0;
 	info->process_cnt = get_pipe_cnt(line) + 1;
 	if (!info->process_cnt)
 		return (NULL);
@@ -94,16 +95,16 @@ t_process	*split_line(const char *line, t_info *info)
 	if (process == NULL)
 		perror_and_exit("cannot allocate memory\n", ENOMEM);
 	init_process(process, info->process_cnt);
-	ps_cnt = info->process_cnt;
 	//문제있을경우 cnt 확인해보기!
-	while (ps_cnt--)
+	while (i < info->process_cnt)
 	{
 		// 파이프 단위로 나눈 후 파싱
 		len = strlen_each_process(line);
-		ret = parse_process(process, info, line, len);
+		ret = parse_process(&process[i], info, line, len);
 		if (ret)
 			return (parse_split_error(ret, info));
 		line += len + 1;
+		i++;
 	}
 	return (process);
 }
