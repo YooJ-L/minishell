@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_num.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:05:40 by dim               #+#    #+#             */
-/*   Updated: 2022/04/08 04:09:29 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/08 17:23:11 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ int	str_is_long(char *str)
 		i++;
 		len++;
 	}
-	// len = ft_strlen(str + i);
-	if ((ft_strncmp("9223372036854775808", str + i, len) > 0) \
-	|| (ft_strncmp("9223372036854775808", str + i, len) == 0 \
+	if (len > 19)
+		return (0);
+	if ((ft_strncmp("9223372036854775808", str + i - len, len) > 0) \
+	|| (ft_strncmp("9223372036854775808", str + i - len, len) == 0 \
 	&& minus == 1))
 		return (1);
 	else

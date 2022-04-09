@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:09 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 15:50:50 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/09 00:49:21 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	check_file_exists(char *file_name) //ft_isexecutable함수로도 되
 		ft_putstr_fd(": ", STDERR_FILENO);
 		ft_putstr_fd(strerror(ENOENT), STDERR_FILENO);
 		ft_putchar_fd('\n', STDERR_FILENO);
+		system("leaks minishell");
 		exit(ENOENT);
 	}
 	close(fd);
@@ -44,6 +45,7 @@ void	connect_heredoc(char *heredoc_str)
 		close(pipe_fd[0]);
 		ft_putstr_fd(heredoc_str, pipe_fd[1]);
 		close(pipe_fd[1]); //자식에서도 닫고 부모에서도 닫고
+		system("leaks minishell");
 		exit(0);
 	}
 	else

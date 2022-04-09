@@ -3,18 +3,26 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/09 15:04:29 by yoojlee          ###   ########.fr        #
+#    Created: 2022/04/09 03:32:06 by dim               #+#    #+#              #
+#    Updated: 2022/04/09 03:59:23 by dim              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-CFLAGS = -lreadline -L ./includes/libft -lft #-Wall -Wextra -Werror
+CFLAGS = $(INCFLAGS) #$(WFLAGS)
+WFLAGS = -Wall -Wextra -Werror
+INCFLAGS = -I$(INCDIR)
+INCDIR = includes 
+LIBDIR = includes/libft
+OBJDIR      = build
 # CFLAGS += -g -fsanitize=address
+
+RL_LIB_DIR   = /opt/homebrew/opt/readline/lib
+RL_INC_DIR   = /opt/homebrew/opt/readline/include
 
 BUILT_IN_FUNCS = $(addprefix built_in_functions/, \
 					cd.c \
@@ -88,8 +96,14 @@ OBJS = $(SRCS:.c=.o)
 
 $(NAME) : $(OBJS)
 	make libft
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
+	$(CC) -o $(NAME) $(OBJS) $(CFLAGS) -L$(LIBDIR) -L$(RL_LIB_DIR) -lreadline -lft 
 
+$(OBJDIR)/%.o   : %.c | $(OBJDIR)
+	$(CC) $(CFLAGS) -o $@ -c $^ -I$(RL_INC_DIR)
+
+$(OBJDIR)   :
+	mkdir build
+	
 all : $(NAME)
 
 libft :

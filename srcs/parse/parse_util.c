@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:56:12 by dim               #+#    #+#             */
-/*   Updated: 2022/04/06 21:18:52 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/08 17:28:14 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	perror_in_parsing(char *line)
 	// ㄴ redirection 이상하게 나오는거, pipe 뒤에 아무것도 없는 경우만 파싱에서부터 걸러주는 용도
 	ft_putstr_fd("bash: syntax error near unexpected token `", STDERR_FILENO);
 	ft_putstr_fd(line, STDERR_FILENO);
+	ft_putstr_fd("\'", STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
 

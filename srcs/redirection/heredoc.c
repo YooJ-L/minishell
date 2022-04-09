@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 16:05:11 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/09 15:04:43 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ cat << doc1 | cat << doc2 | cat << doc3
 //=>fork를 하면 무조건 파이프fd에 무조건 써야 함. 자식프로세스 끝나면 다 지워지니까.
 //근데 여기서 fork안해줘도 될 것 같은데?
 
-#include "../../includes/structure.h"
+// #include "../../includes/structure.h"
+#include "../../includes/parsing.h"
 
 void	save_str(char **save, char *input)
 {
@@ -63,6 +64,7 @@ static void	exec_heredoc(const char *eof_str, int output_fd)
 	add_char_to_str(&save, '\n');
 	ft_putstr_fd(save, output_fd);
 	free(save);
+	system("leaks minishell");
 	exit(0);
 }
 
@@ -124,13 +126,16 @@ int	get_heredoc_input(t_info *info, t_process *process)
 	int				exit_status;
 	t_redirection	*redirect;
 
-	if (!info || !process)
-		return (0);
 	redirect = process->redirect;
 	while (redirect)
 	{
 		if (redirect->symbol == DOUBLE_IN)
 		{
+			if (redirect->filename == NULL)
+			{
+				perror_in_parsing("newline");
+				return (0);
+			}
 			eof_str = redirect->filename;
 			exit_status = fork_heredoc_process(info, process, eof_str);
 			if (exit_status != 0)
@@ -150,9 +155,12 @@ int	run_heredoc(t_info *info, t_process *process)
 	int	i;
 
 	i = 0;
+
+	if (!info)
+		return (0);
 	while (i < info->process_cnt)
 	{
-		if (!get_heredoc_input(info, &process[i])) //eof만나기 전까지의 내용 저장하기
+		if (!&process[i] || !get_heredoc_input(info, &process[i])) //eof만나기 전까지의 내용 저장하기
 			return (0);
 		i++;
 	}

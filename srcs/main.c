@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:21 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 17:07:27 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/09 15:07:59 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void	loop_minishell(t_info *info, t_process *process)
 		if (!run_heredoc(info, process) || check_redirect(info, process))
 		{
 			free_all(info, process, input);
-			return ;
+			system("leaks minishell");
+			continue ;
 		}
 		echoctl_on();
 		execute(info, process);
