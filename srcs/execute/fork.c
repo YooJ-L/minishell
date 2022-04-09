@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 14:32:20 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 17:10:23 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	fork_processes(t_info *info, t_process *process)
 				close(pipe_fd[1]);
 				input_fd = pipe_fd[0];
 			}
+			// else
+			// 	close(pipe_fd[1]);
 		}
 	}
 }

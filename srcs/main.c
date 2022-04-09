@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:21 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 15:49:13 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 17:07:27 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,20 @@ void	loop_minishell(t_info *info, t_process *process)
 		add_history(input);
 		process = split_line(input, info);
 		//heredoc먼저 처리(입력값 받아옴)
-		// printf("process->inst : %s\n", process->instruction);
 		if (!run_heredoc(info, process) || check_redirect(info, process))
 		{
-			printf("====in run_heredoc || check_redirect\n");
 			free_all(info, process, input);
 			return ;
 		}
-		reset_input_mode(&(info->org_term));
+		echoctl_on();
 		execute(info, process);
 		free_all(info, process, input);
-		// system("leaks minishell");
 	}
 }
 
 void	set_shlvl(t_info *info)
 {
+	char	*key;
 	int		shlvl_int;
 	char	*value;
 	char	*shlvl_ch;
@@ -93,7 +91,8 @@ void	set_shlvl(t_info *info)
 		shlvl_int = ft_atoi(value);
 		shlvl_ch = ft_itoa(shlvl_int + 1);
 	}
-	modify_env_node(info->env, "SHLVL", shlvl_ch);
+	key = ft_strdup("SHLVL");
+	modify_env_node(info->env, key, shlvl_ch);
 }
 
 int	init(t_info *info, t_process *process, char **envp)

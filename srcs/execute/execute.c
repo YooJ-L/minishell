@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:30:45 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 13:27:17 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/08 17:10:48 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	execute(t_info *info, t_process *process)
 		info->last_exit_status = execute_single_builtin(info, &process[0]);
 	else
 	{
-		reset_input_mode(&(info->org_term));
+		echoctl_on();
 		fork_processes(info, process);
 		signal(SIGINT, SIG_IGN);
 		//첫번째 명령어와 마지막 명령어를 실행하는 자식들은 무조건 끝날 때까지 기다림.

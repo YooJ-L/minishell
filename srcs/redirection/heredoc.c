@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 15:41:48 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 16:05:11 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	fork_heredoc_process(t_info *info, t_process *process, char *eof)
 	waitpid(pid, &exit_status, 0);
 	read_heredoc_str(process, pipe_fd[0]);
 	close(pipe_fd[0]);
-	set_parent_process(info); //왜 여기 들어가야함?
+	// set_parent_process(info); //왜 여기 들어가야함?
 	return (exit_status);
 }
 

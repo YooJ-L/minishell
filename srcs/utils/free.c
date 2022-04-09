@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:26:09 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 14:22:21 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 16:59:10 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,6 @@ void	free_envp(t_info *info)
 		free(cur);
 		cur = next;
 	}
-}
-
-void	free_redirection(t_redirection **redirect)
-{
-	t_redirection *temp;
-
-	while (temp)
-	{
-		free (temp->filename);
-		temp->filename = NULL;
-		temp = temp->next;
-	}
-	ft_redir_lstclear(redirect);
 }
 
 void	free_process(t_process *process)

@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:13:41 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 20:53:55 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 16:29:41 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,12 @@ void	modify_env_node(t_env *env, char *new_key, char *new_value)
 		// env_lstadd_back(&env, new);
 		// free(arr);
 	}
-	else if (new_value)
+	else if (new_value != NULL)
 	{
-		free (node->value);
+		free(new_key);
+		free(node->value);
 		node->value = new_value;
 	}
+	else
+		free(new_key);
 }

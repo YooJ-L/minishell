@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:20:59 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 15:07:39 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/08 16:07:25 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ int	validate_input(t_info *info, char *input)
 {
 	if (!input)
 	{
-		write(1, "\033[1A", 5);
-		write(1, "\033[9C", 5);
-		write(1, "exit\n", 5);
-		reset_input_mode(&(info->org_term));
+		write(1, "exit\n", 6);
+		echoctl_on();
 		free_envp(info);
 		exit(0);
 	}
