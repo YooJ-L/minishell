@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:14 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 02:52:00 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 13:13:13 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	find_last_output_index(t_redirection *redirect)
 {
-	int				i;
-	int				last;
+	int	i;
+	int	last;
 
 	i = 0;
 	last = -1;
@@ -31,7 +31,7 @@ int	find_last_output_index(t_redirection *redirect)
 
 void	set_file(t_redirection *redirect)
 {
-	int				fd;
+	int	fd;
 
 	while (redirect)
 	{
@@ -51,7 +51,7 @@ void	set_file(t_redirection *redirect)
 
 void	connect_last_file(t_redirection *redirect, int last)
 {
-	int				fd;
+	int	fd;
 	int	i;
 
 	i = 0;
