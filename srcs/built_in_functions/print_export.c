@@ -6,13 +6,13 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 00:45:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 20:16:08 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:19:40 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
 
-static t_env *ft_env_lst_new(t_env *temp)
+static t_env	*ft_env_lst_new(t_env *temp)
 {
 	t_env	*new;
 

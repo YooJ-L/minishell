@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:38:17 by dim               #+#    #+#             */
-/*   Updated: 2022/04/07 00:24:50 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 12:16:55 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,16 @@
 // {
 // 	// $ 있으면 환경변수 반환
 // 	// "" 안의 환경변수는 o, ''안의 환경변수는 x
-	
 // }
 
 void	print_echo(t_list *list, int flag)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	if (list == NULL)
 		return ;
 	temp = list;
-	if ((flag == 2 || flag == 3)&& temp != NULL)
+	if ((flag == 2 || flag == 3) && temp != NULL)
 		ft_putchar_fd(' ', STDOUT_FILENO);
 	while (temp)
 	{
@@ -56,7 +55,7 @@ bool	check_opt(char *str)
 	return (true);
 }
 
-int		verify_and_print_opt(t_list *opt_list)
+int	verify_and_print_opt(t_list *opt_list)
 {
 	//하나의 '-'와 하나 이상의 'n'의 조합이면 플래그 인정, -n -n -n 인정
 	//---n | -nm 은 안됨
@@ -74,7 +73,7 @@ int		verify_and_print_opt(t_list *opt_list)
 		{
 			ret = 1;
 			temp = temp->next;
-			continue;
+			continue ;
 		}
 		else
 		{
@@ -89,7 +88,7 @@ int		verify_and_print_opt(t_list *opt_list)
 	return (ret);
 }
 
-int		execute_echo(t_info *info, t_process *process)
+int	execute_echo(t_info *info, t_process *process)
 {
 	// 고려해야할것: $?, $, '$환경변수'는 환경변수로x, ;, | 
 	int		flag;
@@ -104,7 +103,7 @@ int		execute_echo(t_info *info, t_process *process)
 	// if (env != NULL)
 	// 	print_env(env);
 	// else
-		print_echo(process->arg, flag);
+	print_echo(process->arg, flag);
 	if (flag == 0 || flag == 2)
 		ft_putstr_fd("\n", STDOUT_FILENO);
 	return (exit_process(info, process, 0));
