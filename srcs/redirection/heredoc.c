@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 16:02:57 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 16:50:26 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,8 @@ static void	exec_heredoc(const char *eof_str, int output_fd)
 	{
 		input = readline("> ");
 		if (input == NULL)
-		{
-			printf("\n");
 			break ;
-		}
-		if (input && input[0] == '\0')
-			continue ;
+		validate_input_heredoc(&input);
 		if (!ft_strncmp(input, eof_str, ft_strlen(eof_str) + 1))
 		{
 			free(input);
