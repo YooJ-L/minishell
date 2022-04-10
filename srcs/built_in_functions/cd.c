@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:26:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 00:21:48 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:12:48 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	print_error(char *to_dir)
 }
 
 //pwd가 env에 없으면 아무 동작 안함. 새로 만들지도 x
-void		update_pwd(t_env *env)
+void	update_pwd(t_env *env)
 {
 	char	buf[PATH_MAX];
 	t_env	*temp;
@@ -52,7 +52,7 @@ void		update_pwd(t_env *env)
 	}
 }
 
-int			execute_cd(t_info *info, t_process *process)
+int	execute_cd(t_info *info, t_process *process)
 {
 	int		ret;
 	char	*to_dir;

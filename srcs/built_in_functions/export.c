@@ -6,15 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:01:27 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/07 20:53:55 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:14:03 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "../../includes/structure.h"
- /*
-1. export a122 => a122=
-2. export 1a => export: not an identifier: 1a
- */
+#include "../../includes/structure.h"
 
 int	env_is_valid(char *target)
 {

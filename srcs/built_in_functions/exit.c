@@ -6,13 +6,13 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:14:06 by dim               #+#    #+#             */
-/*   Updated: 2022/04/09 18:42:46 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:18:57 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
 
-int		check_arg(char *arg)
+int	check_arg(char *arg)
 {
 	//숫자인지, 롱 범위 내인지 확인
 	int	i;
@@ -27,7 +27,7 @@ int		check_arg(char *arg)
 	return (1);
 }
 
-char 	*get_arg_in_exit(t_info *info, t_process *process)
+char	*get_arg_in_exit(t_info *info, t_process *process)
 {
 	//option이 있으면 optin->content, 없으면 arg->content 리턴
 	//인자로 들어온게 아무것도 없으면 종료
@@ -50,7 +50,7 @@ void	print_exit(t_info *info, int fd)
 		ft_putstr_fd("exit\n", fd);
 }
 
-void	exit_find_and_perror(t_info *info, int	errnum, char *arg)
+void	exit_find_and_perror(t_info *info, int errnum, char *arg)
 {
 	if (errnum == 1)
 	{
