@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:09 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 17:38:50 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 17:44:11 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	set_input_fd(t_process *process, int input_fd)
 	temp = process->redirect;
 	while (temp)
 	{
-		check_file_exists_exit(process->redirect->filename);
+		if (temp->symbol == SINGLE_IN || temp->symbol == DOUBLE_IN)
+			check_file_exists_exit(process->redirect->filename);
 		temp = temp->next;
 	}
 	if (process->input_file == NULL && process->heredoc)
