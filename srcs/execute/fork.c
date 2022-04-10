@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 12:58:29 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 13:08:40 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,22 @@ void	fork_processes(t_info *info, t_process *process)
 				close(pipe_fd[1]);
 				input_fd = pipe_fd[0];
 			}
-			// else
-			// 	close(pipe_fd[1]);
 		}
 	}
 }
+/*
+child_process(&process[i], pipe_fd, info, i);
+
+void	child_process(t_process *process, ...)
+{
+	int	input_fd;
+
+	signal(SIGQUIT, SIG_DFL); //sig_dfl: 기본 행동 하게 한다.(원래 상태로)
+	if (i == 0)
+		input_fd = 0;
+	else
+		input_fd = pipe_fd[0];
+	set_input_fd(process, input_fd);
+	set_output_fd(process, pipe_fd, i == info->process_cnt - 1);
+}
+*/

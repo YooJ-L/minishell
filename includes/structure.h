@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 12:09:28 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 13:05:05 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int				str_is_long(char *str);
 int				parse_env(t_env **env, char **envp);
 char			*get_env_value(t_env *env, char *key);
 void			add_char_to_str(char **str, char character);
+void			save_str(char **save, char *input);
 
 //inpath
 char			**get_arg(t_process *process);

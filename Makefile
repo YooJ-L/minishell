@@ -6,7 +6,7 @@
 #    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/10 12:26:04 by yoojlee          ###   ########.fr        #
+#    Updated: 2022/04/10 13:05:54 by yoojlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ SRCS      = main.c\
            input.c \
            output.c \
            \
-           add_char.c \
+           modify_str.c \
            check_num.c \
            exit_process.c \
            ft_split_in_two.c \
