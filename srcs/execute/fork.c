@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 15:17:34 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:45:29 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	set_child_process(t_process *process, int pipe_fd[2], \
 	set_output_fd(process, pipe_fd, is_last);
 }
 
-void	parent_process(t_info *info, int *input_fd, int pipe_fd[2], int i)
+void	parent_process(t_info *info, int *input_fd, int *pipe_fd, int i)
 {
-	if (input_fd != 0)
+	if (*input_fd != 0)
 		close(*input_fd);
 	if (i < info->process_cnt - 1)
 	{
