@@ -6,7 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:13:41 by yoojlee           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/04/10 13:36:30 by yoojlee          ###   ########.fr       */
+=======
+/*   Updated: 2022/04/10 13:35:18 by yoojlee          ###   ########.fr       */
+>>>>>>> 206afb1d67f8aeeac3b8231db8df6b066a0f2fe9
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +60,6 @@ void	env_lstadd_back(t_env **env, t_env *new)
 	tail = env_lstlast(*env);
 	new->next = tail->next;
 	tail->next = new;
-}
-
-void	ft_env_lstclear(t_env **lst)
-{
-	t_env	*cur;
-	t_env	*next;
-
-	cur = *lst;
-	while (cur != NULL)
-	{
-		next = cur->next;
-		free(cur->key); //?
-		free(cur->value);
-		free(cur);
-		cur = next;
-	}
-	*lst = NULL;
 }
 
 t_env	*env_node_exists(t_env *env, char *new_key)
