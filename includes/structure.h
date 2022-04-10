@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 16:47:39 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 17:05:50 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_process
 	t_list			*option;
 	t_list			*arg;
 	t_redirection	*redirect;
-	char			*input_file; //초기화는 null로 해주기
+	char			*input_file;
 	char			*heredoc_str;
 }				t_process;
 
@@ -63,7 +63,7 @@ typedef struct s_info
 	unsigned char	last_exit_status;
 	t_env			*env;
 	int				process_cnt;
-	struct termios	org_term; //ecoctl 끄고 킬 때 사용하는 것
+	struct termios	org_term;
 	struct termios	new_term;
 
 }				t_info;

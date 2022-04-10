@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:14:06 by dim               #+#    #+#             */
-/*   Updated: 2022/04/10 15:47:05 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 16:51:45 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int	execute_exit(t_info *info, t_process *process)
 	arg = get_arg_in_exit(info, process);
 	if (!check_arg(arg))
 	{
-		printf("$#$#$\n");
 		exit_find_and_perror(info, 1, arg);
 		free_process(process);
 		free_envp(info);

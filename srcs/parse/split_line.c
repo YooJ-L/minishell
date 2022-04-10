@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:53 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 15:50:32 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 16:56:38 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	init_process(t_process *process, int process_cnt)
 	while (i < process_cnt)
 	{
 		process[i].heredoc = false;
-		// process[i].pid = //???
 		process[i].instruction = NULL;
 		process[i].option = NULL;
 		process[i].arg = NULL;

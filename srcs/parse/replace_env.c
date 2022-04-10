@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   replace_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:51:38 by dim               #+#    #+#             */
-/*   Updated: 2022/04/10 15:50:12 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 16:56:12 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	*replace_env_to_value(t_info *info, const char *line, int len)
 	{
 		check_quote(line[i], &status);
 		if (line[i] != '$' || status == SINGLE_Q)
-			add_char_to_str(&ret, line[i++]);//i++됨
+			add_char_to_str(&ret, line[i++]);
 		else if (line[i + 1] == '\'' || line[i + 1] == '\"')
 			i++;
 		else

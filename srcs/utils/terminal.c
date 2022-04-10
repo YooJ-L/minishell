@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 14:13:30 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 15:56:54 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 16:59:17 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	echoctl_on(void)
 
 	tcgetattr(STDIN_FILENO, &term);
 	term.c_lflag |= (ECHOCTL);
-	tcsetattr(STDIN_FILENO, TCSANOW, &term);\
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 }
