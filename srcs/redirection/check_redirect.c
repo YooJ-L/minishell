@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 12:08:31 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 12:26:38 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:59:19 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	set_inputfile_and_heredoc(t_process *process, t_redirection *redirect)
 		process->heredoc = true;
 	}
 }
-int		check_redirect(t_info *info, t_process *process)
+
+int	check_redirect(t_info *info, t_process *process)
 {
 	int				i;
 	t_redirection	*cur;
