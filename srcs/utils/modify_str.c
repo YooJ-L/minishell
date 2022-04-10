@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_char.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 16:07:35 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 18:57:31 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 13:04:11 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,15 @@ void	add_char_to_str(char **str, char character)
 	new_str[str_size] = character;
 	new_str[str_size + 1] = '\0';
 	*str = new_str;
+}
+
+void	save_str(char **save, char *input)
+{
+	char	*temp;
+
+	if (ft_strlen(*save) > 0)
+		add_char_to_str(save, '\n');
+	temp = *save;
+	*save = ft_strjoin(*save, input);
+	free(temp);
 }
