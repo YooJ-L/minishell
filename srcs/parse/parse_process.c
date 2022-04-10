@@ -6,13 +6,13 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 02:55:31 by dim               #+#    #+#             */
-/*   Updated: 2022/04/08 13:15:53 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 13:24:33 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
 
-int		skip_front_space(char *str)
+int	skip_front_space(char *str)
 {
 	int	cnt;
 
@@ -85,8 +85,7 @@ char	*get_one_token(const char *str)
 		return (other_token(str));
 }
 
-int		parse_process(t_process *process, t_info *info, \
-						const char *line, int len)
+int	parse_process(t_process *process, t_info *info, const char *line, int len)
 {
 	// 파이프단위로 프로세스 파싱
 	int		i;

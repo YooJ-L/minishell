@@ -6,15 +6,16 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:21:51 by dim               #+#    #+#             */
-/*   Updated: 2022/04/07 15:18:32 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 13:20:36 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
 
-int		get_envp_size(t_env *env)
+int	get_envp_size(t_env *env)
 {
 	int	i;
+
 	i = 0;
 	while (env)
 	{
@@ -26,7 +27,7 @@ int		get_envp_size(t_env *env)
 
 void	merge_envp(t_env *env, char **dest_env)
 {
-	int i;
+	int	i;
 	int	keylen;
 	int	valuelen;
 
@@ -47,13 +48,12 @@ void	merge_envp(t_env *env, char **dest_env)
 		i++;
 		env = env->next;
 	}
-
 }
 
 char	**get_env(t_env *env)
 {
-	char **dest_env;
-	int	size;
+	char	**dest_env;
+	int		size;
 
 	size = get_envp_size(env);
 	dest_env = (char **)malloc(sizeof(char *) * (size + 1));

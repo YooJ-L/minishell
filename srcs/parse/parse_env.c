@@ -6,15 +6,15 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:01:26 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 03:18:04 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 13:29:19 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
 
-int		parse_env(t_env **env, char **envp)
+int	parse_env(t_env **env, char **envp)
 {
-	int	i;
+	int		i;
 	char	**arr;
 	t_env	*new;
 

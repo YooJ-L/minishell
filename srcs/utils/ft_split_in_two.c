@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 21:07:33 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/06 22:37:53 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 13:33:18 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	**ft_split_in_two(char *str, char ch)
 {
-	int	i;
+	int		i;
 	char	**arr;
 	char	*temp;
 

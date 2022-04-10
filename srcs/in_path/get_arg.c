@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:21:52 by dim               #+#    #+#             */
-/*   Updated: 2022/04/07 22:23:03 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 13:19:32 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	merge_arg(char **dest_arg, t_process *process)
 		i++;
 		option = option->next;
 	}
-	while(arg)
+	while (arg)
 	{
 		dest_arg[i] = arg->content;
 		i++;

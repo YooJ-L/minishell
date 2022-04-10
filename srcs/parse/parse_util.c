@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:56:12 by dim               #+#    #+#             */
-/*   Updated: 2022/04/08 17:28:14 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 13:29:58 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	perror_in_parsing(char *line)
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
-int		check_quote(const char chr, int *status)
+int	check_quote(const char chr, int *status)
 {
 	if (chr == '\'' && *status == NO_Q)
 	{

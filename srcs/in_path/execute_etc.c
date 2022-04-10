@@ -6,14 +6,14 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:15:54 by dim               #+#    #+#             */
-/*   Updated: 2022/04/08 15:21:32 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 13:18:14 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
 
-char 	*find_inst_in_path(char *path, char *instruction, \
-							size_t begin, size_t end)
+char	*find_inst_in_path(char *path, char *instruction, \
+		size_t begin, size_t end)
 {
 	char	*route;
 	char	*ret;
@@ -33,7 +33,6 @@ char 	*find_inst_in_path(char *path, char *instruction, \
 		perror_and_exit("cannot allocate memory\n", ENOMEM);
 	return (ret);
 }
-
 
 void	execute_with_path(char *path, t_process *process, \
 							char **arg, char **env)
@@ -58,10 +57,10 @@ void	execute_with_path(char *path, t_process *process, \
 
 void	execute_etc_instruction(t_info *info, t_process *process)
 {
-	char *instruction;
-	char *path;
-	char **arg;
-	char **env;
+	char	*instruction;
+	char	*path;
+	char	**arg;
+	char	**env;
 
 	instruction = process->instruction;
 	arg = get_arg(process);

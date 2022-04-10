@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:51:38 by dim               #+#    #+#             */
-/*   Updated: 2022/04/08 16:46:52 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 13:27:49 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	add_env_value(t_info *info, char *key, \
 		add_char_to_str(str, '\"');
 }
 
-char 	*replace_env_to_value(t_info *info, const char *line, int len)
+char	*replace_env_to_value(t_info *info, const char *line, int len)
 {
 	int		i;
 	int		status;

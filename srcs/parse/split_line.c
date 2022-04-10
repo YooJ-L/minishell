@@ -6,13 +6,13 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:53 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 13:24:30 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 13:28:41 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
 
-int		get_pipe_cnt(const char *line)
+int	get_pipe_cnt(const char *line)
 {
 	int	i;
 	int	status;
@@ -36,7 +36,7 @@ int		get_pipe_cnt(const char *line)
 	return (cnt);
 }
 
-int			strlen_each_process(const char *line)
+int	strlen_each_process(const char *line)
 {
 	int		cnt;
 	int		status;
@@ -60,7 +60,7 @@ t_process	*parse_split_error(int ret, t_info *info)
 	return (NULL);
 }
 
-void		init_process(t_process *process, int process_cnt)
+void	init_process(t_process *process, int process_cnt)
 {
 	int	i;
 

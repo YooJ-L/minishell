@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 04:08:32 by dim               #+#    #+#             */
-/*   Updated: 2022/04/06 21:14:30 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 13:22:56 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	remove_outside_quotes_in_str(char **str)
 	*str = new_str;
 }
 
-int		classify_token(t_process *process, const char *token, int tag)
+int	classify_token(t_process *process, const char *token, int tag)
 {
 	int		i;
 
@@ -65,7 +65,7 @@ int		classify_token(t_process *process, const char *token, int tag)
 	return (ARG);
 }
 
-int		check_token(t_process *process, char **new_str, char **token, int *tag)
+int	check_token(t_process *process, char **new_str, char **token, int *tag)
 {
 	*tag = classify_token(process, *token, *tag);
 	if (*tag == 258)
