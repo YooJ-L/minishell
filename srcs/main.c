@@ -6,49 +6,12 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:21 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/09 15:07:59 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:09:38 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structure.h"
 #include "../includes/parsing.h"
-
-void	set_inputfile_and_heredoc(t_process *process, t_redirection *redirect)
-{
-	process->input_file = redirect->filename;
-	if (redirect->symbol == DOUBLE_IN)
-	{
-		process->input_file = NULL;
-		process->heredoc = true;
-	}
-}
-int		check_redirect(t_info *info, t_process *process)
-{
-	int				i;
-	t_redirection	*cur;
-	char			*last_filename;
-
-	if (process == NULL)
-		return (1);
-	i = 0;
-	while (i < info->process_cnt)
-	{
-		cur = process[i].redirect;
-		while (cur != NULL)
-		{
-			if (cur->filename == NULL)
-			{
-				perror_in_parsing("newline");
-				return (1);
-			}
-			else if (cur->symbol == SINGLE_IN || cur->symbol == DOUBLE_IN)
-				set_inputfile_and_heredoc(&process[i], cur);
-			cur = cur->next;
-		}
-		i++;
-	}
-	return (0);
-}
 
 void	loop_minishell(t_info *info, t_process *process)
 {
@@ -66,7 +29,7 @@ void	loop_minishell(t_info *info, t_process *process)
 		if (!run_heredoc(info, process) || check_redirect(info, process))
 		{
 			free_all(info, process, input);
-			system("leaks minishell");
+			// system("leaks minishell");
 			continue ;
 		}
 		echoctl_on();

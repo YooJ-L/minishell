@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 16:07:02 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:09:28 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,9 @@ void			add_char_to_str(char **str, char character);
 //inpath
 char			**get_arg(t_process *process);
 char			**get_env(t_env *env);
+
+//check_redirect.c
+int		check_redirect(t_info *info, t_process *process);
 
 //input.c
 void			set_input_fd(t_process *process, int input_fd);

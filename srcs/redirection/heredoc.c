@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/09 15:04:43 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/09 18:43:20 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	exec_heredoc(const char *eof_str, int output_fd)
 	add_char_to_str(&save, '\n');
 	ft_putstr_fd(save, output_fd);
 	free(save);
-	system("leaks minishell");
+	// system("leaks minishell");
 	exit(0);
 }
 
