@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 17:10:23 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:58:29 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	execve_command(t_info *info, t_process *cur_process)
 	return (0);
 }
 
-void	set_child_process(t_process *process, int pipe_fd[2], int input_fd, bool is_last)
+void	set_child_process(t_process *process, int pipe_fd[2], \
+		int input_fd, bool is_last)
 {
 	signal(SIGQUIT, SIG_DFL); //sig_dfl: 기본 행동 하게 한다.(원래 상태로)
 	set_input_fd(process, input_fd);
@@ -59,7 +60,8 @@ void	fork_processes(t_info *info, t_process *process)
 		//	error();
 		if (process[i].pid == 0)
 		{
-			set_child_process(&process[i], pipe_fd, input_fd, i == info->process_cnt - 1);
+			set_child_process(&process[i], pipe_fd, \
+					input_fd, i == info->process_cnt - 1);
 			execve_command(info, &process[i]);
 		}
 		else if (process[i].pid > 0)
