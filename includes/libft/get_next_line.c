@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 12:08:56 by deulee            #+#    #+#             */
-/*   Updated: 2022/04/07 02:29:53 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 13:48:39 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,4 +132,3 @@ int	make_backup(char *backupline, t_buff *list, unsigned int nsize)
 	list->backup = backup;
 	return (1);
 }
-

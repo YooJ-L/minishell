@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 13:05:05 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 13:47:15 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@
 # define SINGLE_OUT 3
 # define DOUBLE_OUT 4
 
-typedef struct	s_redirection
+typedef struct s_redirection
 {
 	int						symbol;
 	char					*filename;
 	struct s_redirection	*next;
 }				t_redirection;
 
-typedef struct	s_process
+typedef struct s_process
 {
 	bool			heredoc;
 	pid_t			pid;
@@ -51,14 +51,14 @@ typedef struct	s_process
 	char			*heredoc_str;
 }				t_process;
 
-typedef struct	s_env
+typedef struct s_env
 {
 	char			*key;
 	char			*value;
 	struct s_env	*next;
 }				t_env;
 
-typedef struct	s_info
+typedef struct s_info
 {
 	unsigned char	last_exit_status;
 	t_env			*env;
@@ -108,7 +108,7 @@ char			**get_arg(t_process *process);
 char			**get_env(t_env *env);
 
 //check_redirect.c
-int		check_redirect(t_info *info, t_process *process);
+int				check_redirect(t_info *info, t_process *process);
 
 //input.c
 void			set_input_fd(t_process *process, int input_fd);

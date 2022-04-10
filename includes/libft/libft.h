@@ -6,7 +6,7 @@
 /*   By: deulee <deulee@student.42.kr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 15:40:27 by deulee            #+#    #+#             */
-/*   Updated: 2021/09/25 15:14:38 by deulee           ###   ########.fr       */
+/*   Updated: 2022/04/10 13:49:08 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ t_list			*ft_lstmap(t_list *lst,
 double			ft_atof(const char *num);
 double			ft_deg2rad(double deg);
 long long		ft_atoll(const char *str);
-unsigned char		ft_atoc(const char *str);
-
+unsigned char	ft_atoc(const char *str);
 void			ft_putstr_fd(char *s, int fd);
 
 #endif
