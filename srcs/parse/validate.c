@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:20:59 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 15:50:37 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 16:46:50 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,13 @@ int	validate_input(t_info *info, char *input)
 		return (0);
 	}
 	return (1);
+}
+
+void	validate_input_heredoc(char **input)
+{
+	if (*input && *input[0] == '\0')
+	{
+		free(*input);
+		*input = ft_strdup("\n");
+	}
 }

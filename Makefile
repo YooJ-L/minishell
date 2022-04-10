@@ -6,7 +6,7 @@
 #    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/10 15:01:11 by yoojlee          ###   ########.fr        #
+#    Updated: 2022/04/10 16:09:31 by yoojlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,6 @@ SRCS      = main.c\
            exit_process.c \
            ft_split_in_two.c \
            get_env_value.c \
-           is_executable.c \
            lst_func.c \
            lst_env_func.c \
            free.c \

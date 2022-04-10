@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 13:47:15 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 16:47:39 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ void			echoctl_off(void);
 
 //validate.c
 int				validate_input(t_info *info, char *input);
+void			validate_input_heredoc(char **input);
 
 //free.c
 void			free_all(t_info *info, t_process *process, char *input);
