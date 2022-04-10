@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 13:08:40 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:17:34 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,17 @@ void	set_child_process(t_process *process, int pipe_fd[2], \
 	set_output_fd(process, pipe_fd, is_last);
 }
 
+void	parent_process(t_info *info, int *input_fd, int pipe_fd[2], int i)
+{
+	if (input_fd != 0)
+		close(*input_fd);
+	if (i < info->process_cnt - 1)
+	{
+		close(pipe_fd[1]);
+		*input_fd = pipe_fd[0];
+	}
+}
+
 void	fork_processes(t_info *info, t_process *process)
 {
 	int	i;
@@ -56,8 +67,8 @@ void	fork_processes(t_info *info, t_process *process)
 		if (i < info->process_cnt - 1)
 			pipe(pipe_fd);
 		(&process[i])->pid = fork();
-		// if (process[i].pid < 0)
-		//	error();
+		if (process[i].pid < 0)
+			perror_and_exit("fork failed: Resource temporarily unavailable", ENOMEM);
 		if (process[i].pid == 0)
 		{
 			set_child_process(&process[i], pipe_fd, \
@@ -65,15 +76,7 @@ void	fork_processes(t_info *info, t_process *process)
 			execve_command(info, &process[i]);
 		}
 		else if (process[i].pid > 0)
-		{
-			if (input_fd != 0)
-				close(input_fd);
-			if (i < info->process_cnt - 1)
-			{
-				close(pipe_fd[1]);
-				input_fd = pipe_fd[0];
-			}
-		}
+			parent_process(info, &input_fd, pipe_fd, i);
 	}
 }
 /*

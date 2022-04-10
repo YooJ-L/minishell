@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_env_func.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:13:41 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 13:38:35 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:03:52 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ t_env	*env_node_exists(t_env *env, char *new_key)
 void	modify_env_node(t_env *env, char *new_key, char *new_value)
 {
 	t_env	*node;
-	t_env	*new;
-	char	**arr;
 
 	node = env_node_exists(env, new_key);
 	if (node == NULL)

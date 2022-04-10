@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:38:17 by dim               #+#    #+#             */
-/*   Updated: 2022/04/10 12:16:55 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:02:25 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ int	execute_echo(t_info *info, t_process *process)
 {
 	// 고려해야할것: $?, $, '$환경변수'는 환경변수로x, ;, | 
 	int		flag;
-	char	*env;
 
 	//option에 저장된게 -n 플래그 맞나 확인
 	flag = 0;

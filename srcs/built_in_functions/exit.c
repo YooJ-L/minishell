@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:14:06 by dim               #+#    #+#             */
-/*   Updated: 2022/04/10 12:18:57 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 14:27:19 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	execute_exit(t_info *info, t_process *process)
 		free_process(process);
 		free_envp(info);
 		// system("leaks minishell");
-		exit(1);
+		exit(255);
 	}
 	exit_status = ft_atoi(arg);
 	if (process->arg->next)

@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:21 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 12:09:38 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:02:01 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	set_shlvl(t_info *info)
 	modify_env_node(info->env, key, shlvl_ch);
 }
 
-int	init(t_info *info, t_process *process, char **envp)
+int	init(t_info *info, char **envp)
 {
 	info->last_exit_status = 0;
 	info->env = NULL;
@@ -78,7 +78,7 @@ int	main(int argc, char *argv[], char *envp[])
 	(void)argc;
 	(void)argv;
 	process = NULL;
-	if (!init(&info, process, envp))
+	if (!init(&info, envp))
 	{
 		free_envp(&info);
 		return (-1);

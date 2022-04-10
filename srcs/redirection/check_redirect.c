@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 12:08:31 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 12:59:19 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:02:41 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	check_redirect(t_info *info, t_process *process)
 {
 	int				i;
 	t_redirection	*cur;
-	char			*last_filename;
 
 	if (process == NULL)
 		return (1);

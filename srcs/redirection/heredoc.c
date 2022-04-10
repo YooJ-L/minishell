@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 13:08:39 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:03:26 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ static void	exec_heredoc(const char *eof_str, int output_fd)
 	while (1)
 	{
 		input = readline("> ");
+		if (input == NULL)
+		{
+			printf("\n");
+			break ;
+		}
 		if (input && input[0] == '\0')
 			continue ;
 		if (!ft_strncmp(input, eof_str, ft_strlen(eof_str) + 1))
@@ -81,7 +86,7 @@ static void	read_heredoc_str(t_process *process, int input_fd)
 	free(save);
 }
 
-int	fork_heredoc_process(t_info *info, t_process *process, char *eof)
+int	fork_heredoc_process(t_process *process, char *eof)
 {
 	pid_t	pid;
 	int		exit_status;
@@ -105,11 +110,12 @@ int	fork_heredoc_process(t_info *info, t_process *process, char *eof)
 	waitpid(pid, &exit_status, 0);
 	read_heredoc_str(process, pipe_fd[0]);
 	close(pipe_fd[0]);
+	// echoctl_on();
 	// set_parent_process(info); //왜 여기 들어가야함?
 	return (exit_status);
 }
 
-int	get_heredoc_input(t_info *info, t_process *process)
+int	get_heredoc_input(t_process *process)
 {
 	char			*eof_str;
 	int				exit_status;
@@ -126,7 +132,7 @@ int	get_heredoc_input(t_info *info, t_process *process)
 				return (0);
 			}
 			eof_str = redirect->filename;
-			exit_status = fork_heredoc_process(info, process, eof_str);
+			exit_status = fork_heredoc_process(process, eof_str);
 			if (exit_status != 0)
 			{
 				sig_exit_handler(exit_status);
@@ -148,7 +154,7 @@ int	run_heredoc(t_info *info, t_process *process)
 		return (0);
 	while (i < info->process_cnt)
 	{
-		if (!&process[i] || !get_heredoc_input(info, &process[i])) //eof만나기 전까지의 내용 저장하기
+		if (!&process[i] || !get_heredoc_input(&process[i])) //eof만나기 전까지의 내용 저장하기
 			return (0);
 		i++;
 	}

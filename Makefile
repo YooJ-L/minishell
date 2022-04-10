@@ -6,14 +6,14 @@
 #    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/10 13:05:54 by yoojlee          ###   ########.fr        #
+#    Updated: 2022/04/10 15:01:11 by yoojlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME      = minishell
 
 CC         = gcc
-CFLAGS      = $(INCFLAGS) #$(GFLAGS) #$(WFLAGS) 
+CFLAGS      = $(INCFLAGS) $(GFLAGS) $(WFLAGS) 
 WFLAGS      = -Wall -Wextra -Werror
 GFLAGS      = -g -fsanitize=address
 INCFLAGS   = -I$(INCDIR)
