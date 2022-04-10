@@ -3,15 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:21 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 19:00:13 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 19:47:34 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/structure.h"
 #include "../includes/parsing.h"
+
+static void	check_input_file_exists(t_info *info, t_process *process)
+{
+	t_redirection	*temp;
+	int				i;
+
+	i = -1;
+	while (++i < info->process_cnt)
+	{
+		temp = process[i].redirect;
+		while (temp)
+		{
+			if (temp->symbol == SINGLE_IN)
+			{
+				check_file_exists_exit(temp->filename);
+			}
+			temp = temp->next;
+		}
+	}	
+}
 
 void	loop_minishell(t_info *info, t_process *process)
 {
@@ -30,6 +50,7 @@ void	loop_minishell(t_info *info, t_process *process)
 			free_all(info, process, input);
 			continue ;
 		}
+		check_input_file_exists(info, process);
 		echoctl_on();
 		execute(info, process);
 		free_all(info, process, input);

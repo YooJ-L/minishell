@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:09 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 19:06:34 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 19:47:55 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,6 @@ void	connect_heredoc(char *heredoc_str)
 
 void	set_input_fd(t_process *process, int input_fd)
 {
-	t_redirection	*temp;
-
-	temp = process->redirect;
-	while (temp)
-	{
-		if (temp->symbol == SINGLE_IN)
-			check_file_exists_exit(process->redirect->filename);
-		temp = temp->next;
-	}
 	if (process->input_file == NULL && process->heredoc)
 	{
 		connect_heredoc(process->heredoc_str);
