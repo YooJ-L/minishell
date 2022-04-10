@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: dim <dim@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/10 16:09:31 by yoojlee          ###   ########.fr        #
+#    Updated: 2022/04/10 17:09:23 by dim              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ SUBDIR      = built_in_functions \
             redirection \
             utils \
 
-RL_LIB_DIR   = /opt/homebrew/opt/readline/lib
-RL_INC_DIR   = /opt/homebrew/opt/readline/include
+RL_LIB_DIR   = /Users/${USER}/.brew/opt/readline/lib
+RL_INC_DIR   = /Users/${USER}/.brew/opt/readline/include
 
 vpath %.c   = $(SRCDIR)\
            $(addprefix $(SRCDIR)/, $(SUBDIR))

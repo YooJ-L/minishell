@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:09 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 16:03:26 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 17:30:57 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
 
-static void	check_file_exists(char *file_name)
+void	check_file_exists_exit(char *file_name)
 {
 	int	fd;
 
@@ -58,6 +58,14 @@ void	connect_heredoc(char *heredoc_str)
 
 void	set_input_fd(t_process *process, int input_fd)
 {
+	t_redirection	*temp;
+
+	temp = process->redirect;
+	while (temp)
+	{
+		check_file_exists_exit(process->redirect->filename);
+		temp = temp->next;
+	}
 	if (process->input_file == NULL && process->heredoc)
 	{
 		connect_heredoc(process->heredoc_str);
@@ -65,7 +73,7 @@ void	set_input_fd(t_process *process, int input_fd)
 	}
 	if (process->input_file != NULL)
 	{
-		check_file_exists(process->input_file);
+		check_file_exists_exit(process->input_file);
 		input_fd = open(process->input_file, O_RDONLY);
 	}
 	if (input_fd != 0)

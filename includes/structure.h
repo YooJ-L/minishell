@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 17:05:50 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 17:31:30 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ t_env			*env_node_exists(t_env *env, char *new_key);
 void			modify_env_node(t_env *env, char *new_key, char *new_value);
 void			ft_env_lstclear(t_env **lst);
 void			ft_redir_lstclear(t_redirection **lst);
-// t_redirection 	*redir_lst_new(char **arr);
 t_redirection	*redir_lstlast(t_redirection *lst);
 void			redir_lstadd_back(t_redirection **lst, t_redirection *new);
 
@@ -111,6 +110,7 @@ char			**get_env(t_env *env);
 int				check_redirect(t_info *info, t_process *process);
 
 //input.c
+void			check_file_exists_exit(char *file_name);
 void			set_input_fd(t_process *process, int input_fd);
 
 //output.c
@@ -129,14 +129,12 @@ int				execve_command(t_info *info, t_process *cur_process);
 void			execute(t_info *info, t_process *process);
 
 //signal.c
-void			sig_exit_handler(int sig); //자식이 죽었을 때
+void			sig_exit_handler(int sig);
 void			sigint_handler(void);
 void			set_parent_process(t_info *info);
 
 //terminal.c
 void			change_input_mode(void);
-// void 			reset_input_mode(void);
-// void 			set_input_mode(void);
 void			echoctl_on(void);
 void			echoctl_off(void);
 
