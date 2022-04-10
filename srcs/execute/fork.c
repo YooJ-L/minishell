@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:17:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 15:48:56 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 16:01:22 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	fork_processes(t_info *info, t_process *process)
 			pipe(pipe_fd);
 		(&process[i])->pid = fork();
 		if (process[i].pid < 0)
-			perror_and_exit("fork failed: Resource temporarily unavailable", ENOMEM);
+			perror_and_exit(\
+					"fork failed: Resource temporarily unavailable", ENOMEM);
 		if (process[i].pid == 0)
 		{
 			set_child_process(&process[i], pipe_fd, \
