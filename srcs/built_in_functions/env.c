@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:00:34 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 12:13:26 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 18:08:52 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	print_env(t_env *env)
 		if (ft_strncmp(temp->key, "_", 2) == 0)
 		{
 			address = temp->value;
-			printf("address:%s\n", address);
 			temp = temp->next;
 			continue ;
 		}

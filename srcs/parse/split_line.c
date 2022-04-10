@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:53 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 16:56:38 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 18:07:10 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ int	strlen_each_process(const char *line)
 	return (cnt);
 }
 
-t_process	*parse_split_error(int ret, t_info *info)
+t_process	*parse_split_error(int ret, t_process *process, t_info *info)
 {
 	if (ret != 258 && info->process_cnt != 1)
 		perror_in_parsing("|");
+	if (ret == 1 && info->process_cnt == 1)
+		free (process);
 	return (NULL);
 }
 
@@ -98,7 +100,7 @@ t_process	*split_line(const char *line, t_info *info)
 		len = strlen_each_process(line);
 		ret = parse_process(&process[i], info, line, len);
 		if (ret)
-			return (parse_split_error(ret, info));
+			return (parse_split_error(ret, process, info));
 		line += len + 1;
 		i++;
 	}

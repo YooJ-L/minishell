@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 16:04:36 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 17:31:30 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 17:58:50 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,6 @@ typedef struct s_info
 	unsigned char	last_exit_status;
 	t_env			*env;
 	int				process_cnt;
-	struct termios	org_term;
-	struct termios	new_term;
-
 }				t_info;
 
 int				execute_echo(t_info *info, t_process *process);
