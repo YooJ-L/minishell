@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 15:39:49 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 12:14:34 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:48:07 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	execute_pwd(t_info *info, t_process *process)
 {
 	char	buf[PATH_MAX];
 
-	getcwd(buf, PATH_MAX); //작업중인 디렉토리의 이름을 buf에 담아서 가져오는 함수
+	getcwd(buf, PATH_MAX);
 	if (!process->option)
 	{
 		ft_putstr_fd(buf, STDOUT_FILENO);

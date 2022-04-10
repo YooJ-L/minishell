@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 02:55:31 by dim               #+#    #+#             */
-/*   Updated: 2022/04/10 13:24:33 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:49:47 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,12 @@ char	*redirection_token(const char *str)
 
 char	*other_token(const char *str)
 {
-	// 결론은 space 단위로 토큰을 내는것
 	int		cnt;
 	int		status;
 	char	*ret;
 
 	cnt = 0;
 	status = 0;
-	// space나 빈문자열, 리다이렉션이 아닌 문자이거나 quote 안에 있는 빈문자열이 아닌 문자들을 체크하고 카운트함
 	while ((str[cnt] != ' ' && str[cnt] != '\0' \
 			&& str[cnt] != '<' && str[cnt] != '>') \
 			|| (status != NO_Q && str[cnt] != '\0'))
@@ -59,13 +57,8 @@ char	*other_token(const char *str)
 		check_quote(str[cnt], &status);
 		cnt++;
 	}
-	// quote가 짝이 안맞았는데 빈문자열을 만나는 조건에 걸리는 경우 다시 세줌
-	// 위 while문에선 앞에 quote가 있으면 띄어쓰기도 다 저장하지만
-	// quote가 짝이 안맞는 경우엔 띄어쓰기나 빈문자열 전까지만 밑에서 다시 카운트해줌
 	if (status != NO_Q)
 	{
-		// cnt는 1로 초기화 후에 다시 1번 문자열부터 검사
-		// ?????
 		cnt = 0;
 		while (str[cnt] != ' ' && str[cnt] != '\0')
 			cnt++;
@@ -87,7 +80,6 @@ char	*get_one_token(const char *str)
 
 int	parse_process(t_process *process, t_info *info, const char *line, int len)
 {
-	// 파이프단위로 프로세스 파싱
 	int		i;
 	int		tag;
 	char	*new_line;

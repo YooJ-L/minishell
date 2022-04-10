@@ -6,26 +6,10 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 15:03:26 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:51:31 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-/*
-cat << doc1 | cat << doc2 | cat << doc3
-이런식으로 heredoc이 여러번 들어오면
-순서대로 들어와야 끝남.
-이 결과는 doc2 들어오고, 그 뒤에 입력한 것만 출력. 앞에것들은 결과가 파이프로 넘어감.
-*/
-
-
-//여기서 굳이 파이프를 써야 하는 이유가 따로 있나..?
-//어차피 input 내용들 다 process->heredoc_str에 저장할거면 파이프fd에
-//쓸 필요 없을 것 같은데
-//=>fork를 하면 무조건 파이프fd에 무조건 써야 함. 자식프로세스 끝나면 다 지워지니까.
-//근데 여기서 fork안해줘도 될 것 같은데?
-
-// #include "../../includes/structure.h"
 #include "../../includes/parsing.h"
 
 static void	exec_heredoc(const char *eof_str, int output_fd)
@@ -105,13 +89,11 @@ int	fork_heredoc_process(t_process *process, char *eof)
 		close(pipe_fd[0]);
 		exec_heredoc(eof, pipe_fd[1]);
 	}
-	signal(SIGINT, SIG_IGN); //자식프로세스에서 바꿔준건데 왜 굳이 써야함?
+	signal(SIGINT, SIG_IGN);
 	close(pipe_fd[1]);
 	waitpid(pid, &exit_status, 0);
 	read_heredoc_str(process, pipe_fd[0]);
 	close(pipe_fd[0]);
-	// echoctl_on();
-	// set_parent_process(info); //왜 여기 들어가야함?
 	return (exit_status);
 }
 
@@ -144,7 +126,6 @@ int	get_heredoc_input(t_process *process)
 	return (1);
 }
 
-//eof str 들어올 때까지 입력 계속 받고 그 입력 내용 저장해서 파이프로 보내는 함수
 int	run_heredoc(t_info *info, t_process *process)
 {
 	int	i;
@@ -154,7 +135,7 @@ int	run_heredoc(t_info *info, t_process *process)
 		return (0);
 	while (i < info->process_cnt)
 	{
-		if (!&process[i] || !get_heredoc_input(&process[i])) //eof만나기 전까지의 내용 저장하기
+		if (!&process[i] || !get_heredoc_input(&process[i]))
 			return (0);
 		i++;
 	}

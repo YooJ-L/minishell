@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:21 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 15:02:01 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:57:17 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	loop_minishell(t_info *info, t_process *process)
 			continue ;
 		add_history(input);
 		process = split_line(input, info);
-		//heredoc먼저 처리(입력값 받아옴)
 		if (!run_heredoc(info, process) || check_redirect(info, process))
 		{
 			free_all(info, process, input);

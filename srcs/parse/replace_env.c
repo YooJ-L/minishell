@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   replace_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:51:38 by dim               #+#    #+#             */
-/*   Updated: 2022/04/10 13:27:49 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:50:12 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parsing.h" //add_char_to_str함수 쓰려고
+#include "../../includes/parsing.h"
 
 char	*find_key_in_str(const char *str)
 {
@@ -73,7 +73,6 @@ void	add_env_value(t_info *info, char *key, \
 	value = get_env_value(info->env, key);
 	if (value == NULL)
 		return ;
-	// quote가 있는 경우는 어떤경우..?
 	if (status == NO_Q)
 		add_char_to_str(str, '\"');
 	while (*value)
@@ -98,10 +97,8 @@ char	*replace_env_to_value(t_info *info, const char *line, int len)
 	while (i < len)
 	{
 		check_quote(line[i], &status);
-		// 현재 문자가 $가 아닌 문자이거나 ' 안에 있는 $문자인 경우 문자열에 추가
 		if (line[i] != '$' || status == SINGLE_Q)
 			add_char_to_str(&ret, line[i++]);//i++됨
-		// $인데 뒤에 '나 "가 옴($빼고 quote 안에 있는 문자 출력)
 		else if (line[i + 1] == '\'' || line[i + 1] == '\"')
 			i++;
 		else

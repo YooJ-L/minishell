@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lst_func.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:28:00 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 13:40:37 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:56:24 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
-
-// t_redirection *redir_lst_new(char **arr)
-// {
-// 	t_redirection	*new;
-
-// 	new = (t_redirection *)malloc(sizeof(t_redirection));
-// 	if (new == NULL)
-// 		perror_and_exit("cannot allocate memory\n", ENOMEM);
-// 	new->symbol = arr[0];
-// 	new->filename = arr[1];
-// 	new->next = NULL;
-// 	return (new);
-// }
 
 t_redirection	*redir_lstlast(t_redirection *lst)
 {

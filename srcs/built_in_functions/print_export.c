@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 00:45:06 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 12:19:40 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:48:03 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_env	*sort_env(t_env *env)
 			insert_new_node(sorted, new);
 		temp = temp->next;
 	}
-	ret = sorted->next; //다 sort하고 나서도 맨 앞에꺼가 비어있나?
+	ret = sorted->next;
 	free(sorted);
 	return (ret);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:14 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 13:13:13 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:53:35 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	set_file(t_redirection *redirect)
 	{
 		if (redirect->symbol == DOUBLE_OUT)
 		{
-			fd = open(redirect->filename, O_CREAT | O_EXCL, 0644); //없으면 만들고, 있으면 열지 않고
+			fd = open(redirect->filename, O_CREAT | O_EXCL, 0644);
 			close(fd);
 		}
 		else if (redirect->symbol == SINGLE_OUT)
 		{
-			fd = open(redirect->filename, O_CREAT | O_TRUNC, 0644); //없으면 만들고, 있으면 내용 지우고
+			fd = open(redirect->filename, O_CREAT | O_TRUNC, 0644);
 			close(fd);
 		}
 		redirect = redirect->next;

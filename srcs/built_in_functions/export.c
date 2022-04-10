@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:01:27 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 12:14:03 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:47:16 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	env_is_valid(char *target)
 	return (1);
 }
 
-//export 인자로 받아온 문자열(line)에서 key 와 value를 뽑아옴.
 void	split_key_value(char *line, char **new_key, char **new_value)
 {
 	int	len;
@@ -52,7 +51,6 @@ void	split_key_value(char *line, char **new_key, char **new_value)
 	}
 }
 
-//env리스트에 새로운 노드(키와 밸류) 추가
 void	add_new_env(t_env *env, t_list *arg)
 {
 	t_list	*temp;

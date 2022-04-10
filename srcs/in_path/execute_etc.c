@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:15:54 by dim               #+#    #+#             */
-/*   Updated: 2022/04/10 13:18:14 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:49:12 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ char	*find_inst_in_path(char *path, char *instruction, \
 	route = (char *)malloc(sizeof(char) * (size + 2));
 	if (route == NULL)
 		perror_and_exit("cannot allocate memory\n", ENOMEM);
-	// 원래꺼보다 size 하나 작게 복사
 	ft_strlcpy(route, &path[begin], size + 1);
 	route[size] = '/';
 	route[size + 1] = '\0';
@@ -65,10 +64,8 @@ void	execute_etc_instruction(t_info *info, t_process *process)
 	instruction = process->instruction;
 	arg = get_arg(process);
 	env = get_env(info->env);
-	// 실행파일일 경우
 	if (process->instruction[0] == '.' || process->instruction[0] == '/')
 		execve(instruction, arg, env);
-	// "PATH" env가 있을 경우
 	else if (get_env_value(info->env, "PATH"))
 	{
 		path = get_env_value(info->env, "PATH");
@@ -77,7 +74,7 @@ void	execute_etc_instruction(t_info *info, t_process *process)
 		ft_putstr_fd(process->instruction, STDERR_FILENO);
 		perror_and_exit(": command not found", 127);
 	}
-	else // env 못찾을 경우 일단 실행..?
+	else
 		execve(instruction, arg, env);
 	ft_putstr_fd("bash: ", STDERR_FILENO);
 	ft_putstr_fd(process->instruction, STDERR_FILENO);

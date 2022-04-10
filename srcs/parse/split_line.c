@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:53 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 13:28:41 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:50:32 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	init_process(t_process *process, int process_cnt)
 
 t_process	*split_line(const char *line, t_info *info)
 {
-	// 라인을 파이프마다 나누어서 프로세스 개수만큼 리스트로 할당한 후 각 프로세스 정보 채워서 반환
 	t_process	*process;
 	int			i;
 	int			len;
@@ -95,10 +94,8 @@ t_process	*split_line(const char *line, t_info *info)
 	if (process == NULL)
 		perror_and_exit("cannot allocate memory\n", ENOMEM);
 	init_process(process, info->process_cnt);
-	//문제있을경우 cnt 확인해보기!
 	while (i < info->process_cnt)
 	{
-		// 파이프 단위로 나눈 후 파싱
 		len = strlen_each_process(line);
 		ret = parse_process(&process[i], info, line, len);
 		if (ret)

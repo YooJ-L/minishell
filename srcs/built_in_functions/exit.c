@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:14:06 by dim               #+#    #+#             */
-/*   Updated: 2022/04/10 14:27:19 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:47:05 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	check_arg(char *arg)
 {
-	//숫자인지, 롱 범위 내인지 확인
 	int	i;
 
 	i = 0;
@@ -29,8 +28,6 @@ int	check_arg(char *arg)
 
 char	*get_arg_in_exit(t_info *info, t_process *process)
 {
-	//option이 있으면 optin->content, 없으면 arg->content 리턴
-	//인자로 들어온게 아무것도 없으면 종료
 	if (process->option)
 		return (process->option->content);
 	else if (process->arg)

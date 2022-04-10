@@ -6,22 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:38:17 by dim               #+#    #+#             */
-/*   Updated: 2022/04/10 15:02:25 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:46:45 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
-
-// void	print_env(char *env)
-// {
-// 	//env 찾아서 프린트
-// }
-
-// char 	*verify_env(t_list *arg)
-// {
-// 	// $ 있으면 환경변수 반환
-// 	// "" 안의 환경변수는 o, ''안의 환경변수는 x
-// }
 
 void	print_echo(t_list *list, int flag)
 {
@@ -57,11 +46,6 @@ bool	check_opt(char *str)
 
 int	verify_and_print_opt(t_list *opt_list)
 {
-	//하나의 '-'와 하나 이상의 'n'의 조합이면 플래그 인정, -n -n -n 인정
-	//---n | -nm 은 안됨
-	// [ret 값] (arg 출력 전 스페이스 삽입때문에 필요)
-	// 0: 옵션x 출력x, 1: 옵션o 출력x
-	// 2: 옵션x출력o   3: 옵션o 출력o
 	t_list	*temp;
 	int		ret;
 
@@ -90,18 +74,11 @@ int	verify_and_print_opt(t_list *opt_list)
 
 int	execute_echo(t_info *info, t_process *process)
 {
-	// 고려해야할것: $?, $, '$환경변수'는 환경변수로x, ;, | 
 	int		flag;
 
-	//option에 저장된게 -n 플래그 맞나 확인
 	flag = 0;
 	if (process->option != NULL)
 		flag = verify_and_print_opt(process->option);
-	// env를 파싱에서 가져오면 env확인부분 없애고 여기서 확인하는거면 살리기
-	// env = verify_env(process->arg);
-	// if (env != NULL)
-	// 	print_env(env);
-	// else
 	print_echo(process->arg, flag);
 	if (flag == 0 || flag == 2)
 		ft_putstr_fd("\n", STDOUT_FILENO);

@@ -6,13 +6,13 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:09 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 13:11:47 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:53:23 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
 
-static void	check_file_exists(char *file_name) //ft_isexecutable함수로도 되는지 해보기
+static void	check_file_exists(char *file_name)
 {
 	int	fd;
 
@@ -31,8 +31,7 @@ static void	check_file_exists(char *file_name) //ft_isexecutable함수로도 되
 }
 
 void	connect_heredoc(char *heredoc_str)
-{//파이프 하나 더 만들어주고, fork한 후 heredoc_str [1]에 쓰고, 손자 죽음.
-//자식프로세스에서 STDIN을 [0]으로 dup해줌.
+{
 	pid_t	pid;
 	int		pipe_fd[2];
 
@@ -44,7 +43,7 @@ void	connect_heredoc(char *heredoc_str)
 	{
 		close(pipe_fd[0]);
 		ft_putstr_fd(heredoc_str, pipe_fd[1]);
-		close(pipe_fd[1]); //자식에서도 닫고 부모에서도 닫고
+		close(pipe_fd[1]);
 		// system("leaks minishell");
 		exit(0);
 	}
@@ -59,13 +58,11 @@ void	connect_heredoc(char *heredoc_str)
 
 void	set_input_fd(t_process *process, int input_fd)
 {
-	// printf("set_input_fd> heredoc_str:%s\n", process->heredoc_str);
 	if (process->input_file == NULL && process->heredoc)
 	{
 		connect_heredoc(process->heredoc_str);
 		return ;
 	}
-	// if (process->input_file != NULL && !process->heredoc)
 	if (process->input_file != NULL)
 	{
 		check_file_exists(process->input_file);

@@ -6,13 +6,12 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 16:07:35 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 13:44:27 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:56:29 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/structure.h"
 
-//heredoc.c 에서 \n 붙여줄 때 사용
 void	add_char_to_str(char **str, char character)
 {
 	int		str_size;

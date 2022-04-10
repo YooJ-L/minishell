@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:30:45 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 14:27:04 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:48:43 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	execute(t_info *info, t_process *process)
 		echoctl_on();
 		fork_processes(info, process);
 		signal(SIGINT, SIG_IGN);
-		//첫번째 명령어와 마지막 명령어를 실행하는 자식들은 무조건 끝날 때까지 기다림.
 		waitpid(process[info->process_cnt - 1].pid, &last_exit_status, 0);
 		waitpid(process[0].pid, &first_exit_status, 0);
 		if (info->process_cnt == 1)

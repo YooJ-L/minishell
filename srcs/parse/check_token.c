@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 04:08:32 by dim               #+#    #+#             */
-/*   Updated: 2022/04/10 13:22:56 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 15:49:20 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	remove_outside_quotes_in_str(char **str)
 {
-	// quote 제거하고 문자들만 저장
 	int		cnt;
 	int		status;
 	char	*new_str;
