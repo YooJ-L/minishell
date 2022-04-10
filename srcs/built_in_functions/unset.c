@@ -6,7 +6,7 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 21:27:30 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/08 16:31:20 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:27:45 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,13 @@
 // 	return (exit_process(info, process, 0));
 // }
 
+static void	free_target(t_env *target)
+{
+	free(target->key);
+	free(target->value);
+	free(target);
+}
+
 void	delete_env(t_env **env, char *str)
 {
 	t_env	*tmp;
@@ -129,9 +136,7 @@ void	delete_env(t_env **env, char *str)
 		{
 			target = tmp->next;
 			tmp->next = target->next;
-			free(target->key);
-			free(target->value);
-			free(target);
+			free_target(target);
 			return ;
 		}
 		tmp = tmp->next;
@@ -161,5 +166,6 @@ int	execute_unset(t_info *info, t_process *process)
 		}
 		arg = arg->next;
 	}
+	system("leaks minishell");
 	return (exit_process(info, process, 0));
 }

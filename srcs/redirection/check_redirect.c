@@ -6,11 +6,11 @@
 /*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 12:08:31 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 12:08:52 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:26:38 by yoojlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/structure.h"
+#include "../../includes/parsing.h"
 
 void	set_inputfile_and_heredoc(t_process *process, t_redirection *redirect)
 {

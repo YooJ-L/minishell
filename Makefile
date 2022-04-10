@@ -6,7 +6,7 @@
 #    By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/09 18:38:32 by yoojlee          ###   ########.fr        #
+#    Updated: 2022/04/10 12:26:04 by yoojlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ SRCS      = main.c\
            get_arg.c \
            get_env.c \
            \
+           check_redirect.c \
            heredoc.c \
            input.c \
            output.c \
