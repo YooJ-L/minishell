@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 06:24:17 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 18:08:08 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 19:00:17 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	exec_heredoc(const char *eof_str, int output_fd)
 	add_char_to_str(&save, '\n');
 	ft_putstr_fd(save, output_fd);
 	free(save);
-	// system("leaks minishell");
 	exit(0);
 }
 

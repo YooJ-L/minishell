@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:01:27 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 15:47:16 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 18:57:51 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,20 @@ void	split_key_value(char *line, char **new_key, char **new_value)
 	}
 }
 
+static void	invalid_env(char *new_key, char *new_value)
+{
+	ft_putstr_fd("bash: export: `", STDERR_FILENO);
+	ft_putstr_fd(new_key, STDERR_FILENO);
+	if (new_value)
+	{
+		ft_putstr_fd("=", STDERR_FILENO);
+		ft_putstr_fd(new_value, STDERR_FILENO);
+		free(new_value);
+	}
+	ft_putstr_fd("\': not a valid identifier\n", STDERR_FILENO);
+	free (new_key);
+}
+
 void	add_new_env(t_env *env, t_list *arg)
 {
 	t_list	*temp;
@@ -61,21 +75,14 @@ void	add_new_env(t_env *env, t_list *arg)
 	temp = arg;
 	while (temp != NULL)
 	{
+		new_key = NULL;
+		new_value = NULL;
 		line = (char *)temp->content;
 		split_key_value(line, &new_key, &new_value);
 		if (env_is_valid(new_key))
 			modify_env_node(env, new_key, new_value);
 		else
-		{
-			ft_putstr_fd("bash: export: `", STDERR_FILENO);
-			ft_putstr_fd(new_key, STDERR_FILENO);
-			if (new_value)
-			{
-				ft_putstr_fd("=", STDERR_FILENO);
-				ft_putstr_fd(new_value, STDERR_FILENO);
-			}
-			ft_putstr_fd("\': not a valid identifier\n", STDERR_FILENO);
-		}
+			invalid_env(new_key, new_value);
 		temp = temp->next;
 	}
 }

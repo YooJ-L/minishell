@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 15:34:21 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 17:54:00 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 19:00:13 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	loop_minishell(t_info *info, t_process *process)
 		if (!run_heredoc(info, process) || check_redirect(info, process))
 		{
 			free_all(info, process, input);
-			// system("leaks minishell");
 			continue ;
 		}
 		echoctl_on();

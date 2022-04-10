@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 21:27:30 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 17:13:02 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 19:06:30 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,5 @@ int	execute_unset(t_info *info, t_process *process)
 		}
 		arg = arg->next;
 	}
-	// system("leaks minishell");
 	return (exit_process(info, process, 0));
 }

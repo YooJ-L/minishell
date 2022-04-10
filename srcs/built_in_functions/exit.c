@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:14:06 by dim               #+#    #+#             */
-/*   Updated: 2022/04/10 16:51:45 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 19:00:05 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char	*get_arg_in_exit(t_info *info, t_process *process)
 	{
 		if (info->process_cnt == 1)
 			ft_putstr_fd("exit\n", STDOUT_FILENO);
-		// system("leaks minishell");
 		exit (0);
 	}
 }
@@ -75,7 +74,6 @@ int	execute_exit(t_info *info, t_process *process)
 		exit_find_and_perror(info, 1, arg);
 		free_process(process);
 		free_envp(info);
-		// system("leaks minishell");
 		exit(255);
 	}
 	exit_status = ft_atoi(arg);
@@ -89,7 +87,6 @@ int	execute_exit(t_info *info, t_process *process)
 		print_exit(info, STDOUT_FILENO);
 		free_process(process);
 		free_envp(info);
-		// system("leaks minishell");
 		exit(exit_status);
 	}
 	return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:39:09 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 17:44:11 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 19:06:34 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	check_file_exists_exit(char *file_name)
 		ft_putstr_fd(": ", STDERR_FILENO);
 		ft_putstr_fd(strerror(ENOENT), STDERR_FILENO);
 		ft_putchar_fd('\n', STDERR_FILENO);
-		// system("leaks minishell");
 		exit(ENOENT);
 	}
 	close(fd);
@@ -44,7 +43,6 @@ void	connect_heredoc(char *heredoc_str)
 		close(pipe_fd[0]);
 		ft_putstr_fd(heredoc_str, pipe_fd[1]);
 		close(pipe_fd[1]);
-		// system("leaks minishell");
 		exit(0);
 	}
 	else
@@ -63,7 +61,7 @@ void	set_input_fd(t_process *process, int input_fd)
 	temp = process->redirect;
 	while (temp)
 	{
-		if (temp->symbol == SINGLE_IN || temp->symbol == DOUBLE_IN)
+		if (temp->symbol == SINGLE_IN)
 			check_file_exists_exit(process->redirect->filename);
 		temp = temp->next;
 	}

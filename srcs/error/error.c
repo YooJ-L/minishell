@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:17:39 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 17:13:09 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 19:00:09 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	perror_and_exit(char *text, int errnum)
 {
 	ft_putstr_fd(text, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
-	// system("leaks minishell");
 	exit(errnum);
 }
 

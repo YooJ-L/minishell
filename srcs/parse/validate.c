@@ -6,7 +6,7 @@
 /*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:20:59 by yoojlee           #+#    #+#             */
-/*   Updated: 2022/04/10 17:12:20 by dim              ###   ########.fr       */
+/*   Updated: 2022/04/10 19:07:02 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	validate_input(t_info *info, char *input)
 		write(1, "exit\n", 6);
 		echoctl_on();
 		free_envp(info);
-		// system("leaks minishell");
 		exit(0);
 	}
 	if (input[0] == '\0')

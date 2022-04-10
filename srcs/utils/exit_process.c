@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoojlee <yoojlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dim <dim@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:58:04 by dim               #+#    #+#             */
-/*   Updated: 2022/04/10 16:57:20 by yoojlee          ###   ########.fr       */
+/*   Updated: 2022/04/10 19:00:26 by dim              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	exit_process(t_info *info, t_process *process, int exit_status)
 	{
 		free_process(process);
 		free_envp(info);
-		// system("leaks minishell");
 		exit(exit_status);
 	}
 }

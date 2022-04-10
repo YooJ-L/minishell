@@ -6,16 +6,15 @@
 #    By: dim <dim@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 18:06:29 by yoojlee           #+#    #+#              #
-#    Updated: 2022/04/10 17:41:43 by dim              ###   ########.fr        #
+#    Updated: 2022/04/10 19:08:55 by dim              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME      = minishell
 
 CC         = gcc
-CFLAGS      = $(INCFLAGS) $(WFLAGS) #$(GFLAGS)
+CFLAGS      = $(INCFLAGS) $(WFLAGS)
 WFLAGS      = -Wall -Wextra -Werror
-GFLAGS      = -g -fsanitize=address
 INCFLAGS   = -I$(INCDIR)
 
 INCDIR      = includes
